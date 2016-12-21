@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Parse
+import Bolts
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Configurar conexión con el backend back4app
+        configurarConexionBackend()
         UIApplication.shared.statusBarStyle = .lightContent
         
         window = UIWindow(frame:UIScreen.main.bounds)
@@ -25,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
         
         UINavigationBar.appearance().barTintColor = ColoresApp.primary
+        
+        // Eliminar sombreado de la parte inferior del navigationBar
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         let statusBarBackgroundView = UIView()
         statusBarBackgroundView.backgroundColor = ColoresApp.darkPrimary
@@ -59,6 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func configurarConexionBackend(){
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "ILah5fOqSJX6nMu7JwIYkwDO4A6YoKiqCXVllFho"
+            $0.clientKey = "WbVNLWMVLFSPH4vmxDlscOKBQ4vY2m4ERdOe1M2E"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initialize(with: configuration)
+    }
 }
 
