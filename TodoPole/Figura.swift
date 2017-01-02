@@ -17,10 +17,13 @@ class Figura: NSObject {
     var autor       : String?
     var nivel       : String?
     var descripcion : String?
-    var fileFoto     : PFFile?   // se trata diferente
+    var fileFoto    : PFFile?   // se trata diferente
     var tipo        : String?
     var updateAt    : Date?     // se trata diferente
     var visible     : Bool?
+    var escuela     : Escuela?
+    var urlStringVideo    : String?
+    var fileVideo   : PFFile?
     
     // var escuelaId: Escuela?
     
@@ -37,7 +40,8 @@ class Figura: NSObject {
         updateAt    = object.updatedAt
         visible     = object["visible"] as? Bool
         fileFoto    = object["foto"] as? PFFile
-        
+        fileVideo   = object["video"] as? PFFile
+        urlStringVideo = fileVideo?.url
     }
 
 }

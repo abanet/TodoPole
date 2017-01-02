@@ -34,28 +34,7 @@ class FiguraCell: BaseCell {
         }
     }
    
-//    var video: Video? {
-//        didSet {
-//            titleLabel.text = video?.title
-//            subtitleLabel.text = video?.descriptionVideo
-//            setupThumbnailImage()
-//            
-//            // Medir la longitud del título para calcular el espacio necesario
-//            if let title = video?.title {
-//                let margin = layoutMargins
-//                let size = CGSize(width: frame.width - margin.left - margin.right * 2 - 44, height: 1000) // 44 es el ancho de la foto de perfil.
-//                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-//                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 14)], context: nil)
-//                
-//                if estimatedRect.size.height > 20 {
-//                    titleLabelHeightConstraint?.constant = 44
-//                } else {
-//                    titleLabelHeightConstraint?.constant = 20
-//                }
-//            }
-//        }
-//    }
-//    
+
     let thumbnailImageView: CustomImageView = {
         let imageView = CustomImageView()
         imageView.backgroundColor = ColoresApp.lightPrimary
@@ -74,6 +53,16 @@ class FiguraCell: BaseCell {
         label.textColor = UIColor.white //ColoresApp.primaryText
         return label
     }()
+    
+    let nombreEscuelaLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Light", size: 13)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Escuela de Pole Dance"
+        label.textColor = UIColor.white
+        return label
+    }()
+    
     
     let nombreLabel: UILabel = {
         let label = UILabel()
@@ -109,8 +98,9 @@ class FiguraCell: BaseCell {
         
         addSubview(autorLabel)
         addSubview(nombreLabel)
-        addSubview(tipoLabel)
+        // addSubview(tipoLabel) // Por ahora no ponemos el tipo
         addSubview(nivelLabel)
+        addSubview(nombreEscuelaLabel)
         
         //  Imagen de la figura. Ocupa todo el fondo de la celda
         
@@ -123,17 +113,21 @@ class FiguraCell: BaseCell {
         autorLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         addConstraint(NSLayoutConstraint(item: autorLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 8))
         
+        //  Nombre de la escuela
+        nombreEscuelaLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: nombreEscuelaLabel, attribute: .top, relatedBy: .equal, toItem: autorLabel, attribute: .firstBaseline, multiplier: 1, constant: 0))
+        
         //  Nombre de la figura
         nombreLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         addConstraint(NSLayoutConstraint(item: nombreLabel, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier:1, constant: 0))
         
         // tipo de figura
-        tipoLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: tipoLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier:1, constant: 0))
+        // tipoLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
+        //addConstraint(NSLayoutConstraint(item: tipoLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier:1, constant: 0))
         
         //  nivel de la figura
-        nivelLabel.leadingAnchor.constraint(equalTo: tipoLabel.trailingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: tipoLabel, attribute: .bottom, multiplier: 1, constant: 0))
+        nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 0))
         
     }
     
@@ -158,10 +152,23 @@ class FiguraCell: BaseCell {
     
     
     func setupTextosFigura(){
-        autorLabel.text  =  figura?.autor
-        nombreLabel.text =  figura?.nombre
-        tipoLabel.text   =  figura?.tipo
-        nivelLabel.text  =  figura?.nivel
+        autorLabel.text  =  figura?.autor ?? ""
+        nombreLabel.text =  figura?.nombre ?? ""
+        tipoLabel.text   =  figura?.tipo ?? ""
+        if let nivel = figura?.nivel {
+            nivelLabel.text  =  "Nivel \(nivel)"
+        } else {
+            nivelLabel.text  = ""
+        }
+        nombreEscuelaLabel.text = figura?.escuela?.nombre ?? ""
+    }
+    
+    func resetearTextosCelda(){
+        self.autorLabel.text = ""
+        self.nivelLabel.text = ""
+        self.nombreLabel.text = ""
+        self.tipoLabel.text = ""
+        self.nombreEscuelaLabel.text = ""
     }
     
     func setupImagenFigura() {
@@ -170,4 +177,6 @@ class FiguraCell: BaseCell {
             self.setupTextosFigura()
         }
     }
+    
+    
 }

@@ -29,12 +29,18 @@ class ParseData: NSObject {
     func cargarQueryParse(_ query: PFQuery<PFObject>, completion: @escaping ([Figura]) -> ()) {
         query.limit = 200 // límite impuesto por Parse
         query.cachePolicy = .cacheElseNetwork
+        query.includeKey("escuelaId")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil { // datos encontrados
                 var figuras = [Figura]()
                 for object in objects! {
                     let nuevaFigura = Figura(object: object)
+                    // leemos la escuela
+                    if let pfEscuela = object.object(forKey: "escuelaId") as? PFObject {
+                        let escuela = Escuela(object: pfEscuela)
+                        nuevaFigura.escuela = escuela
+                    }
                     figuras.append(nuevaFigura)
                 }
                 DispatchQueue.main.async {
@@ -45,4 +51,26 @@ class ParseData: NSObject {
             }
         }
     }
-}
+    
+    
+    
+    // carga un vídeo de parse
+    // No hace falta: usar url directamente
+    func cargarVideo(figura: Figura, completion: @escaping (Data)-> Void) {
+        print("vamos a visionar \(figura.nombre)")
+        if let videoFile = figura.fileVideo {
+            print("url del video: \(figura.urlStringVideo)")
+            videoFile.getDataInBackground(block: {
+                (videoData: Data?, error: Error?) in
+                guard error != nil else { return }
+                if let video = videoData {
+                    // tenemos el fichero con el vídeo para mostrar
+                    completion(video)
+                }
+            })
+        }
+        
+    }
+    
+    
+} // Fin de la clase

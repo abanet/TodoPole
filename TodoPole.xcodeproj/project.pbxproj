@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F45691DFB0679008E5B49 /* MenuBar.swift */; };
 		C0203E291E00740400C72D99 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0203E281E00740400C72D99 /* YouTube.swift */; };
+		C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028BFAD1E0D728600D11263 /* Escuela.swift */; };
+		C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */; };
 		C04B0D361E0077ED005D19C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */; };
 		C04B0D381E007805005D19C7 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D371E007805005D19C7 /* Thumbnail.swift */; };
 		C04B0D3C1E0088BB005D19C7 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D3B1E0088BB005D19C7 /* VideoViewController.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		C01F45691DFB0679008E5B49 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		C0203E281E00740400C72D99 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
+		C028BFAD1E0D728600D11263 /* Escuela.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escuela.swift; sourceTree = "<group>"; };
+		C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C04B0D371E007805005D19C7 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		C04B0D3B1E0088BB005D19C7 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				C063E36B1DFEF9160003A263 /* Video.swift */,
 				C04B0D371E007805005D19C7 /* Thumbnail.swift */,
 				C0611C461E032DA200EA9981 /* Figura.swift */,
+				C028BFAD1E0D728600D11263 /* Escuela.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			children = (
 				C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */,
 				C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */,
+				C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -256,7 +262,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Alberto Banet";
 				TargetAttributes = {
 					C0CB3C0A1DE8A2BB00D033DB = {
@@ -306,6 +312,7 @@
 				C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */,
 				C063E36C1DFEF9160003A263 /* Video.swift in Sources */,
 				C04B0D401E008959005D19C7 /* YouTubePlayer.swift in Sources */,
+				C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */,
 				C0611C451E032C9300EA9981 /* ParseData.swift in Sources */,
 				C0BE85EE1DF5D0AF00A96B11 /* FiguraCell.swift in Sources */,
 				C04B0D361E0077ED005D19C7 /* SwiftyJSON.swift in Sources */,
@@ -315,6 +322,7 @@
 				C0CB3C0F1DE8A2BB00D033DB /* AppDelegate.swift in Sources */,
 				C0203E291E00740400C72D99 /* YouTube.swift in Sources */,
 				C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */,
+				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
 				C04B0D3C1E0088BB005D19C7 /* VideoViewController.swift in Sources */,
 				C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */,
 				C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */,
@@ -362,6 +370,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -411,6 +420,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

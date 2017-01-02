@@ -53,7 +53,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! FiguraCell
     
-            resetearTextosCelda(cell)
+            cell.resetearTextosCelda()
             cell.figura = figuras?[indexPath.item]
             return cell
         }
@@ -77,18 +77,13 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     
        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print("Celda Pulsada para ver vídeo")
-    //        let id = videos?[indexPath.item].videoId
-    //        videoPlayerController = VideoPlayerController()
-    //        videoPlayerController?.videoId = id
-    //        self.present(videoPlayerController!, animated: true, completion: nil)
+            let cellPulsada = collectionView.cellForItem(at: indexPath) as! FiguraCell
+            if let figuraTratada = cellPulsada.figura {
+                let videoLauncher = VideoLauncher()
+                videoLauncher.showVideoPlayer(figura: figuraTratada)
+            }
         }
 
     
-    private func resetearTextosCelda(_ celda: FiguraCell){
-        celda.autorLabel.text = ""
-        celda.nivelLabel.text = ""
-        celda.nombreLabel.text = ""
-        celda.tipoLabel.text = ""
-    }
+    
 }

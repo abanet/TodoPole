@@ -84,6 +84,7 @@ class CustomImageView: UIImageView {
     
     func imageWithGradient(img:UIImage!) -> UIImage {
         
+        // Oscurecemos la parte de abajo
         UIGraphicsBeginImageContext(img.size)
         let context = UIGraphicsGetCurrentContext()
         
@@ -102,11 +103,16 @@ class CustomImageView: UIImageView {
         let startPoint = CGPoint(x: img.size.width/2, y: 0)
         let endPoint = CGPoint(x: img.size.width/2, y: img.size.height)
         
+        // Aplicamos gradiente para la parte inferior
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
+        
+        // Aplicamos gradiente para la parte superior
+        context!.drawLinearGradient(gradient!, start: endPoint, end: startPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
+        
         
         return image!
     }
