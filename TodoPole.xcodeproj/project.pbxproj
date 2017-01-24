@@ -31,6 +31,8 @@
 		C0611C451E032C9300EA9981 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611C441E032C9300EA9981 /* ParseData.swift */; };
 		C0611C471E032DA200EA9981 /* Figura.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611C461E032DA200EA9981 /* Figura.swift */; };
 		C063E36C1DFEF9160003A263 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063E36B1DFEF9160003A263 /* Video.swift */; };
+		C070C9E01E3122270008C01A /* youcan.png in Resources */ = {isa = PBXBuildFile; fileRef = C070C9DF1E3122270008C01A /* youcan.png */; };
+		C070C9E21E3124750008C01A /* thanks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C070C9E11E3124750008C01A /* thanks.jpg */; };
 		C0BE85EB1DF5D03D00A96B11 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */; };
 		C0BE85EE1DF5D0AF00A96B11 /* FiguraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */; };
 		C0CB3C0F1DE8A2BB00D033DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */; };
@@ -38,6 +40,10 @@
 		C0CB3C141DE8A2BB00D033DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CB3C121DE8A2BB00D033DB /* Main.storyboard */; };
 		C0CB3C161DE8A2BB00D033DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0CB3C151DE8A2BB00D033DB /* Assets.xcassets */; };
 		C0CB3C191DE8A2BB00D033DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CB3C171DE8A2BB00D033DB /* LaunchScreen.storyboard */; };
+		C0EC2C3F1E1EA2BE00F8D291 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EC2C3E1E1EA2BE00F8D291 /* BaseCell.swift */; };
+		C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */; };
+		C0EC2C451E1EB48F00F8D291 /* app.html in Resources */ = {isa = PBXBuildFile; fileRef = C0EC2C431E1EB48F00F8D291 /* app.html */; };
+		C0EC2C461E1EB48F00F8D291 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = C0EC2C441E1EB48F00F8D291 /* app.css */; };
 		C0EF0E2B1E0AC83800B81F3C /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2A1E0AC83800B81F3C /* FeedCell.swift */; };
 		C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */; };
 		C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */; };
@@ -68,6 +74,8 @@
 		C0611C441E032C9300EA9981 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		C0611C461E032DA200EA9981 /* Figura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figura.swift; sourceTree = "<group>"; };
 		C063E36B1DFEF9160003A263 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		C070C9DF1E3122270008C01A /* youcan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youcan.png; sourceTree = "<group>"; };
+		C070C9E11E3124750008C01A /* thanks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thanks.jpg; sourceTree = "<group>"; };
 		C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiguraCell.swift; sourceTree = "<group>"; };
 		C0CB3C0B1DE8A2BB00D033DB /* TodoPole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoPole.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +85,10 @@
 		C0CB3C151DE8A2BB00D033DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0CB3C181DE8A2BB00D033DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0CB3C1A1DE8A2BB00D033DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0EC2C3E1E1EA2BE00F8D291 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColaboraCell.swift; sourceTree = "<group>"; };
+		C0EC2C431E1EB48F00F8D291 /* app.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = app.html; sourceTree = "<group>"; };
+		C0EC2C441E1EB48F00F8D291 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		C0EF0E2A1E0AC83800B81F3C /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
 		C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritosCell.swift; sourceTree = "<group>"; };
@@ -181,10 +193,12 @@
 			isa = PBXGroup;
 			children = (
 				C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */,
+				C0EC2C3E1E1EA2BE00F8D291 /* BaseCell.swift */,
 				C0EF0E2A1E0AC83800B81F3C /* FeedCell.swift */,
 				C01F45691DFB0679008E5B49 /* MenuBar.swift */,
 				C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */,
 				C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */,
+				C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -218,6 +232,7 @@
 		C0CB3C0D1DE8A2BB00D033DB /* TodoPole */ = {
 			isa = PBXGroup;
 			children = (
+				C0EC2C421E1EB47500F8D291 /* WebColabora */,
 				C0611C291E0325B700EA9981 /* ParseSDK */,
 				C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */,
 				C04B0D3D1E00894F005D19C7 /* YouTubePlayer */,
@@ -233,6 +248,17 @@
 				C0CB3C1A1DE8A2BB00D033DB /* Info.plist */,
 			);
 			path = TodoPole;
+			sourceTree = "<group>";
+		};
+		C0EC2C421E1EB47500F8D291 /* WebColabora */ = {
+			isa = PBXGroup;
+			children = (
+				C0EC2C431E1EB48F00F8D291 /* app.html */,
+				C0EC2C441E1EB48F00F8D291 /* app.css */,
+				C070C9E11E3124750008C01A /* thanks.jpg */,
+				C070C9DF1E3122270008C01A /* youcan.png */,
+			);
+			name = WebColabora;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +323,10 @@
 			files = (
 				C0CB3C191DE8A2BB00D033DB /* LaunchScreen.storyboard in Resources */,
 				C0CB3C161DE8A2BB00D033DB /* Assets.xcassets in Resources */,
+				C070C9E21E3124750008C01A /* thanks.jpg in Resources */,
+				C0EC2C451E1EB48F00F8D291 /* app.html in Resources */,
+				C0EC2C461E1EB48F00F8D291 /* app.css in Resources */,
+				C070C9E01E3122270008C01A /* youcan.png in Resources */,
 				C04B0D411E008959005D19C7 /* YTPlayer.html in Resources */,
 				C0CB3C141DE8A2BB00D033DB /* Main.storyboard in Resources */,
 			);
@@ -309,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0EC2C3F1E1EA2BE00F8D291 /* BaseCell.swift in Sources */,
 				C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */,
 				C063E36C1DFEF9160003A263 /* Video.swift in Sources */,
 				C04B0D401E008959005D19C7 /* YouTubePlayer.swift in Sources */,
@@ -324,6 +355,7 @@
 				C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */,
 				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
 				C04B0D3C1E0088BB005D19C7 /* VideoViewController.swift in Sources */,
+				C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */,
 				C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */,
 				C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */,
 				C0611C471E032DA200EA9981 /* Figura.swift in Sources */,
@@ -455,6 +487,7 @@
 					"$(PROJECT_DIR)/TodoPole/Parse-iOS",
 				);
 				INFOPLIST_FILE = TodoPole/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.todopole.TodoPole;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -472,6 +505,7 @@
 					"$(PROJECT_DIR)/TodoPole/Parse-iOS",
 				);
 				INFOPLIST_FILE = TodoPole/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.todopole.TodoPole;
 				PRODUCT_NAME = "$(TARGET_NAME)";

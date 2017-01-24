@@ -1,0 +1,25 @@
+body {
+	
+}
+
+#youcan {
+	align-content: center;
+	width: 100%;
+	height: auto;
+	margin-bottom: 100px;
+}
+
+#container {
+	margin-left: 16px;
+	margin-right: 16px;
+	padding-left: 16px;
+	padding-right: 16px;
+	font-family: verdana, sans-serif;
+	font-size: 2em;
+	text-align: justify;
+	color: #1c8877;
+}
+
+li {
+	margin: 15px;
+}

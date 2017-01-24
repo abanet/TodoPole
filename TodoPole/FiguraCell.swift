@@ -9,21 +9,6 @@
 import UIKit
 import Parse
 
-class BaseCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    func setupViews() {
-    }
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
 
 
 class FiguraCell: BaseCell {
@@ -63,6 +48,15 @@ class FiguraCell: BaseCell {
         return label
     }()
     
+    let provinciaPaisLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Light", size: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.white
+        label.text = "provincia - país"
+        return label
+    }()
+    
     
     let nombreLabel: UILabel = {
         let label = UILabel()
@@ -77,7 +71,7 @@ class FiguraCell: BaseCell {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Medium", size:12)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Nivel 1"
+        label.text = "Level 1"
         label.textColor = UIColor.white //ColoresApp.primaryText
         return label
     }()
@@ -101,6 +95,7 @@ class FiguraCell: BaseCell {
         // addSubview(tipoLabel) // Por ahora no ponemos el tipo
         addSubview(nivelLabel)
         addSubview(nombreEscuelaLabel)
+        addSubview(provinciaPaisLabel)
         
         //  Imagen de la figura. Ocupa todo el fondo de la celda
         
@@ -116,6 +111,10 @@ class FiguraCell: BaseCell {
         //  Nombre de la escuela
         nombreEscuelaLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         addConstraint(NSLayoutConstraint(item: nombreEscuelaLabel, attribute: .top, relatedBy: .equal, toItem: autorLabel, attribute: .firstBaseline, multiplier: 1, constant: 0))
+        
+        //  Provincia y País
+        provinciaPaisLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: provinciaPaisLabel, attribute: .top, relatedBy: .equal, toItem: nombreEscuelaLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0))
         
         //  Nombre de la figura
         nombreLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
@@ -153,14 +152,20 @@ class FiguraCell: BaseCell {
     
     func setupTextosFigura(){
         autorLabel.text  =  figura?.autor ?? ""
-        nombreLabel.text =  figura?.nombre ?? ""
+        nombreLabel.text =  figura?.englishName ?? "" // De momento todo en inglés.
         tipoLabel.text   =  figura?.tipo ?? ""
         if let nivel = figura?.nivel {
-            nivelLabel.text  =  "Nivel \(nivel)"
+            nivelLabel.text  =  "Level \(nivel)"
         } else {
             nivelLabel.text  = ""
         }
         nombreEscuelaLabel.text = figura?.escuela?.nombre ?? ""
+        
+        // rellenamos la pronvincia y el país
+        let provincia = figura?.escuela?.provincia
+        //let pais      = figura?.escuela?.pais
+        // De momento como sólo hay de España quitamos el pais. En un futuro [provincia, pais].flatMap...
+        provinciaPaisLabel.text = [provincia].flatMap{$0}.joined(separator: " - ")
     }
     
     func resetearTextosCelda(){
@@ -169,6 +174,7 @@ class FiguraCell: BaseCell {
         self.nombreLabel.text = ""
         self.tipoLabel.text = ""
         self.nombreEscuelaLabel.text = ""
+        self.provinciaPaisLabel.text = ""
     }
     
     func setupImagenFigura() {

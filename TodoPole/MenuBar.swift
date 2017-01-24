@@ -9,7 +9,7 @@
 import UIKit
 
 struct ConfiguracionMenu {
-    static let numOpciones = 3
+    static let numOpciones = 2  // Opciones del menú principal de la app
 }
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -24,7 +24,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let cellId = "cellId"
-    let imageNames = ["home", "subscriptions", "water"]
+    let imageNames = ["home", "water"] // Imágenes del menú principal de la app
     
     var homeController: HomeController?
     
@@ -54,7 +54,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         horizontalBarLeftAnchorConstraint?.isActive = true
         
         horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3).isActive = true // Actualizar según opciones de menú
+        horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/2).isActive = true // Actualizar según opciones de menú
         horizontalBarView.heightAnchor.constraint(equalToConstant: 4).isActive = true
     }
     
