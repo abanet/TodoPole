@@ -51,8 +51,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! FiguraCell
-    
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! FiguraCell 
             cell.resetearTextosCelda()
             cell.figura = figuras?[indexPath.item]
             return cell
@@ -81,9 +80,14 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
             if let figuraTratada = cellPulsada.figura {
                 let videoLauncher = VideoLauncher()
                 videoLauncher.showVideoPlayer(figura: figuraTratada)
+                videoLauncher.videoPlayer.delegate = self
             }
         }
 
-    
-    
+}
+
+extension FeedCell: VideoPlayerViewProtocol {
+    func didCloseVideoPlayer() {
+        print("Llamando protocolo desde FeedCell")
+    }
 }

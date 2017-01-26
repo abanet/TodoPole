@@ -10,7 +10,17 @@ import UIKit
 import AVFoundation
 import AVKit
 
+protocol VideoPlayerViewProtocol: class {
+    func didCloseVideoPlayer()
+}
+
 class VideoPlayerView: UIView {
+    
+    weak var delegate: VideoPlayerViewProtocol?
+    
+    var enFavoritos: Bool?
+    
+    var figura: Figura? // Figura que estamos visualizando. La iniciamos cuando se llama a reproducir Vídeo
     
     let activityIndicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
@@ -92,6 +102,35 @@ class VideoPlayerView: UIView {
         return button
     }()
     
+    var likeButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: "like")
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
+        button.alpha = 0.7
+        return button
+
+    }()
+    
+    
+    func handleLike() {
+        print("Like pulsado")
+        
+        if let figura = figura, let esFavorita = self.enFavoritos {
+            if esFavorita  {
+                likeButton.tintColor = .white
+                Favoritos.sharedInstance.removeFavorito(id: figura.objectId!)
+                self.enFavoritos = false
+            } else {
+                likeButton.tintColor = .red
+                Favoritos.sharedInstance.addFavorito(id: figura.objectId!)
+                self.enFavoritos = true
+            }
+        }
+    }
+    
+    
     func handleClose(){
         player?.pause()
         isPlaying = false
@@ -106,7 +145,9 @@ class VideoPlayerView: UIView {
             
         })
         
-        
+        // En el caso de que exista un delegado se llama. 
+        // Lo habrá al cerrar la ventana desde Favoritos
+        delegate?.didCloseVideoPlayer()
     }
     
     var isPlaying = false
@@ -177,7 +218,20 @@ class VideoPlayerView: UIView {
         closeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        
+        //  Añadimos el like
+        controlContainerView.addSubview(likeButton)
+        likeButton.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
+        likeButton.topAnchor.constraint(equalTo: closeButton.bottomAnchor).isActive = true
+        likeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        // Color del like: blanco si no es favorito, rojo si lo es
+        if Favoritos.sharedInstance.isFavorito(id: figura.objectId!) {
+            likeButton.tintColor = .red
+            self.enFavoritos = true
+        } else {
+            likeButton.tintColor = .white
+            self.enFavoritos = false
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -187,6 +241,8 @@ class VideoPlayerView: UIView {
     var player: AVPlayer?
     
     private func setupPlayerView(figura: Figura) {
+        self.figura = figura // Inicialización de la figura q vamos a mostrar.
+        
         let urlString = figura.urlStringVideo
         if let url = URL(string: urlString!) {
             player = AVPlayer(url: url)
@@ -263,7 +319,10 @@ class VideoPlayerView: UIView {
 
 class VideoLauncher: NSObject {
     
-
+    // Video Player en el que se verá el vídeo.
+    // Al llamar a VideoLauncher se establece el delegate del VideoPlayer
+    var videoPlayer: VideoPlayerView = VideoPlayerView()
+    
     func showVideoPlayer(figura: Figura) {
         print("Mostrando vídeo")
         if let keyWindow = UIApplication.shared.keyWindow {
@@ -271,7 +330,8 @@ class VideoLauncher: NSObject {
             view.frame = CGRect(x: keyWindow.frame.width - 10 , y: keyWindow.frame.height - 10, width: 10, height: 10)
             view.backgroundColor = ColoresApp.lightPrimary
             
-            let videoPlayer = VideoPlayerView(frame: keyWindow.frame, figura: figura)
+            videoPlayer = VideoPlayerView(frame: keyWindow.frame, figura: figura)
+            
             view.addSubview(videoPlayer)
             
             keyWindow.addSubview(view)
@@ -287,4 +347,6 @@ class VideoLauncher: NSObject {
             
         }
     }
+    
+    
 }

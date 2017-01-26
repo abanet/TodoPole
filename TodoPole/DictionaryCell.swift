@@ -11,10 +11,13 @@ import UIKit
 class DictionaryCell: FeedCell {
 
     override func cargarFigurasDeParse() {
+        print("Llamada a DictionaryCell")
         ParseData.sharedInstance.cargarFigurasVisibles(){
             (figuras:[Figura]) -> Void in
             self.figuras = figuras
             self.collectionView.reloadData()
         }
     }
+    
+    
 }

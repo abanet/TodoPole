@@ -11,6 +11,7 @@ import UIKit
 class FavoritosCell: FeedCell {
 
     override func cargarFigurasDeParse() {
+        print("En favoritosCell")
         ParseData.sharedInstance.cargarFigurasFavoritas(){
             (figuras:[Figura]) -> Void in
             self.figuras = figuras
@@ -18,4 +19,10 @@ class FavoritosCell: FeedCell {
         }
     }
 
+    
+    override func didCloseVideoPlayer() {
+        self.setupViews()
+        print("Llamando protocolo desde FavoritosCell")
+    }
 }
+

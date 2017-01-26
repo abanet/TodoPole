@@ -85,6 +85,8 @@ class FiguraCell: BaseCell {
         return label
     }()
   
+    
+    
     override func setupViews() {
         addSubview(thumbnailImageView)
         //  Gradientes superior e inferior
@@ -127,8 +129,7 @@ class FiguraCell: BaseCell {
         //  nivel de la figura
         nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
         addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 0))
-        
-    }
+           }
     
     // Establecemos un gradiente en la parte inferior de la fotografía para que se vea mejor la información que pondemos.
     private func setupGradientLayer(){

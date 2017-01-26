@@ -10,6 +10,14 @@
 import Foundation
 import Parse
 
+enum TipoFigura: String {
+    case giro = "giro"
+    case suelo = "suelo"
+    case figura = "figura"
+    case subida = "subida"
+    case transicion = "transición"
+}
+
 class Figura: NSObject {
     var objectId    : String?
     var nombre      : String?
@@ -25,6 +33,7 @@ class Figura: NSObject {
     var urlStringVideo    : String?
     var fileVideo   : PFFile?
     
+   
     // var escuelaId: Escuela?
     
     // Iniciación de una Figura a partir de un PFObject
@@ -42,6 +51,7 @@ class Figura: NSObject {
         fileFoto    = object["foto"] as? PFFile
         fileVideo   = object["video"] as? PFFile
         urlStringVideo = fileVideo?.url
+        
     }
 
 }

@@ -9,24 +9,41 @@
 import Foundation
 import Parse
 
+
+
 class ParseData: NSObject {
     
     static let sharedInstance = ParseData()
     
+    // Cargar todas las figuras visibles
     func cargarFigurasVisibles(completion: @escaping ([Figura]) -> ()) {
         let query = PFQuery(className:"Figura")
         query.whereKey("visible", equalTo: true)
         cargarQueryParse(query, completion: completion)
     }
     
+    // Cargar las figuras favoritas
     func cargarFigurasFavoritas(completion: @escaping ([Figura]) -> ()) {
+         let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos 
+            print("vamos a buscar lo que está en arrayFav: \(arrayFavoritos)")
+            let query = PFQuery(className:"Figura")
+            query.whereKey("objectId", containedIn: arrayFavoritos)
+            query.whereKey("visible", equalTo: true)
+            cargarQueryParse(query, completion: completion)
+    }
+    
+    // Cargas las figuras que se corresponden con un tipo dado
+    // tipo -> Tipo de las figuras que se van a cargar
+    func cargarFigurasTipoGiro (tipo: TipoFigura, completion: @escaping ([Figura]) -> ()) {
         let query = PFQuery(className:"Figura")
         query.whereKey("visible", equalTo: true)
-        query.whereKey("autor", equalTo: "Tania Guillén")
+        query.whereKey("tipo", equalTo: tipo.rawValue)
         cargarQueryParse(query, completion: completion)
     }
     
-    func cargarQueryParse(_ query: PFQuery<PFObject>, completion: @escaping ([Figura]) -> ()) {
+    
+    
+    private func cargarQueryParse(_ query: PFQuery<PFObject>, completion: @escaping ([Figura]) -> ()) {
         query.limit = 200 // límite impuesto por Parse
         query.cachePolicy = .cacheElseNetwork
         query.includeKey("escuelaId")
@@ -73,4 +90,5 @@ class ParseData: NSObject {
     }
     
     
+       
 } // Fin de la clase
