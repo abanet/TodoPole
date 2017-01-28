@@ -19,7 +19,7 @@ class FavoritosCell: FeedCell {
         }
     }
 
-    
+    // override de la respuesta al protocolo VideoPlayerViewProtocol
     override func didCloseVideoPlayer() {
         self.setupViews()
         print("Llamando protocolo desde FavoritosCell")

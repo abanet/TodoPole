@@ -32,6 +32,7 @@ class Figura: NSObject {
     var escuela     : Escuela?
     var urlStringVideo    : String?
     var fileVideo   : PFFile?
+    var likes       : Int?
     
    
     // var escuelaId: Escuela?
@@ -51,7 +52,7 @@ class Figura: NSObject {
         fileFoto    = object["foto"] as? PFFile
         fileVideo   = object["video"] as? PFFile
         urlStringVideo = fileVideo?.url
-        
+        likes       = object["likes"] as? Int
     }
 
 }

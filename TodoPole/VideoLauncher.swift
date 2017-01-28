@@ -10,6 +10,9 @@ import UIKit
 import AVFoundation
 import AVKit
 
+
+// Protocolo VideoPlayerViewProtocol
+// Determina qué hacer al cerrar la pantalla de vídeo
 protocol VideoPlayerViewProtocol: class {
     func didCloseVideoPlayer()
 }
@@ -109,11 +112,57 @@ class VideoPlayerView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         button.alpha = 0.7
+        button.isHidden = true
         return button
 
     }()
     
+    var facebookLikeButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: "facebook-like")
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleFacebookLike), for: .touchUpInside)
+        button.alpha = 0.7
+        button.tintColor = .white
+        button.isHidden = true
+        return button
+        
+    }()
     
+    
+    // Cuando alguien pulsa en el dedito hacia arriba
+    func handleFacebookLike() {
+        // Incrementamos en uno el valor de likes de esta figura
+        if let fig = figura {
+            ParseData.sharedInstance.incrementarLikes(figura: fig)
+            //facebookLikeButton.tintColor = ColoresApp.darkPrimary
+            
+            let labelThanks = UILabel()
+            labelThanks.alpha = 0
+            labelThanks.font = UIFont(name: "Avenir-Medium", size:15)
+            labelThanks.translatesAutoresizingMaskIntoConstraints = false
+            labelThanks.text = "Thank you!!"
+            labelThanks.textColor = UIColor.white //ColoresApp.primaryText
+            controlContainerView.addSubview(labelThanks)
+            labelThanks.centerXAnchor.constraint(equalTo: facebookLikeButton.centerXAnchor, constant: -8).isActive = true
+            labelThanks.centerYAnchor.constraint(equalTo: facebookLikeButton.centerYAnchor).isActive = true
+            
+            
+            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+                    self.facebookLikeButton.alpha = 0
+                    labelThanks.alpha = 1
+            }) { (Bool) in
+                    self.facebookLikeButton.isEnabled = false
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+                    labelThanks.alpha = 0
+                    labelThanks.center = CGPoint(x: labelThanks.center.x, y: 8)
+                })
+            }
+        }
+    }
+    
+    // Cuando alguien pulsa sobre el corazón
     func handleLike() {
         print("Like pulsado")
         
@@ -123,9 +172,11 @@ class VideoPlayerView: UIView {
                 Favoritos.sharedInstance.removeFavorito(id: figura.objectId!)
                 self.enFavoritos = false
             } else {
-                likeButton.tintColor = .red
+                likeButton.tintColor = .red //ColoresApp.darkPrimary
                 Favoritos.sharedInstance.addFavorito(id: figura.objectId!)
                 self.enFavoritos = true
+                // Incrementamos en uno el valor de likes de esta figura
+                ParseData.sharedInstance.incrementarLikes(figura: figura)
             }
         }
     }
@@ -141,12 +192,12 @@ class VideoPlayerView: UIView {
         }, completion: {(animacionCompletada) in
             self.player = nil
             self.superview?.removeFromSuperview()
-            UIApplication.shared.setStatusBarHidden(false, with: .fade)
+            UIApplication.shared.setStatusBarHidden(false, with: .none) // estaba a .fade y creaba como un flashazo!
             
         })
         
         // En el caso de que exista un delegado se llama. 
-        // Lo habrá al cerrar la ventana desde Favoritos
+        // Lo habrá al cerrar la ventana desde Favoritos para refrescar
         delegate?.didCloseVideoPlayer()
     }
     
@@ -220,8 +271,8 @@ class VideoPlayerView: UIView {
 
         //  Añadimos el like
         controlContainerView.addSubview(likeButton)
-        likeButton.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
-        likeButton.topAnchor.constraint(equalTo: closeButton.bottomAnchor).isActive = true
+        likeButton.rightAnchor.constraint(equalTo: videoLengthLabel.rightAnchor).isActive = true
+        likeButton.topAnchor.constraint(equalTo: closeButton.topAnchor).isActive = true
         likeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         // Color del like: blanco si no es favorito, rojo si lo es
@@ -232,6 +283,13 @@ class VideoPlayerView: UIView {
             likeButton.tintColor = .white
             self.enFavoritos = false
         }
+        
+        // Añadimos el facebook like
+        controlContainerView.addSubview(facebookLikeButton)
+        facebookLikeButton.rightAnchor.constraint(equalTo: likeButton.rightAnchor).isActive = true
+        facebookLikeButton.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 16).isActive = true
+        facebookLikeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        facebookLikeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -302,6 +360,8 @@ class VideoPlayerView: UIView {
             activityIndicatorView.stopAnimating()
             controlContainerView.backgroundColor = .clear
             pausePlayButton.isHidden = false
+            likeButton.isHidden = false
+            facebookLikeButton.isHidden = false
             isPlaying = true
             
             // Mostrar duración del vídeo

@@ -64,6 +64,7 @@ class FiguraCell: BaseCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Bombero loco"
         label.textColor = UIColor.white //ColoresApp.primaryText
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -73,6 +74,15 @@ class FiguraCell: BaseCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Level 1"
         label.textColor = UIColor.white //ColoresApp.primaryText
+        return label
+    }()
+    
+    let likesLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Medium", size: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "0 likes"
+        label.textColor = .white
         return label
     }()
     
@@ -96,6 +106,7 @@ class FiguraCell: BaseCell {
         addSubview(nombreLabel)
         // addSubview(tipoLabel) // Por ahora no ponemos el tipo
         addSubview(nivelLabel)
+        addSubview(likesLabel)
         addSubview(nombreEscuelaLabel)
         addSubview(provinciaPaisLabel)
         
@@ -120,6 +131,7 @@ class FiguraCell: BaseCell {
         
         //  Nombre de la figura
         nombreLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        nombreLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         addConstraint(NSLayoutConstraint(item: nombreLabel, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier:1, constant: 0))
         
         // tipo de figura
@@ -128,8 +140,13 @@ class FiguraCell: BaseCell {
         
         //  nivel de la figura
         nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 0))
-           }
+        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 0))
+        
+        //  número de likes
+        likesLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 0))
+        
+    }
     
     // Establecemos un gradiente en la parte inferior de la fotografía para que se vea mejor la información que pondemos.
     private func setupGradientLayer(){
@@ -160,6 +177,13 @@ class FiguraCell: BaseCell {
         } else {
             nivelLabel.text  = ""
         }
+        
+        if let likes = figura?.likes {
+            likesLabel.text = "\(likes) likes"
+        } else {
+            likesLabel.text = "0 likes"
+        }
+        
         nombreEscuelaLabel.text = figura?.escuela?.nombre ?? ""
         
         // rellenamos la pronvincia y el país

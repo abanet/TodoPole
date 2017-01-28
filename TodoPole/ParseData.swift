@@ -18,6 +18,7 @@ class ParseData: NSObject {
     // Cargar todas las figuras visibles
     func cargarFigurasVisibles(completion: @escaping ([Figura]) -> ()) {
         let query = PFQuery(className:"Figura")
+        query.cachePolicy = .cacheThenNetwork
         query.whereKey("visible", equalTo: true)
         cargarQueryParse(query, completion: completion)
     }
@@ -27,6 +28,7 @@ class ParseData: NSObject {
          let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos 
             print("vamos a buscar lo que está en arrayFav: \(arrayFavoritos)")
             let query = PFQuery(className:"Figura")
+            query.cachePolicy = .cacheElseNetwork
             query.whereKey("objectId", containedIn: arrayFavoritos)
             query.whereKey("visible", equalTo: true)
             cargarQueryParse(query, completion: completion)
@@ -45,7 +47,6 @@ class ParseData: NSObject {
     
     private func cargarQueryParse(_ query: PFQuery<PFObject>, completion: @escaping ([Figura]) -> ()) {
         query.limit = 200 // límite impuesto por Parse
-        query.cachePolicy = .cacheElseNetwork
         query.includeKey("escuelaId")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
@@ -87,6 +88,21 @@ class ParseData: NSObject {
             })
         }
         
+    }
+    
+    
+    // Incrementamos el campo likes de la figura
+    func incrementarLikes(figura: Figura) {
+        var query = PFQuery(className:"Figura")
+        query.getObjectInBackground(withId: figura.objectId!) {
+            (figura: PFObject?, error: Error?) -> Void in
+            if error == nil && figura != nil {
+                figura?.incrementKey("likes")
+                figura?.saveInBackground()
+            } else {
+                print("error")
+            }
+        }
     }
     
     

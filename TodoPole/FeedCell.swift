@@ -86,6 +86,8 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
 
 }
 
+// La clase FeedCell responderá al protocolo VideoPlayerViewProtocol
+// Este protocolo determinará qué hacer al volver de la pantalla tras visualizar un vídeo.
 extension FeedCell: VideoPlayerViewProtocol {
     func didCloseVideoPlayer() {
         print("Llamando protocolo desde FeedCell")
