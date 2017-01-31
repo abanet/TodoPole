@@ -64,9 +64,8 @@ class VideoPlayerView: UIView {
         slider.maximumTrackTintColor = ColoresApp.lightPrimary
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.setThumbImage(UIImage(named:"thumb"), for: .normal)
-        
+        slider.isHidden = true
         slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
-        
         return slider
     }()
     
@@ -117,50 +116,51 @@ class VideoPlayerView: UIView {
 
     }()
     
-    var facebookLikeButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(named: "facebook-like")
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleFacebookLike), for: .touchUpInside)
-        button.alpha = 0.7
-        button.tintColor = .white
-        button.isHidden = true
-        return button
-        
-    }()
+//  Botón de Like
+//    var facebookLikeButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        let image = UIImage(named: "facebook-like")
+//        button.setImage(image, for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(handleFacebookLike), for: .touchUpInside)
+//        button.alpha = 0.7
+//        button.tintColor = .white
+//        button.isHidden = true
+//        return button
+//        
+//    }()
     
     
     // Cuando alguien pulsa en el dedito hacia arriba
-    func handleFacebookLike() {
-        // Incrementamos en uno el valor de likes de esta figura
-        if let fig = figura {
-            ParseData.sharedInstance.incrementarLikes(figura: fig)
-            //facebookLikeButton.tintColor = ColoresApp.darkPrimary
-            
-            let labelThanks = UILabel()
-            labelThanks.alpha = 0
-            labelThanks.font = UIFont(name: "Avenir-Medium", size:15)
-            labelThanks.translatesAutoresizingMaskIntoConstraints = false
-            labelThanks.text = "Thank you!!"
-            labelThanks.textColor = UIColor.white //ColoresApp.primaryText
-            controlContainerView.addSubview(labelThanks)
-            labelThanks.centerXAnchor.constraint(equalTo: facebookLikeButton.centerXAnchor, constant: -8).isActive = true
-            labelThanks.centerYAnchor.constraint(equalTo: facebookLikeButton.centerYAnchor).isActive = true
-            
-            
-            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-                    self.facebookLikeButton.alpha = 0
-                    labelThanks.alpha = 1
-            }) { (Bool) in
-                    self.facebookLikeButton.isEnabled = false
-                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-                    labelThanks.alpha = 0
-                    labelThanks.center = CGPoint(x: labelThanks.center.x, y: 8)
-                })
-            }
-        }
-    }
+//    func handleFacebookLike() {
+//        // Incrementamos en uno el valor de likes de esta figura
+//        if let fig = figura {
+//            ParseData.sharedInstance.incrementarLikes(figura: fig)
+//            //facebookLikeButton.tintColor = ColoresApp.darkPrimary
+//            
+//            let labelThanks = UILabel()
+//            labelThanks.alpha = 0
+//            labelThanks.font = UIFont(name: "Avenir-Medium", size:15)
+//            labelThanks.translatesAutoresizingMaskIntoConstraints = false
+//            labelThanks.text = "Thank you!!"
+//            labelThanks.textColor = UIColor.white //ColoresApp.primaryText
+//            controlContainerView.addSubview(labelThanks)
+//            labelThanks.centerXAnchor.constraint(equalTo: facebookLikeButton.centerXAnchor, constant: -8).isActive = true
+//            labelThanks.centerYAnchor.constraint(equalTo: facebookLikeButton.centerYAnchor).isActive = true
+//            
+//            
+//            UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+//                    self.facebookLikeButton.alpha = 0
+//                    labelThanks.alpha = 1
+//            }) { (Bool) in
+//                    self.facebookLikeButton.isEnabled = false
+//                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+//                    labelThanks.alpha = 0
+//                    labelThanks.center = CGPoint(x: labelThanks.center.x, y: 8)
+//                })
+//            }
+//        }
+//    }
     
     // Cuando alguien pulsa sobre el corazón
     func handleLike() {
@@ -285,11 +285,11 @@ class VideoPlayerView: UIView {
         }
         
         // Añadimos el facebook like
-        controlContainerView.addSubview(facebookLikeButton)
-        facebookLikeButton.rightAnchor.constraint(equalTo: likeButton.rightAnchor).isActive = true
-        facebookLikeButton.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 16).isActive = true
-        facebookLikeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        facebookLikeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        controlContainerView.addSubview(facebookLikeButton)
+//        facebookLikeButton.rightAnchor.constraint(equalTo: likeButton.rightAnchor).isActive = true
+//        facebookLikeButton.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 16).isActive = true
+//        facebookLikeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+//        facebookLikeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -361,7 +361,8 @@ class VideoPlayerView: UIView {
             controlContainerView.backgroundColor = .clear
             pausePlayButton.isHidden = false
             likeButton.isHidden = false
-            facebookLikeButton.isHidden = false
+            videoSlider.isHidden = false
+            //facebookLikeButton.isHidden = false
             isPlaying = true
             
             // Mostrar duración del vídeo

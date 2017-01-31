@@ -200,6 +200,7 @@ class FiguraCell: BaseCell {
         self.tipoLabel.text = ""
         self.nombreEscuelaLabel.text = ""
         self.provinciaPaisLabel.text = ""
+        self.likesLabel.text = ""
     }
     
     func setupImagenFigura() {

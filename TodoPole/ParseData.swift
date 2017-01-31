@@ -15,24 +15,37 @@ class ParseData: NSObject {
     
     static let sharedInstance = ParseData()
     
-    // Cargar todas las figuras visibles
-    func cargarFigurasVisibles(completion: @escaping ([Figura]) -> ()) {
+       
+    // Cargar todas las figuras visibles desde la cache si hay
+    func cargarFigurasVisibles(red: Bool, completion: @escaping ([Figura]) -> ()) {
+        
         let query = PFQuery(className:"Figura")
-        query.cachePolicy = .cacheThenNetwork
+        if red {
+            query.cachePolicy = .networkOnly
+        } else {
+            query.cachePolicy = .cacheElseNetwork
+        }
         query.whereKey("visible", equalTo: true)
+        query.order(byDescending: "createdAt")
         cargarQueryParse(query, completion: completion)
     }
     
     // Cargar las figuras favoritas
-    func cargarFigurasFavoritas(completion: @escaping ([Figura]) -> ()) {
+    func cargarFigurasFavoritas(red: Bool, completion: @escaping ([Figura]) -> ()) {
          let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos 
             print("vamos a buscar lo que está en arrayFav: \(arrayFavoritos)")
             let query = PFQuery(className:"Figura")
-            query.cachePolicy = .cacheElseNetwork
+            if red {
+                query.cachePolicy = .networkOnly
+            } else {
+                query.cachePolicy = .cacheElseNetwork
+            }
             query.whereKey("objectId", containedIn: arrayFavoritos)
             query.whereKey("visible", equalTo: true)
             cargarQueryParse(query, completion: completion)
     }
+    
+    
     
     // Cargas las figuras que se corresponden con un tipo dado
     // tipo -> Tipo de las figuras que se van a cargar
@@ -66,6 +79,7 @@ class ParseData: NSObject {
                 }
             } else {
                 // No hay datos ni en la red ni en la caché...ups!
+                print("no estamos encontrando datos")
             }
         }
     }

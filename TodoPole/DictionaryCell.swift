@@ -10,14 +10,15 @@ import UIKit
 
 class DictionaryCell: FeedCell {
 
-    override func cargarFigurasDeParse() {
+    override func cargarFigurasDeParse(red: Bool) {
         print("Llamada a DictionaryCell")
-        ParseData.sharedInstance.cargarFigurasVisibles(){
+        ParseData.sharedInstance.cargarFigurasVisibles(red: red){
             (figuras:[Figura]) -> Void in
             self.figuras = figuras
             self.collectionView.reloadData()
+            self.refresh.endRefreshing()
+
         }
     }
-    
     
 }

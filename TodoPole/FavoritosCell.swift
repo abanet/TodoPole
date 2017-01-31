@@ -10,12 +10,14 @@ import UIKit
 
 class FavoritosCell: FeedCell {
 
-    override func cargarFigurasDeParse() {
+    override func cargarFigurasDeParse(red: Bool) {
         print("En favoritosCell")
-        ParseData.sharedInstance.cargarFigurasFavoritas(){
+        ParseData.sharedInstance.cargarFigurasFavoritas(red: red){
             (figuras:[Figura]) -> Void in
             self.figuras = figuras
             self.collectionView.reloadData()
+            self.refresh.endRefreshing()
+
         }
     }
 

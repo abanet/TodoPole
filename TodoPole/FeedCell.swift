@@ -10,6 +10,14 @@ import UIKit
 
 class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    var refresh: UIRefreshControl = {
+        let r = UIRefreshControl()
+        r.tintColor = .white
+        let atributosString = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir-medium", size: 17.0)]
+        r.attributedTitle = NSAttributedString(string: "Getting the newest data!", attributes: atributosString)
+        return r
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -17,6 +25,12 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         cv.dataSource = self
         cv.contentInset = UIEdgeInsets(top: 0, left: 4 ,bottom: 0 ,right: 4)
         cv.backgroundColor = ColoresApp.lightPrimary
+        if #available(iOS 10.0, *){
+            cv.refreshControl = self.refresh
+            self.refresh.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        } else {
+            cv.addSubview(self.refresh)
+        }
         return cv
     }()
     
@@ -27,7 +41,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     override func setupViews() {
         super.setupViews()
         
-        cargarFigurasDeParse()
+        cargarFigurasDeParse(red: false)
         
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
@@ -36,13 +50,18 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         collectionView.register(FiguraCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    func cargarFigurasDeParse(){
-        ParseData.sharedInstance.cargarFigurasVisibles(){
-            (figuras:[Figura]) -> Void in
-            self.figuras = figuras
-            self.collectionView.reloadData()
-        }
+    // Función que carga las figuras de Parse
+    
+    func cargarFigurasDeParse(red: Bool){
+        ParseData.sharedInstance.cargarFigurasVisibles(red: red){
+                (figuras:[Figura]) -> Void in
+                self.figuras = figuras
+                self.collectionView.reloadData()
+                self.refresh.endRefreshing()
+            }
     }
+    
+    
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,6 +102,12 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
                 videoLauncher.videoPlayer.delegate = self
             }
         }
+    
+    //  UIRefreshControl
+    func refreshData(){
+        // Cuando refresca siempre tiramos de red para hacer la query.
+        self.cargarFigurasDeParse(red:true)
+    }
 
 }
 
