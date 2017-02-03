@@ -26,11 +26,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     var videos: [Video]?
     
-    let titles = ["Pole Dictionary", "Favorites", "Help Us"]
+    /* -MENU- */
+    let titles = ["Pole Dictionary", "Favorites", "Upload", "Help Us"]
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
     let colaboraCellId   = "colaboraCellId"
+    let uploadCellId    = "uploadCellId"
     
     var videoPlayerController: VideoPlayerController?
     
@@ -86,6 +88,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
         collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
+        collectionView?.register(UploadCell.self, forCellWithReuseIdentifier: uploadCellId)
         
         collectionView?.isPagingEnabled = true
 
@@ -186,6 +189,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
+            return cell
+        }
+        
+        if indexPath.item == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: uploadCellId, for: indexPath) as! UploadCell
             return cell
         }
         

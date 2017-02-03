@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B317E92EFBD32524A6073831 /* Pods_TodoPole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */; };
 		C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F45691DFB0679008E5B49 /* MenuBar.swift */; };
 		C0203E291E00740400C72D99 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0203E281E00740400C72D99 /* YouTube.swift */; };
+		C02157C61E45208A005DD1B7 /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02157C51E45208A005DD1B7 /* UploadCell.swift */; };
 		C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028BFAD1E0D728600D11263 /* Escuela.swift */; };
 		C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */; };
 		C049CECE1E37A113009BF57C /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049CECD1E37A113009BF57C /* SettingsLauncher.swift */; };
@@ -37,6 +39,7 @@
 		C070C9E21E3124750008C01A /* thanks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C070C9E11E3124750008C01A /* thanks.jpg */; };
 		C0BE85EB1DF5D03D00A96B11 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */; };
 		C0BE85EE1DF5D0AF00A96B11 /* FiguraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */; };
+		C0C2ED5D1E4518CC00D31AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C2ED5C1E4518CC00D31AA3 /* GoogleService-Info.plist */; };
 		C0CB3C0F1DE8A2BB00D033DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */; };
 		C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB3C101DE8A2BB00D033DB /* HomeController.swift */; };
 		C0CB3C141DE8A2BB00D033DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CB3C121DE8A2BB00D033DB /* Main.storyboard */; };
@@ -53,8 +56,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.release.xcconfig"; sourceTree = "<group>"; };
 		C01F45691DFB0679008E5B49 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		C0203E281E00740400C72D99 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
+		C02157C51E45208A005DD1B7 /* UploadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadCell.swift; sourceTree = "<group>"; };
 		C028BFAD1E0D728600D11263 /* Escuela.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escuela.swift; sourceTree = "<group>"; };
 		C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		C049CECD1E37A113009BF57C /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		C070C9E11E3124750008C01A /* thanks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thanks.jpg; sourceTree = "<group>"; };
 		C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiguraCell.swift; sourceTree = "<group>"; };
+		C0C2ED5C1E4518CC00D31AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0CB3C0B1DE8A2BB00D033DB /* TodoPole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoPole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0CB3C101DE8A2BB00D033DB /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		C0EF0E2A1E0AC83800B81F3C /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
 		C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritosCell.swift; sourceTree = "<group>"; };
+		F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoPole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,12 +125,22 @@
 				C0611C301E03262000EA9981 /* AudioToolbox.framework in Frameworks */,
 				C0611C2D1E0325D700EA9981 /* Parse.framework in Frameworks */,
 				C0611C2C1E0325D700EA9981 /* Bolts.framework in Frameworks */,
+				B317E92EFBD32524A6073831 /* Pods_TodoPole.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24B9994F098A4A932FE41AFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */,
+				96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C0203E2A1E00740C00C72D99 /* APIYoutubeService */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +180,7 @@
 				C0611C331E03263700EA9981 /* CoreGraphics.framework */,
 				C0611C311E03262C00EA9981 /* CFNetwork.framework */,
 				C0611C2F1E03262000EA9981 /* AudioToolbox.framework */,
+				F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,6 +226,7 @@
 				C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */,
 				C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */,
 				C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */,
+				C02157C51E45208A005DD1B7 /* UploadCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -227,6 +247,7 @@
 				C0CB3C0D1DE8A2BB00D033DB /* TodoPole */,
 				C0CB3C0C1DE8A2BB00D033DB /* Products */,
 				C0611C2E1E03262000EA9981 /* Frameworks */,
+				24B9994F098A4A932FE41AFF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,9 +262,9 @@
 		C0CB3C0D1DE8A2BB00D033DB /* TodoPole */ = {
 			isa = PBXGroup;
 			children = (
+				C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */,
 				C0EC2C421E1EB47500F8D291 /* WebColabora */,
 				C0611C291E0325B700EA9981 /* ParseSDK */,
-				C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */,
 				C04B0D3D1E00894F005D19C7 /* YouTubePlayer */,
 				C0203E2A1E00740C00C72D99 /* APIYoutubeService */,
 				C0611C431E032C5500EA9981 /* APIParseDatos */,
@@ -255,6 +276,7 @@
 				C0CB3C151DE8A2BB00D033DB /* Assets.xcassets */,
 				C0CB3C171DE8A2BB00D033DB /* LaunchScreen.storyboard */,
 				C0CB3C1A1DE8A2BB00D033DB /* Info.plist */,
+				C0C2ED5C1E4518CC00D31AA3 /* GoogleService-Info.plist */,
 			);
 			path = TodoPole;
 			sourceTree = "<group>";
@@ -277,9 +299,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0CB3C1D1DE8A2BB00D033DB /* Build configuration list for PBXNativeTarget "TodoPole" */;
 			buildPhases = (
+				D15EFF4B7A687151FE991015 /* [CP] Check Pods Manifest.lock */,
 				C0CB3C071DE8A2BB00D033DB /* Sources */,
 				C0CB3C081DE8A2BB00D033DB /* Frameworks */,
 				C0CB3C091DE8A2BB00D033DB /* Resources */,
+				D4A4CF731A99E5C412A5189F /* [CP] Embed Pods Frameworks */,
+				76C05EAC8A96E5B0570461FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -332,6 +357,7 @@
 			files = (
 				C0CB3C191DE8A2BB00D033DB /* LaunchScreen.storyboard in Resources */,
 				C0CB3C161DE8A2BB00D033DB /* Assets.xcassets in Resources */,
+				C0C2ED5D1E4518CC00D31AA3 /* GoogleService-Info.plist in Resources */,
 				C070C9E21E3124750008C01A /* thanks.jpg in Resources */,
 				C0EC2C451E1EB48F00F8D291 /* app.html in Resources */,
 				C0EC2C461E1EB48F00F8D291 /* app.css in Resources */,
@@ -343,11 +369,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		76C05EAC8A96E5B0570461FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D15EFF4B7A687151FE991015 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D4A4CF731A99E5C412A5189F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C0CB3C071DE8A2BB00D033DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C02157C61E45208A005DD1B7 /* UploadCell.swift in Sources */,
 				C0EC2C3F1E1EA2BE00F8D291 /* BaseCell.swift in Sources */,
 				C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */,
 				C063E36C1DFEF9160003A263 /* Video.swift in Sources */,
@@ -491,6 +566,7 @@
 		};
 		C0CB3C1E1DE8A2BB00D033DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FLU98JG66T;
@@ -509,6 +585,7 @@
 		};
 		C0CB3C1F1DE8A2BB00D033DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FLU98JG66T;

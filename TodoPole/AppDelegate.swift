@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Bolts
+import Firebase
 
 
 @UIApplicationMain
@@ -41,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundView)
         
+        // Configuramos Firebase
+        FIRApp.configure()
         return true
     }
     
