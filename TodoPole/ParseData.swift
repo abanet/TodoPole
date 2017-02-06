@@ -26,7 +26,7 @@ class ParseData: NSObject {
             query.cachePolicy = .cacheElseNetwork
         }
         query.whereKey("visible", equalTo: true)
-        query.order(byDescending: "createdAt")
+        query.order(byDescending: "updatedAt")
         cargarQueryParse(query, completion: completion)
     }
     

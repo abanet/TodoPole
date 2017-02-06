@@ -39,6 +39,7 @@
 		C070C9E21E3124750008C01A /* thanks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C070C9E11E3124750008C01A /* thanks.jpg */; };
 		C0BE85EB1DF5D03D00A96B11 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */; };
 		C0BE85EE1DF5D0AF00A96B11 /* FiguraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */; };
+		C0C2A20F1E48CEC700AFD18B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2A20E1E48CEC700AFD18B /* Firebase.swift */; };
 		C0C2ED5D1E4518CC00D31AA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C2ED5C1E4518CC00D31AA3 /* GoogleService-Info.plist */; };
 		C0CB3C0F1DE8A2BB00D033DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */; };
 		C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB3C101DE8A2BB00D033DB /* HomeController.swift */; };
@@ -88,6 +89,7 @@
 		C070C9E11E3124750008C01A /* thanks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thanks.jpg; sourceTree = "<group>"; };
 		C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiguraCell.swift; sourceTree = "<group>"; };
+		C0C2A20E1E48CEC700AFD18B /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		C0C2ED5C1E4518CC00D31AA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0CB3C0B1DE8A2BB00D033DB /* TodoPole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoPole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				C0611C461E032DA200EA9981 /* Figura.swift */,
 				C028BFAD1E0D728600D11263 /* Escuela.swift */,
 				C0CE51E51E392A3B0087FB93 /* Favoritos.swift */,
+				C0C2A20E1E48CEC700AFD18B /* Firebase.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */,
 				C063E36C1DFEF9160003A263 /* Video.swift in Sources */,
 				C04B0D401E008959005D19C7 /* YouTubePlayer.swift in Sources */,
+				C0C2A20F1E48CEC700AFD18B /* Firebase.swift in Sources */,
 				C049CED01E37A1B1009BF57C /* SettingCell.swift in Sources */,
 				C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */,
 				C0611C451E032C9300EA9981 /* ParseData.swift in Sources */,
