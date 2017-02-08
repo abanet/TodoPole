@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SideMenu
 
 
 struct ColoresApp {
@@ -27,7 +28,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     /* -MENU- */
-    let titles = ["Pole Dictionary", "Favorites", "Upload", "Help Us"]
+    let titles = ["Pole Dictionary", "Favorites", "Help Us"]
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
@@ -35,6 +36,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let uploadCellId    = "uploadCellId"
     
     var videoPlayerController: VideoPlayerController?
+    
+    var menuSideController: MenuLateralViewController?
     
     
         
@@ -49,7 +52,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        // menú lateral
+        menuSideController = MenuLateralViewController()
+        let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
+        SideMenuManager.menuRightNavigationController = menuRightNavigationController
         
         // Configuración del navigation
         let titulo = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 2 * view.layoutMargins.left, height: view.frame.height))
@@ -69,7 +75,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         // Por ahora no implemento la búsqueda
         // TODO: futuras versiones
-        // setupNavBarButtons()
+         setupNavBarButtons()
     }
 
     func setupCollectionView(){
@@ -130,7 +136,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
         // let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
     
-        let moreButton = UIBarButtonItem(image: UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
+        let moreButton = UIBarButtonItem(image: UIImage(named: "menu50")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
         navigationItem.rightBarButtonItems = [moreButton]
     }
     
@@ -152,7 +158,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func handleMore() {
         //Mostrar el menú
-        settingsLauncher.showSettings()
+        //settingsLauncher.showSettings()
+        // sacar menú lateral
+        present(SideMenuManager.menuRightNavigationController!, animated: true, completion: nil)
     }
     
     func showControllerForSetting(_ setting: Setting) {
@@ -217,6 +225,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
+    
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("Dejando de ver celda: \(indexPath.item)")
+        cell.contentView.endEditing(true)
+        
+        cell.setNeedsLayout()
+        cell.setNeedsDisplay()
+        
+    }
     
     
 }

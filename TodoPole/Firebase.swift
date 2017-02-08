@@ -9,9 +9,14 @@
 import Foundation
 import FirebaseStorage
 
-
+//  Protocolo para informar del progreso en operaciones de carga/descarga con Firebase.
+protocol FirebaseProgress {
+    func progressHappened(progress: Progress)
+}
 
 class Firebase: NSObject {
+    
+    var delegate: FirebaseProgress?
     
     let storage = {
         return FIRStorage.storage()
@@ -49,7 +54,8 @@ class Firebase: NSObject {
             snapshot in
             if let progress = snapshot.progress {
                 let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
-                print(percentComplete)
+                //print(percentComplete)
+                self.delegate?.progressHappened(progress: progress)
             }
         }
         
