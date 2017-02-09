@@ -94,7 +94,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
         collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
-        collectionView?.register(UploadCell.self, forCellWithReuseIdentifier: uploadCellId)
+//        collectionView?.register(UploadCell.self, forCellWithReuseIdentifier: uploadCellId)
         
         collectionView?.isPagingEnabled = true
 
@@ -200,10 +200,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             return cell
         }
         
-        if indexPath.item == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: uploadCellId, for: indexPath) as! UploadCell
-            return cell
-        }
+//        if indexPath.item == 2 {
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: uploadCellId, for: indexPath) as! UploadCell
+//            return cell
+//        }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
         
@@ -226,14 +226,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     
-    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("Dejando de ver celda: \(indexPath.item)")
-        cell.contentView.endEditing(true)
-        
-        cell.setNeedsLayout()
-        cell.setNeedsDisplay()
-        
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        print("Dejando de ver celda: \(indexPath.item)")
+//        cell.contentView.endEditing(true)
+//        
+//        cell.setNeedsLayout()
+//        cell.setNeedsDisplay()
+//        
+//    }
     
     
 }

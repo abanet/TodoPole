@@ -25,6 +25,8 @@ class VideoPlayerView: UIView {
     
     var figura: Figura? // Figura que estamos visualizando. La iniciamos cuando se llama a reproducir Vídeo
     
+    var permitirSumarAlPulsarCorazon = true // para controlar que no se puedan sumar al pulsar varias veces seguidas.
+    
     let activityIndicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -164,8 +166,6 @@ class VideoPlayerView: UIView {
     
     // Cuando alguien pulsa sobre el corazón
     func handleLike() {
-        print("Like pulsado")
-        
         if let figura = figura, let esFavorita = self.enFavoritos {
             if esFavorita  {
                 likeButton.tintColor = .white
@@ -176,7 +176,10 @@ class VideoPlayerView: UIView {
                 Favoritos.sharedInstance.addFavorito(id: figura.objectId!)
                 self.enFavoritos = true
                 // Incrementamos en uno el valor de likes de esta figura
-                ParseData.sharedInstance.incrementarLikes(figura: figura)
+                if permitirSumarAlPulsarCorazon {
+                    ParseData.sharedInstance.incrementarLikes(figura: figura)
+                    permitirSumarAlPulsarCorazon = false
+                }
             }
         }
     }

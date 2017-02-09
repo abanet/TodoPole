@@ -9,23 +9,28 @@
 import UIKit
 
 struct MenuLateral {
-    let opciones = ["Upload", "About"]
+    var opciones = ["Upload", "version xxx"]
     let imagenes = ["upload50", "about50"]
     let info     = ["Upload your moves!", "More about the project"]
 }
 
 class MenuLateralViewController: UITableViewController {
 
-    let menu = MenuLateral()
+    var menu = MenuLateral()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         tableView.backgroundColor = ColoresApp.lightPrimary
+         self.tableView.tableFooterView = UIView()
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
        
+        
+        let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        menu.opciones[1] = "v. \(appVersion)"
+        
         
     }
 
@@ -74,7 +79,11 @@ extension MenuLateralViewController {
         cell.backgroundColor = .clear
         cell.textLabel?.text = menu.opciones[indexPath.item]
         cell.textLabel?.textColor = ColoresApp.darkPrimary
-        cell.textLabel?.textAlignment = .right
+        if indexPath.item == menu.opciones.count - 1 { // last option
+            cell.textLabel?.textAlignment = .center
+        } else {
+            cell.textLabel?.textAlignment = .right
+        }
         cell.detailTextLabel?.text = menu.info[indexPath.item]
         cell.imageView?.image = UIImage(named: menu.imagenes[indexPath.item])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = ColoresApp.darkPrimary

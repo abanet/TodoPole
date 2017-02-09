@@ -39,6 +39,8 @@
 		C070C9E21E3124750008C01A /* thanks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C070C9E11E3124750008C01A /* thanks.jpg */; };
 		C0AEB9191E4B67CD007F3F58 /* MenuLateralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */; };
 		C0AEB91D1E4B8669007F3F58 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */; };
+		C0B0955D1E4CDCD500324539 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */; };
+		C0B0955F1E4D16F100324539 /* FiguraFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B0955E1E4D16F100324539 /* FiguraFirebase.swift */; };
 		C0BE85EB1DF5D03D00A96B11 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */; };
 		C0BE85EE1DF5D0AF00A96B11 /* FiguraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */; };
 		C0C2A20F1E48CEC700AFD18B /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2A20E1E48CEC700AFD18B /* Firebase.swift */; };
@@ -91,6 +93,8 @@
 		C070C9E11E3124750008C01A /* thanks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thanks.jpg; sourceTree = "<group>"; };
 		C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLateralViewController.swift; sourceTree = "<group>"; };
 		C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		C0B0955E1E4D16F100324539 /* FiguraFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiguraFirebase.swift; sourceTree = "<group>"; };
 		C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0BE85ED1DF5D0AF00A96B11 /* FiguraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiguraCell.swift; sourceTree = "<group>"; };
 		C0C2A20E1E48CEC700AFD18B /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				C028BFAD1E0D728600D11263 /* Escuela.swift */,
 				C0CE51E51E392A3B0087FB93 /* Favoritos.swift */,
 				C0C2A20E1E48CEC700AFD18B /* Firebase.swift */,
+				C0B0955E1E4D16F100324539 /* FiguraFirebase.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				C04B0D3B1E0088BB005D19C7 /* VideoViewController.swift */,
 				C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */,
 				C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */,
+				C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				C02157C61E45208A005DD1B7 /* UploadCell.swift in Sources */,
 				C0EC2C3F1E1EA2BE00F8D291 /* BaseCell.swift in Sources */,
 				C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */,
+				C0B0955D1E4CDCD500324539 /* ProgressViewController.swift in Sources */,
 				C063E36C1DFEF9160003A263 /* Video.swift in Sources */,
 				C0AEB91D1E4B8669007F3F58 /* UploadViewController.swift in Sources */,
 				C04B0D401E008959005D19C7 /* YouTubePlayer.swift in Sources */,
@@ -458,6 +465,7 @@
 				C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */,
 				C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */,
 				C0611C471E032DA200EA9981 /* Figura.swift in Sources */,
+				C0B0955F1E4D16F100324539 /* FiguraFirebase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

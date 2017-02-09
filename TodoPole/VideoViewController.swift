@@ -6,6 +6,7 @@
 //  Copyright © 2016 Alberto Banet. All rights reserved.
 //
 
+// ELIMINAR
 import UIKit
 
 
@@ -35,7 +36,7 @@ class VideoPlayerController: UIViewController {
     
     override func loadView() {
         videoPlayer = YouTubePlayerView(frame: UIScreen.main.bounds)
-        videoPlayer.backgroundColor = UIColor.red
+        videoPlayer.backgroundColor = .clear
         view = videoPlayer
     }
 }
