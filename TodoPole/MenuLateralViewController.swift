@@ -9,9 +9,9 @@
 import UIKit
 
 struct MenuLateral {
-    var opciones = ["Upload", "version xxx"]
-    let imagenes = ["upload50", "about50"]
-    let info     = ["Upload your moves!", "More about the project"]
+    var opciones = ["Upload your move!"]
+    let imagenes = ["upload50"]
+    let info     = ["Upload your moves!"]
 }
 
 class MenuLateralViewController: UITableViewController {
@@ -28,8 +28,9 @@ class MenuLateralViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
        
         
-        let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-        menu.opciones[1] = "v. \(appVersion)"
+       //  if we'd like to show the version number.
+       // let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+       // menu.opciones[1] = "v. \(appVersion)"
         
         
     }

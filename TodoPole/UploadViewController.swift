@@ -73,15 +73,19 @@ class UploadViewController: FormViewController {
             }
         }
         section3.rows.append(row)
+        
+        let section4 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
         row = FormRowDescriptor(tag: "back", type: .button, title: "Back")
         row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
 
         row.configuration.button.didSelectClosure = { _ in
             self.dismiss(animated: true, completion: nil)
         }
-        section3.rows.append(row)
+        section4.rows.append(row)
+        
+    
 
-        form.sections = [section1, section2, section3]
+        form.sections = [section1, section2, section3, section4]
 
         self.form = form
     

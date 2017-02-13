@@ -41,19 +41,20 @@ class Firebase: NSObject {
         super.init()
     }
     
-    func uploadData(data: Data){
-        let videoRef = storageRef.child("figuras/video.mov")
-        
-        // Upload the file
-        uploadTask = videoRef.put(data, metadata: nil) { metadata, error in
-            if (error != nil) {
-                // Uh-oh, an error occurred!
-            } else {
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata!.downloadURL
-            }
-        }
-    }
+//    func uploadData(data: Data){
+//        let uuid = UUID().uuidString
+//        let videoRef = storageRef.child("figuras/\(uuid)")
+//        
+//        // Upload the file
+//        uploadTask = videoRef.put(data, metadata: nil) { metadata, error in
+//            if (error != nil) {
+//                // Uh-oh, an error occurred!
+//            } else {
+//                // Metadata contains file metadata such as size, content-type, and download URL.
+//                let downloadURL = metadata!.downloadURL
+//            }
+//        }
+//    }
     
     func uploadData(url: URL){
         let uuid = UUID().uuidString
@@ -73,7 +74,7 @@ class Firebase: NSObject {
         uploadTask?.observe(.success) { snapshot in
             print("FIN")
             // La figura se ha subido, grabamos sus datos
-            let figuraRef = self.databaseRef.child(uuid).setValue(self.metadataFigura)
+            let figuraRef = self.databaseRef.child(uuid).setValue(self.metadataFigura.formatoArray())
             
             
             self.uploadTask?.removeAllObservers()

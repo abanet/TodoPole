@@ -172,7 +172,7 @@ class VideoPlayerView: UIView {
                 Favoritos.sharedInstance.removeFavorito(id: figura.objectId!)
                 self.enFavoritos = false
             } else {
-                likeButton.tintColor = .red //ColoresApp.darkPrimary
+                likeButton.tintColor = ColoresApp.darkPrimary
                 Favoritos.sharedInstance.addFavorito(id: figura.objectId!)
                 self.enFavoritos = true
                 // Incrementamos en uno el valor de likes de esta figura
@@ -303,6 +303,9 @@ class VideoPlayerView: UIView {
     
     private func setupPlayerView(figura: Figura) {
         self.figura = figura // Inicialización de la figura q vamos a mostrar.
+        
+        // añadimos un like cada vez que una figura pulsa para verla
+        ParseData.sharedInstance.incrementarLikes(figura: figura)
         
         let urlString = figura.urlStringVideo
         if let url = URL(string: urlString!) {

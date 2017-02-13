@@ -11,17 +11,6 @@ import Parse
 import SideMenu
 
 
-struct ColoresApp {
-    static let darkPrimary = UIColor(red: 36/255, green: 122/255, blue: 107/255, alpha: 1)
-    static let primary = UIColor(red: 47/255, green: 151/255, blue: 136/255, alpha: 1)
-    static let lightPrimary = UIColor(red: 183/255, green: 224/255, blue: 219/255, alpha: 1)
-    static let accent = UIColor(red: 248/255, green: 196/255, blue: 49/255, alpha: 1)
-    static let primaryText = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
-    static let secondaryText = UIColor(red: 117/255, green: 117/255, blue: 117/255, alpha: 1)
-    static let divider = UIColor(red: 189/255, green: 189/255, blue: 189/255, alpha: 1)
-}
-
-
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 

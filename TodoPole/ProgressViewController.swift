@@ -76,7 +76,7 @@ class ProgressViewController: UIViewController {
         percentageLabel.centerXAnchor.constraint(equalTo: progress.centerXAnchor).isActive = true
         percentageLabel.centerYAnchor.constraint(equalTo: progress.centerYAnchor).isActive = true
         cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cancelButton.centerYAnchor.constraint(equalTo: progress.bottomAnchor, constant: 200)
+        cancelButton.centerYAnchor.constraint(equalTo: progress.bottomAnchor, constant: 100).isActive = true
     }
     
     @objc func cancelUpload(){
