@@ -10,16 +10,12 @@
 		B317E92EFBD32524A6073831 /* Pods_TodoPole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */; };
 		C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F45691DFB0679008E5B49 /* MenuBar.swift */; };
 		C0203E291E00740400C72D99 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0203E281E00740400C72D99 /* YouTube.swift */; };
-		C02157C61E45208A005DD1B7 /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02157C51E45208A005DD1B7 /* UploadCell.swift */; };
 		C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028BFAD1E0D728600D11263 /* Escuela.swift */; };
 		C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */; };
 		C049CECE1E37A113009BF57C /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049CECD1E37A113009BF57C /* SettingsLauncher.swift */; };
 		C049CED01E37A1B1009BF57C /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C049CECF1E37A1B1009BF57C /* SettingCell.swift */; };
 		C04B0D361E0077ED005D19C7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */; };
 		C04B0D381E007805005D19C7 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D371E007805005D19C7 /* Thumbnail.swift */; };
-		C04B0D3C1E0088BB005D19C7 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D3B1E0088BB005D19C7 /* VideoViewController.swift */; };
-		C04B0D401E008959005D19C7 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B0D3E1E008959005D19C7 /* YouTubePlayer.swift */; };
-		C04B0D411E008959005D19C7 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = C04B0D3F1E008959005D19C7 /* YTPlayer.html */; };
 		C0548C911E4FA16C00ACEE80 /* Colores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0548C901E4FA16C00ACEE80 /* Colores.swift */; };
 		C0611C2C1E0325D700EA9981 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0611C2A1E0325D700EA9981 /* Bolts.framework */; };
 		C0611C2D1E0325D700EA9981 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0611C2B1E0325D700EA9981 /* Parse.framework */; };
@@ -66,16 +62,12 @@
 		96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.release.xcconfig"; sourceTree = "<group>"; };
 		C01F45691DFB0679008E5B49 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		C0203E281E00740400C72D99 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
-		C02157C51E45208A005DD1B7 /* UploadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadCell.swift; sourceTree = "<group>"; };
 		C028BFAD1E0D728600D11263 /* Escuela.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escuela.swift; sourceTree = "<group>"; };
 		C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		C049CECD1E37A113009BF57C /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		C049CECF1E37A1B1009BF57C /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C04B0D371E007805005D19C7 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
-		C04B0D3B1E0088BB005D19C7 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		C04B0D3E1E008959005D19C7 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubePlayer.swift; path = YouTubePlayer/YouTubePlayer.swift; sourceTree = "<group>"; };
-		C04B0D3F1E008959005D19C7 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = YTPlayer.html; path = YouTubePlayer/YTPlayer.html; sourceTree = "<group>"; };
 		C0548C901E4FA16C00ACEE80 /* Colores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colores.swift; sourceTree = "<group>"; };
 		C0611C2A1E0325D700EA9981 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Parse-iOS/Bolts.framework"; sourceTree = "<group>"; };
 		C0611C2B1E0325D700EA9981 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "Parse-iOS/Parse.framework"; sourceTree = "<group>"; };
@@ -163,15 +155,6 @@
 			name = APIYoutubeService;
 			sourceTree = "<group>";
 		};
-		C04B0D3D1E00894F005D19C7 /* YouTubePlayer */ = {
-			isa = PBXGroup;
-			children = (
-				C04B0D3E1E008959005D19C7 /* YouTubePlayer.swift */,
-				C04B0D3F1E008959005D19C7 /* YTPlayer.html */,
-			);
-			name = YouTubePlayer;
-			sourceTree = "<group>";
-		};
 		C0611C291E0325B700EA9981 /* ParseSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +226,6 @@
 				C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */,
 				C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */,
 				C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */,
-				C02157C51E45208A005DD1B7 /* UploadCell.swift */,
 				C09D14441E520E5600E83FF0 /* EmptyView.swift */,
 			);
 			name = Views;
@@ -254,7 +236,6 @@
 			children = (
 				C049CECD1E37A113009BF57C /* SettingsLauncher.swift */,
 				C0CB3C101DE8A2BB00D033DB /* HomeController.swift */,
-				C04B0D3B1E0088BB005D19C7 /* VideoViewController.swift */,
 				C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */,
 				C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */,
 				C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */,
@@ -286,7 +267,6 @@
 				C0CB3C0E1DE8A2BB00D033DB /* AppDelegate.swift */,
 				C0EC2C421E1EB47500F8D291 /* WebColabora */,
 				C0611C291E0325B700EA9981 /* ParseSDK */,
-				C04B0D3D1E00894F005D19C7 /* YouTubePlayer */,
 				C0203E2A1E00740C00C72D99 /* APIYoutubeService */,
 				C0611C431E032C5500EA9981 /* APIParseDatos */,
 				C063E36A1DFEF9060003A263 /* Model */,
@@ -383,7 +363,6 @@
 				C0EC2C451E1EB48F00F8D291 /* app.html in Resources */,
 				C0EC2C461E1EB48F00F8D291 /* app.css in Resources */,
 				C070C9E01E3122270008C01A /* youcan.png in Resources */,
-				C04B0D411E008959005D19C7 /* YTPlayer.html in Resources */,
 				C0CB3C141DE8A2BB00D033DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,13 +422,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C02157C61E45208A005DD1B7 /* UploadCell.swift in Sources */,
 				C0EC2C3F1E1EA2BE00F8D291 /* BaseCell.swift in Sources */,
 				C0CB3C111DE8A2BB00D033DB /* HomeController.swift in Sources */,
 				C0B0955D1E4CDCD500324539 /* ProgressViewController.swift in Sources */,
 				C063E36C1DFEF9160003A263 /* Video.swift in Sources */,
 				C0AEB91D1E4B8669007F3F58 /* UploadViewController.swift in Sources */,
-				C04B0D401E008959005D19C7 /* YouTubePlayer.swift in Sources */,
 				C0C2A20F1E48CEC700AFD18B /* Firebase.swift in Sources */,
 				C049CED01E37A1B1009BF57C /* SettingCell.swift in Sources */,
 				C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */,
@@ -463,7 +440,6 @@
 				C0203E291E00740400C72D99 /* YouTube.swift in Sources */,
 				C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */,
 				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
-				C04B0D3C1E0088BB005D19C7 /* VideoViewController.swift in Sources */,
 				C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */,
 				C0CE51E61E392A3B0087FB93 /* Favoritos.swift in Sources */,
 				C0AEB9191E4B67CD007F3F58 /* MenuLateralViewController.swift in Sources */,

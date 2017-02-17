@@ -19,11 +19,11 @@ class Setting: NSObject {
 }
 
 enum SettingName: String {
-    case Cancel = "Cancel"
+    case Cancel = "All the videos!"
     case Giros = "Spins"
     case Suelo = "Floor"
     case Figuras = "Poses"
-    case Transiciones = "Transiciones"
+    case Transiciones = "Transitions"
     case Subidas = "Climbs"
 }
 
@@ -52,6 +52,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     }()
     
     var homeController: HomeController?
+    var actualSetting: Setting?
     
     func showSettings() {
         //show menu
@@ -93,9 +94,7 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
             }
             
         }) { (completed: Bool) in
-            if setting.name != .Cancel {
                 self.homeController?.showControllerForSetting(setting)
-            }
         }
     }
     
@@ -107,6 +106,11 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SettingCell
         
         let setting = settings[indexPath.item]
+        
+        if setting == actualSetting {
+            cell.backgroundColor = ColoresApp.lightPrimary
+        }
+        
         cell.setting = setting
         
         return cell

@@ -22,21 +22,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
     let colaboraCellId   = "colaboraCellId"
-    let uploadCellId    = "uploadCellId"
-    
-    var videoPlayerController: VideoPlayerController?
     
     var menuSideController: MenuLateralViewController?
     
-    
+    var opcionMenuSeleccionada: Int?
         
-    func cargarVideosDeYoutube() {
-        YouTube.sharedInstance.cargarVideos {
-            (videos:[Video]) in
-            self.videos = videos
-            self.collectionView?.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +73,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
         collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
-//        collectionView?.register(UploadCell.self, forCellWithReuseIdentifier: uploadCellId)
+
         
         collectionView?.isPagingEnabled = true
 
@@ -121,12 +111,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func setupNavBarButtons(){
-        //  Botón d buscar de momento no lo utilamos.
-        // let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
-        // let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-    
-        let moreButton = UIBarButtonItem(image: UIImage(named: "menu50")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
-        navigationItem.rightBarButtonItems = [moreButton]
+       
+        
+        
+        setMoreButton()
+        setFilterButton() // De entrada aparece.
+       
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -142,23 +132,37 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func handleSearch(){
-        
+        //Mostrar el menú
+        settingsLauncher.showSettings()
     }
     
     func handleMore() {
-        //Mostrar el menú
-        //settingsLauncher.showSettings()
+        
         // sacar menú lateral
         present(SideMenuManager.menuRightNavigationController!, animated: true, completion: nil)
     }
     
     func showControllerForSetting(_ setting: Setting) {
-        let dummySettingsViewController = UIViewController()
-        dummySettingsViewController.view.backgroundColor = UIColor.white
-        dummySettingsViewController.navigationItem.title = setting.name.rawValue
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+        let celda = collectionView?.cellForItem(at: IndexPath(item: 0, section: 0)) as! DictionaryCell
+        
+        settingsLauncher.actualSetting = setting
+        settingsLauncher.collectionView.reloadData()
+        
+        switch setting.name {
+        case .Giros:
+            celda.tipo = .giro
+        case .Figuras:
+            celda.tipo = .figura
+        case .Subidas:
+            celda.tipo = .subida
+        case .Suelo:
+            celda.tipo = .suelo
+        case .Transiciones:
+            celda.tipo = .transicion
+        case .Cancel:
+            celda.tipo = nil
+        }
+        celda.cargarFigurasDeParse(red: false)
     }
 
     
@@ -166,7 +170,30 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let indexPath = IndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
         setTitleForIndex(index: menuIndex)
+        if indexPath.item == 0 {
+            setFilterButton()
+        } else {
+            removeFilterButton()
+        }
     }
+    
+    private func setFilterButton() {
+        let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+        navigationItem.rightBarButtonItems?.append(searchBarButtonItem)
+    }
+    
+    private func removeFilterButton() {
+        navigationItem.rightBarButtonItems = nil
+        setMoreButton()
+    }
+    
+    private func setMoreButton() {
+        let moreButton = UIBarButtonItem(image: UIImage(named: "menu50")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
+        navigationItem.rightBarButtonItems = [moreButton]
+    }
+    
+    
     
     private func setTitleForIndex(index: Int) {
         if let titleLabel = navigationItem.titleView as? UILabel {
@@ -189,11 +216,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             return cell
         }
         
-//        if indexPath.item == 2 {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: uploadCellId, for: indexPath) as! UploadCell
-//            return cell
-//        }
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
         
         return cell
@@ -206,7 +228,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     // se ejecuta cuando la celda va a aparecer
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
         if indexPath.item == 1 {
             let celda = cell as! FavoritosCell
             celda.setupViews() // ¡para que refresque los datos de favoritos!
@@ -214,16 +235,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
-    
-//    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        print("Dejando de ver celda: \(indexPath.item)")
-//        cell.contentView.endEditing(true)
-//        
-//        cell.setNeedsLayout()
-//        cell.setNeedsDisplay()
-//        
-//    }
-    
+ 
     
 }
 

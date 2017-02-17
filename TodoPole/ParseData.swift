@@ -49,8 +49,20 @@ class ParseData: NSObject {
     
     // Cargas las figuras que se corresponden con un tipo dado
     // tipo -> Tipo de las figuras que se van a cargar
-    func cargarFigurasTipoGiro (tipo: TipoFigura, completion: @escaping ([Figura]) -> ()) {
+    func cargarFigurasTipo (_ tipo: TipoFigura, completion: @escaping ([Figura]) -> ()) {
         let query = PFQuery(className:"Figura")
+        query.whereKey("visible", equalTo: true)
+        query.whereKey("tipo", equalTo: tipo.rawValue)
+        cargarQueryParse(query, completion: completion)
+    }
+    
+    func cargarFigurasTipo(_ tipo: TipoFigura, red: Bool, completion: @escaping ([Figura]) -> ()) {
+        let query = PFQuery(className:"Figura")
+        if red {
+            query.cachePolicy = .networkOnly
+        } else {
+            query.cachePolicy = .cacheElseNetwork
+        }
         query.whereKey("visible", equalTo: true)
         query.whereKey("tipo", equalTo: tipo.rawValue)
         cargarQueryParse(query, completion: completion)
