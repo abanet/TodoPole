@@ -38,6 +38,7 @@
 		C063E36C1DFEF9160003A263 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063E36B1DFEF9160003A263 /* Video.swift */; };
 		C070C9E01E3122270008C01A /* youcan.png in Resources */ = {isa = PBXBuildFile; fileRef = C070C9DF1E3122270008C01A /* youcan.png */; };
 		C070C9E21E3124750008C01A /* thanks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C070C9E11E3124750008C01A /* thanks.jpg */; };
+		C09D14451E520E5600E83FF0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D14441E520E5600E83FF0 /* EmptyView.swift */; };
 		C0AEB9191E4B67CD007F3F58 /* MenuLateralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */; };
 		C0AEB91D1E4B8669007F3F58 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */; };
 		C0B0955D1E4CDCD500324539 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */; };
@@ -93,6 +94,7 @@
 		C063E36B1DFEF9160003A263 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C070C9DF1E3122270008C01A /* youcan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youcan.png; sourceTree = "<group>"; };
 		C070C9E11E3124750008C01A /* thanks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thanks.jpg; sourceTree = "<group>"; };
+		C09D14441E520E5600E83FF0 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuLateralViewController.swift; sourceTree = "<group>"; };
 		C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */,
 				C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */,
 				C02157C51E45208A005DD1B7 /* UploadCell.swift */,
+				C09D14441E520E5600E83FF0 /* EmptyView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				C0548C911E4FA16C00ACEE80 /* Colores.swift in Sources */,
 				C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */,
 				C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */,
+				C09D14451E520E5600E83FF0 /* EmptyView.swift in Sources */,
 				C0611C471E032DA200EA9981 /* Figura.swift in Sources */,
 				C0B0955F1E4D16F100324539 /* FiguraFirebase.swift in Sources */,
 			);
@@ -536,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -580,7 +584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

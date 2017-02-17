@@ -1,0 +1,6 @@
+framework module Pods_TodoPole {
+  umbrella header "Pods-TodoPole-umbrella.h"
+
+  export *
+  module * { export * }
+}

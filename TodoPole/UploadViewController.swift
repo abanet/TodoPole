@@ -74,7 +74,8 @@ class UploadViewController: FormViewController {
         }
         section3.rows.append(row)
         
-        let section4 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
+        let section4 = FormSectionDescriptor(headerTitle: "", footerTitle: "Once your video is upload, it can takes a few days before you can see in the app.")
+        
         row = FormRowDescriptor(tag: "back", type: .button, title: "Back")
         row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
 

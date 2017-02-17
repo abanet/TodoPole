@@ -10,6 +10,7 @@ import UIKit
 
 class FavoritosCell: FeedCell {
 
+    
     override func cargarFigurasDeParse(red: Bool) {
         print("En favoritosCell")
         ParseData.sharedInstance.cargarFigurasFavoritas(red: red){
@@ -17,14 +18,20 @@ class FavoritosCell: FeedCell {
             self.figuras = figuras
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
-
+            print("al cargar vemos que en favoritos tenemos: \(figuras.count)")
+            if figuras.count == 0 {
+                self.collectionView.backgroundView = EmptyView(message: "You don't have any favorite move. To add a favorite just press the heart when you're watching the video.")
+            } else {
+                self.collectionView.backgroundView = nil
+            }
         }
-    }
+        
+            }
 
     // override de la respuesta al protocolo VideoPlayerViewProtocol
     override func didCloseVideoPlayer() {
         self.setupViews()
-        print("Llamando protocolo desde FavoritosCell")
+        //print("Llamando protocolo desde FavoritosCell")
     }
 }
 
