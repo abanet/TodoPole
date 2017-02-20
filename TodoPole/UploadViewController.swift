@@ -29,6 +29,7 @@ class UploadViewController: FormViewController {
     
     var metadataFigura: FiguraFirebase?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColoresApp.primary
@@ -39,6 +40,7 @@ class UploadViewController: FormViewController {
     fileprivate func loadForm(){
         let form = FormDescriptor(title: "Upload your video")
         
+        let defaultConfiguration = DefaultConfiguration()
         
         // Define first section
         // Mandatory Data
@@ -47,19 +49,36 @@ class UploadViewController: FormViewController {
         var row = FormRowDescriptor(tag: "moveName", type: .asciiCapable, title: "Move Name")
         row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
         section1.rows.append(row)
+        
         row = FormRowDescriptor(tag: "email", type: .email , title: "Email")
-        row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+        if let defaultMail = defaultConfiguration.mail, !defaultMail.isEmpty {
+            row.configuration.cell.appearance = ["textField.text" : defaultMail as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.value = defaultMail as AnyObject
+        } else {
+            row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+        }
         section1.rows.append(row)
         
         // Define second section
         // Optional data
         let section2 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
         row = FormRowDescriptor(tag: "author", type: .name, title: "Your name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+        if let defaultAutor = defaultConfiguration.autor, !defaultAutor.isEmpty {
+            row.configuration.cell.appearance = ["textField.text" : defaultAutor as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.value = defaultAutor as AnyObject
+        } else {
+            row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+        }
+        
         section2.rows.append(row)
         row = FormRowDescriptor(tag: "studio", type: .name, title: "Studio name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
-        
+        if let defaultStudio = defaultConfiguration.studio, !defaultStudio.isEmpty {
+            row.configuration.cell.appearance = ["textField.text" : defaultStudio as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.value = defaultStudio as AnyObject
+        } else {
+            row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+        }
+
         section2.rows.append(row)
         
         // Define third section
@@ -83,8 +102,7 @@ class UploadViewController: FormViewController {
             self.dismiss(animated: true, completion: nil)
         }
         section4.rows.append(row)
-        
-    
+
 
         form.sections = [section1, section2, section3, section4]
 
@@ -109,7 +127,7 @@ class UploadViewController: FormViewController {
             return false
         }
         
-        if !mail.isValidEmailAddress {
+        if !mail.isValidEmailAddress  {
             showAlert(title: "Invalid Mail", message: "Please, I need a valid Email address")
             return false
         }
@@ -117,6 +135,12 @@ class UploadViewController: FormViewController {
         // todos los datos están correctos. Cargamos los metadatos
         metadataFigura = FiguraFirebase(nombre: moveName, mail: mail, autor: autor, studio: studio)
         
+        // mail, autor y studio los grabamos en default para mostrar 
+        let defaultConfiguration = DefaultConfiguration()
+        defaultConfiguration.setDefaultMail(mail: mail)
+        defaultConfiguration.setDefaultAutor(autor: autor)
+        defaultConfiguration.setDefaultStudio(studio: studio)
+    
         return true
     }
     

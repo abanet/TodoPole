@@ -56,6 +56,7 @@
 		C0EF0E2B1E0AC83800B81F3C /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2A1E0AC83800B81F3C /* FeedCell.swift */; };
 		C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */; };
 		C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */; };
+		C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		C0EF0E2A1E0AC83800B81F3C /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
 		C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritosCell.swift; sourceTree = "<group>"; };
+		C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
 		F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoPole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +202,7 @@
 				C0CE51E51E392A3B0087FB93 /* Favoritos.swift */,
 				C0C2A20E1E48CEC700AFD18B /* Firebase.swift */,
 				C0B0955E1E4D16F100324539 /* FiguraFirebase.swift */,
+				C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */,
 				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
 				C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */,
+				C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */,
 				C0CE51E61E392A3B0087FB93 /* Favoritos.swift in Sources */,
 				C0AEB9191E4B67CD007F3F58 /* MenuLateralViewController.swift in Sources */,
 				C049CECE1E37A113009BF57C /* SettingsLauncher.swift in Sources */,

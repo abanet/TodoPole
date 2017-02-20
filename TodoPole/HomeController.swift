@@ -145,6 +145,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func showControllerForSetting(_ setting: Setting) {
         let celda = collectionView?.cellForItem(at: IndexPath(item: 0, section: 0)) as! DictionaryCell
         
+        if let ultimoSetting = settingsLauncher.actualSetting, ultimoSetting == setting {
+            return //  no ha habido cambio de setting y no hay q refrescar.
+        }
+        
+        if settingsLauncher.actualSetting == nil && setting.name == .Cancel {
+            return //  No había selección previa y se sale con cancel. Nada cambia.
+        }
+        
         settingsLauncher.actualSetting = setting
         settingsLauncher.collectionView.reloadData()
         
