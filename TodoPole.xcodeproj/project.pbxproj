@@ -212,7 +212,6 @@
 			children = (
 				C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */,
 				C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */,
-				C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -242,6 +241,7 @@
 				C0AEB9181E4B67CD007F3F58 /* MenuLateralViewController.swift */,
 				C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */,
 				C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */,
+				C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

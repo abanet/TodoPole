@@ -280,7 +280,7 @@ class VideoPlayerView: UIView {
         likeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         // Color del like: blanco si no es favorito, rojo si lo es
         if Favoritos.sharedInstance.isFavorito(id: figura.objectId!) {
-            likeButton.tintColor = .red
+            likeButton.tintColor = ColoresApp.darkPrimary
             self.enFavoritos = true
         } else {
             likeButton.tintColor = .white
