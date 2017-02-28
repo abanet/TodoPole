@@ -112,9 +112,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func setupNavBarButtons(){
-       
-        
-        
         setMoreButton()
         setFilterButton() // De entrada aparece.
        
@@ -187,6 +184,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     private func setFilterButton() {
+        // TODO: sólo si no existe!! ahora mismo si se pulsa varias veces el botón de inicio salen muchas lupas!!
         let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         navigationItem.rightBarButtonItems?.append(searchBarButtonItem)

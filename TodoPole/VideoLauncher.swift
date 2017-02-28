@@ -361,7 +361,9 @@ class VideoPlayerView: UIView {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        // El video se empeiza a mostrar
+        
+        print(keyPath ?? "keyPath = nil")
+        // El video se empieza a mostrar
         if keyPath == "currentItem.loadedTimeRanges" {
             activityIndicatorView.stopAnimating()
             controlContainerView.backgroundColor = .clear
