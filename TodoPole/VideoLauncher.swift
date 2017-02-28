@@ -316,6 +316,8 @@ class VideoPlayerView: UIView {
                 // Fallback on earlier versions
             }
             let playerLayer = AVPlayerLayer(player: player)
+            
+            
             playerLayer.frame = self.bounds
             playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
             self.layer.addSublayer(playerLayer)
@@ -362,9 +364,12 @@ class VideoPlayerView: UIView {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        print(keyPath ?? "keyPath = nil")
         // El video se empieza a mostrar
         if keyPath == "currentItem.loadedTimeRanges" {
+            
+            //  Notification for the end of the video
+            NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+            
             activityIndicatorView.stopAnimating()
             controlContainerView.backgroundColor = .clear
             pausePlayButton.isHidden = false
@@ -382,6 +387,14 @@ class VideoPlayerView: UIView {
             }
             
         }
+    }
+    
+    func playerDidFinishPlaying(note: NSNotification){
+        //Called when player finished playing
+        print("video finalizado")
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:  player?.currentItem)
+        player?.seek(to: kCMTimeZero)
+        handlePause()
     }
 }
 

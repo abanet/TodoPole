@@ -165,6 +165,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             celda.tipo = .suelo
         case .Transiciones:
             celda.tipo = .transicion
+        case .Combos:
+            celda.tipo = .combos
         case .Cancel:
             celda.tipo = nil
         }
@@ -180,14 +182,20 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             setFilterButton()
         } else {
             removeFilterButton()
+            existsFilterButtom = false
         }
     }
     
+    var existsFilterButtom = false
+    
     private func setFilterButton() {
         // TODO: sólo si no existe!! ahora mismo si se pulsa varias veces el botón de inicio salen muchas lupas!!
-        let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
-        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        navigationItem.rightBarButtonItems?.append(searchBarButtonItem)
+        if !existsFilterButtom {
+            let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
+            let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+            navigationItem.rightBarButtonItems?.append(searchBarButtonItem)
+            existsFilterButtom = true
+        }
     }
     
     private func removeFilterButton() {
