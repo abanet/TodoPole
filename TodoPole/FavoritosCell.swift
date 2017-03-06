@@ -31,6 +31,7 @@ class FavoritosCell: FeedCell {
     // override de la respuesta al protocolo VideoPlayerViewProtocol
     override func didCloseVideoPlayer() {
         self.setupViews()
+        self.collectionView.allowsSelection = true // activamos de nuevo la selección.
         //print("Llamando protocolo desde FavoritosCell")
     }
 

@@ -97,6 +97,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let cellPulsada = collectionView.cellForItem(at: indexPath) as! FiguraCell
             if let figuraTratada = cellPulsada.figura {
+                self.collectionView.allowsSelection = false // evitar doble click
                 let videoLauncher = VideoLauncher()
                 videoLauncher.showVideoPlayer(figura: figuraTratada)
                 videoLauncher.videoPlayer.delegate = self
@@ -116,5 +117,6 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
 extension FeedCell: VideoPlayerViewProtocol {
     func didCloseVideoPlayer() {
         print("Llamando protocolo desde FeedCell")
+        self.collectionView.allowsSelection = true // activamos de nuevo la selección.
     }
 }
