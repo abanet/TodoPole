@@ -230,11 +230,15 @@ class VideoPlayerView: UIView {
     }
     
     func handleMinus(){
-        player?.rate -= 0.1
+        if let rate = player?.rate, rate >= 0.4, isPlaying {
+            player?.rate -= 0.2
+        }
     }
     
     func handlePlus() {
-        player?.rate += 0.1
+        if let rate = player?.rate, rate <= 0.8, isPlaying {
+            player?.rate += 0.2
+        }
     }
     
     var isPlaying = false
