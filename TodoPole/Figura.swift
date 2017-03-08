@@ -16,6 +16,7 @@ enum TipoFigura: String {
     case figura = "figura"
     case subida = "subida"
     case transicion = "transición"
+    case combos = "combo"
 }
 
 class Figura: NSObject {

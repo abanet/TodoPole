@@ -25,6 +25,7 @@ enum SettingName: String {
     case Figuras = "Poses"
     case Transiciones = "Transitions"
     case Subidas = "Climbs"
+    case Combos = "Combos"
 }
 
 class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -47,8 +48,9 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         let sueloSetting    = Setting(name: .Suelo, imageName: "icono-suelo")
         let transicionesSetting = Setting(name: .Transiciones, imageName: "icono-transiciones")
         let subidasSetting  = Setting(name: .Subidas, imageName: "icono-subidas")
+        let combosSetting   = Setting(name: .Combos, imageName: "icono-combos")
         let cancelSetting = Setting(name: .Cancel, imageName: "cancel")
-        return [figurasSetting, girosSetting, sueloSetting, transicionesSetting, subidasSetting, cancelSetting]
+        return [transicionesSetting, girosSetting, figurasSetting, sueloSetting, combosSetting ,subidasSetting, cancelSetting]
     }()
     
     var homeController: HomeController?

@@ -15,7 +15,9 @@ class FavoritosCell: FeedCell {
         print("En favoritosCell")
         ParseData.sharedInstance.cargarFigurasFavoritas(red: red){
             (figuras:[Figura]) -> Void in
+
           self.figuras = self.sortArrayFigurasByFavoritas(figuras: figuras)
+
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
             print("al cargar vemos que en favoritos tenemos: \(figuras.count)")
@@ -31,6 +33,7 @@ class FavoritosCell: FeedCell {
     // override de la respuesta al protocolo VideoPlayerViewProtocol
     override func didCloseVideoPlayer() {
         self.setupViews()
+        self.collectionView.allowsSelection = true // activamos de nuevo la selección.
         //print("Llamando protocolo desde FavoritosCell")
     }
   
@@ -41,5 +44,6 @@ class FavoritosCell: FeedCell {
     return sorted
   }
   
+
 }
 

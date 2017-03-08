@@ -95,6 +95,31 @@ class VideoPlayerView: UIView {
         return button
     }()
     
+    lazy var plusButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: "plus94")
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handlePlus), for: .touchUpInside)
+        button.isHidden = true
+        button.alpha = 0.7
+        return button
+    }()
+    
+    lazy var minusButton: UIButton = {
+        let button = UIButton(type: .system)
+        let image = UIImage(named: "minus94")
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handleMinus), for: .touchUpInside)
+        button.isHidden = true
+        button.alpha = 0.7
+        return button
+    }()
+    
+    
     lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(named: "cancel")
@@ -204,6 +229,18 @@ class VideoPlayerView: UIView {
         delegate?.didCloseVideoPlayer()
     }
     
+    func handleMinus(){
+        if let rate = player?.rate, rate >= 0.4, isPlaying {
+            player?.rate -= 0.2
+        }
+    }
+    
+    func handlePlus() {
+        if let rate = player?.rate, rate <= 0.8, isPlaying {
+            player?.rate += 0.2
+        }
+    }
+    
     var isPlaying = false
     
     func handlePause() {
@@ -243,6 +280,20 @@ class VideoPlayerView: UIView {
         pausePlayButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         pausePlayButton.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
         pausePlayButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        
+        //  adding minus button
+        controlContainerView.addSubview(minusButton)
+        minusButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        minusButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -100).isActive = true
+        minusButton.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
+        minusButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        
+        //  adding plus button
+        controlContainerView.addSubview(plusButton)
+        plusButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        plusButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 100).isActive = true
+        plusButton.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
+        plusButton.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         
         //  longitud del video
         controlContainerView.addSubview(videoLengthLabel)
@@ -316,10 +367,13 @@ class VideoPlayerView: UIView {
                 // Fallback on earlier versions
             }
             let playerLayer = AVPlayerLayer(player: player)
+            
+            
             playerLayer.frame = self.bounds
             playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
             self.layer.addSublayer(playerLayer)
             player?.play()
+            player?.rate = 1.0
         
             // Añadimos observer para que nos avise cuando el vídeo ha empezado
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
@@ -361,14 +415,16 @@ class VideoPlayerView: UIView {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        // El video se empeiza a mostrar
+        
+        // El video se empieza a mostrar
         if keyPath == "currentItem.loadedTimeRanges" {
+            
+            //  Notification for the end of the video
+            NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+            
             activityIndicatorView.stopAnimating()
             controlContainerView.backgroundColor = .clear
-            pausePlayButton.isHidden = false
-            likeButton.isHidden = false
-            videoSlider.isHidden = false
-            //facebookLikeButton.isHidden = false
+            mostrarElementosInterfaz()
             isPlaying = true
             
             // Mostrar duración del vídeo
@@ -380,6 +436,23 @@ class VideoPlayerView: UIView {
             }
             
         }
+    }
+    
+    func playerDidFinishPlaying(note: NSNotification){
+        //Called when player finished playing
+        print("video finalizado")
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:  player?.currentItem)
+        player?.seek(to: kCMTimeZero)
+        handlePause()
+    }
+    
+    func mostrarElementosInterfaz() {
+        pausePlayButton.isHidden = false
+        plusButton.isHidden = false
+        minusButton.isHidden = false
+        likeButton.isHidden = false
+        videoSlider.isHidden = false
+        //facebookLikeButton.isHidden = false
     }
 }
 
