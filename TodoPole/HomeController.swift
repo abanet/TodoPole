@@ -114,6 +114,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func setupNavBarButtons(){
         setMoreButton()
         setFilterButton() // De entrada aparece.
+        setAuthorButton() // De entrada aparece.
        
     }
     
@@ -134,8 +135,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         settingsLauncher.showSettings()
     }
     
+    func handleAuthor(){
+        // Show author selection
+        print("Show author selection")
+    }
+    
     func handleMore() {
-        
         // sacar menú lateral
         present(SideMenuManager.menuRightNavigationController!, animated: true, completion: nil)
     }
@@ -180,21 +185,30 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setTitleForIndex(index: menuIndex)
         if indexPath.item == 0 {
             setFilterButton()
+            setAuthorButton()
         } else {
             removeFilterButton()
-            existsFilterButtom = false
+            existsFilterButton = false
         }
     }
     
-    var existsFilterButtom = false
+    var existsFilterButton = false
+    var existsAuthorButton = false
     
     private func setFilterButton() {
-        // TODO: sólo si no existe!! ahora mismo si se pulsa varias veces el botón de inicio salen muchas lupas!!
-        if !existsFilterButtom {
+        if !existsFilterButton {
             let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
             let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
             navigationItem.rightBarButtonItems?.append(searchBarButtonItem)
-            existsFilterButtom = true
+            existsFilterButton = true
+        }
+    }
+    
+    private func setAuthorButton(){
+        if !existsAuthorButton {
+            let authorImage = UIImage(named:"author")?.withRenderingMode(.alwaysOriginal)
+            let authorBarButtonItem = UIBarButtonItem(image: authorImage, style: .plain, target: self, action: #selector(handleAuthor))
+            navigationItem.rightBarButtonItems?.append(authorBarButtonItem)
         }
     }
     
@@ -202,6 +216,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.rightBarButtonItems = nil
         setMoreButton()
     }
+    
     
     private func setMoreButton() {
         let moreButton = UIBarButtonItem(image: UIImage(named: "menu50")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))

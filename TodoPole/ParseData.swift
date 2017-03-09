@@ -14,10 +14,11 @@ import Parse
 class ParseData: NSObject {
     
     static let sharedInstance = ParseData()
+    var cacheListAuthors: [String]?
     
-       
     // Cargar todas las figuras visibles desde la cache si hay
     func cargarFigurasVisibles(red: Bool, completion: @escaping ([Figura]) -> ()) {
+        let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
         
         let query = PFQuery(className:"Figura")
         if red {
@@ -26,6 +27,7 @@ class ParseData: NSObject {
             query.cachePolicy = .cacheElseNetwork
         }
         query.whereKey("visible", equalTo: true)
+        query.whereKey("objectId", notContainedIn: arrayFavoritos) // ahora las figuras que estén en favoritos no se mostrarán en la lista de figuras completa.
         query.order(byDescending: "updatedAt")
         cargarQueryParse(query, completion: completion)
     }
@@ -71,7 +73,7 @@ class ParseData: NSObject {
     
     
     private func cargarQueryParse(_ query: PFQuery<PFObject>, completion: @escaping ([Figura]) -> ()) {
-        query.limit = 200 // límite impuesto por Parse
+        query.limit = 200 // límite impuesto por Parse? Ahora es 1000.
         query.includeKey("escuelaId")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
@@ -119,7 +121,7 @@ class ParseData: NSObject {
     
     // Incrementamos el campo likes de la figura
     func incrementarLikes(figura: Figura) {
-        var query = PFQuery(className:"Figura")
+        let query = PFQuery(className:"Figura")
         query.getObjectInBackground(withId: figura.objectId!) {
             (figura: PFObject?, error: Error?) -> Void in
             if error == nil && figura != nil {
@@ -131,6 +133,25 @@ class ParseData: NSObject {
         }
     }
     
+    // MARK: Functions about authors
+    // TODO: la primera vez estará vacia la lista y se calcula. Hay que acordarse de que al cargar la primera vez  la lista la guardaremos en la variable de cache de autores.
+    func listOfAuthors(completion: @escaping ([String])->()) {
+        if cacheListAuthors == nil {
+            let query = PFQuery(className:"Figura")
+            query.whereKey("visible", equalTo: true)
+            query.findObjectsInBackground {
+                (objects: [PFObject]?, error: Error?) -> Void in
+                var list = [String]()
+                for object in objects! {
+                    let author = object["autor"] as! String
+                    if !list.contains(author) {
+                        list.append(author)
+                    }
+                }
+                completion(list)
+            }
+        }
+    }
     
-       
+    
 } // Fin de la clase
