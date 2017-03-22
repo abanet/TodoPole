@@ -14,11 +14,12 @@ import Parse
 class ParseData: NSObject {
     
     static let sharedInstance = ParseData()
-    var cacheListAuthors: [String]?
+   
     
     // Cargar todas las figuras visibles desde la cache si hay
     func cargarFigurasVisibles(red: Bool, completion: @escaping ([Figura]) -> ()) {
         let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
+        let arrayAutoresBloqueados = ConfigurationAutores.getAutoresBloqueados()
         
         let query = PFQuery(className:"Figura")
         if red {
@@ -28,6 +29,9 @@ class ParseData: NSObject {
         }
         query.whereKey("visible", equalTo: true)
         query.whereKey("objectId", notContainedIn: arrayFavoritos) // ahora las figuras que estén en favoritos no se mostrarán en la lista de figuras completa.
+        if let listaBloqueo = arrayAutoresBloqueados {
+            query.whereKey("autor", notContainedIn: listaBloqueo)
+        }
         query.order(byDescending: "updatedAt")
         cargarQueryParse(query, completion: completion)
     }
@@ -51,6 +55,8 @@ class ParseData: NSObject {
     
     // Cargas las figuras que se corresponden con un tipo dado
     // tipo -> Tipo de las figuras que se van a cargar
+    
+    // No se está usando actualmente
     func cargarFigurasTipo (_ tipo: TipoFigura, completion: @escaping ([Figura]) -> ()) {
         let query = PFQuery(className:"Figura")
         query.whereKey("visible", equalTo: true)
@@ -59,6 +65,9 @@ class ParseData: NSObject {
     }
     
     func cargarFigurasTipo(_ tipo: TipoFigura, red: Bool, completion: @escaping ([Figura]) -> ()) {
+        let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
+        let arrayAutoresBloqueados = ConfigurationAutores.getAutoresBloqueados()
+
         let query = PFQuery(className:"Figura")
         if red {
             query.cachePolicy = .networkOnly
@@ -67,6 +76,10 @@ class ParseData: NSObject {
         }
         query.whereKey("visible", equalTo: true)
         query.whereKey("tipo", equalTo: tipo.rawValue)
+        query.whereKey("objectId", notContainedIn: arrayFavoritos) // ahora las figuras que estén en favoritos no se mostrarán en la lista de figuras completa.
+        if let listaBloqueo = arrayAutoresBloqueados {
+            query.whereKey("autor", notContainedIn: listaBloqueo)
+        }
         cargarQueryParse(query, completion: completion)
     }
     
@@ -134,23 +147,40 @@ class ParseData: NSObject {
     }
     
     // MARK: Functions about authors
-    // TODO: la primera vez estará vacia la lista y se calcula. Hay que acordarse de que al cargar la primera vez  la lista la guardaremos en la variable de cache de autores.
     func listOfAuthors(completion: @escaping ([String])->()) {
-        if cacheListAuthors == nil {
-            let query = PFQuery(className:"Figura")
+            let query = PFQuery(className:"Profesores")
             query.whereKey("visible", equalTo: true)
+            query.cachePolicy = .cacheElseNetwork  // cogerá la información de las figuras ya leídas.
             query.findObjectsInBackground {
                 (objects: [PFObject]?, error: Error?) -> Void in
                 var list = [String]()
                 for object in objects! {
-                    let author = object["autor"] as! String
-                    if !list.contains(author) {
-                        list.append(author)
+                    let profesor = object["name"] as! String
+                    if !list.contains(profesor) {
+                        list.append(profesor)
                     }
                 }
                 completion(list)
             }
+    }
+    
+    func listOfAuthorsNow() -> [String] {
+        let query = PFQuery(className:"Profesores")
+        query.whereKey("visible", equalTo: true)
+        query.order(byAscending: "name")
+        query.cachePolicy = .cacheElseNetwork  
+        var list = [String]()
+        do {
+             let profesoresObjects = try query.findObjects()
+             for object in profesoresObjects {
+                let profesor = object["name"] as! String
+                if !list.contains(profesor) {
+                    list.append(profesor)
+                }
+             }
+        } catch {
         }
+        return list
     }
     
     

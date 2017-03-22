@@ -45,7 +45,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configuramos Firebase
         FIRApp.configure()
         
+        // Reading author list
         
+        ParseData.sharedInstance.listOfAuthors { (result:[String]) in
+            print("Lista autores leida")
+            for author in result {
+                PFCloud.callFunction(inBackground: "numFigurasPoleDancer", withParameters: ["autor": author], block: { (response: Any?, error: Error?) in
+                print("\(author)->numFigurasPoleDancer: \(response as? Float)")
+                })
+                PFCloud.callFunction(inBackground: "numLikesPoleDancer", withParameters: ["autor": author], block: { (response: Any?, error: Error?) in
+                    print("\(author)->numLikesPoleDancer: \(response as? Float)")
+                })
+            }
+        }
         
         return true
     }

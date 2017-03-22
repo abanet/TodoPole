@@ -47,4 +47,5 @@ class DefaultConfiguration {
         UserDefaults.standard.set(studio, forKey: "defaultStudio")
         self.studio = studio
     }
+    
 }

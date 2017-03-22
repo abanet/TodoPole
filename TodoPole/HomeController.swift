@@ -26,12 +26,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var menuSideController: MenuLateralViewController?
     
-    var opcionMenuSeleccionada: Int?
+    var opcionMenuSeleccionada: Int = 0
+    var opcionMenuOrigen: Int? 
         
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // menú lateral
         menuSideController = MenuLateralViewController()
         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
@@ -113,9 +115,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func setupNavBarButtons(){
         setMoreButton()
+        // setAuthorButton() // De entrada aparece.
         setFilterButton() // De entrada aparece.
-        setAuthorButton() // De entrada aparece.
-       
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -128,6 +129,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
         
         setTitleForIndex(index: Int(index))
+        opcionMenuOrigen = opcionMenuSeleccionada
+        opcionMenuSeleccionada = Int(index) // actualizamos la opción de menú seleccionada
+        
     }
     
     func handleSearch(){
@@ -180,12 +184,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     
     func scrollToMenuIndex(menuIndex: Int) {
+        //  Si el índice en el que se pulsa es en el que estamos no hay que hacer nada.
+        guard let opcionMenuActual = opcionMenuOrigen, opcionMenuActual != menuIndex else {
+            return
+        }
         let indexPath = IndexPath(item: menuIndex, section: 0)
         collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
         setTitleForIndex(index: menuIndex)
         if indexPath.item == 0 {
+            //setAuthorButton()
             setFilterButton()
-            setAuthorButton()
         } else {
             removeFilterButton()
             existsFilterButton = false
@@ -193,7 +201,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     var existsFilterButton = false
-    var existsAuthorButton = false
+   // var existsAuthorButton = false
     
     private func setFilterButton() {
         if !existsFilterButton {
@@ -204,13 +212,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    private func setAuthorButton(){
-        if !existsAuthorButton {
-            let authorImage = UIImage(named:"author")?.withRenderingMode(.alwaysOriginal)
-            let authorBarButtonItem = UIBarButtonItem(image: authorImage, style: .plain, target: self, action: #selector(handleAuthor))
-            navigationItem.rightBarButtonItems?.append(authorBarButtonItem)
-        }
-    }
+//    private func setAuthorButton(){
+//        if !existsAuthorButton {
+//            let authorImage = UIImage(named:"author")?.withRenderingMode(.alwaysOriginal)
+//            let authorBarButtonItem = UIBarButtonItem(image: authorImage, style: .plain, target: self, action: #selector(handleAuthor))
+//            navigationItem.rightBarButtonItems?.append(authorBarButtonItem)
+//        }
+//    }
     
     private func removeFilterButton() {
         navigationItem.rightBarButtonItems = nil

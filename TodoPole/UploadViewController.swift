@@ -32,7 +32,7 @@ class UploadViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = ColoresApp.primary
+        view.backgroundColor = ColoresApp.primary.lighter(by: 15.0)
         picker.delegate = self
         self.loadForm()
     }

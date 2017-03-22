@@ -81,6 +81,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        homeController?.opcionMenuOrigen = homeController?.opcionMenuSeleccionada
         homeController?.opcionMenuSeleccionada = indexPath.item
         homeController?.scrollToMenuIndex(menuIndex: indexPath.item)
     }

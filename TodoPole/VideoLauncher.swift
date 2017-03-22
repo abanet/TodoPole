@@ -27,6 +27,8 @@ class VideoPlayerView: UIView {
     
     var permitirSumarAlPulsarCorazon = true // para controlar que no se puedan sumar al pulsar varias veces seguidas.
     
+    var videoEnded: Bool = false
+    
     let activityIndicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -248,6 +250,9 @@ class VideoPlayerView: UIView {
             player?.pause()
             pausePlayButton.setImage(UIImage(named: "play"), for: .normal)
         } else {
+            if videoEnded {
+                player?.seek(to: kCMTimeZero)
+            }
             player?.play()
             pausePlayButton.setImage(UIImage(named: "pause"), for: .normal)
         }
@@ -418,7 +423,6 @@ class VideoPlayerView: UIView {
         
         // El video se empieza a mostrar
         if keyPath == "currentItem.loadedTimeRanges" {
-            
             //  Notification for the end of the video
             NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
             
@@ -442,7 +446,8 @@ class VideoPlayerView: UIView {
         //Called when player finished playing
         print("video finalizado")
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:  player?.currentItem)
-        player?.seek(to: kCMTimeZero)
+        //player?.seek(to: kCMTimeZero)
+        videoEnded = true
         handlePause()
     }
     

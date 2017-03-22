@@ -32,6 +32,9 @@
 		C0611C451E032C9300EA9981 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611C441E032C9300EA9981 /* ParseData.swift */; };
 		C0611C471E032DA200EA9981 /* Figura.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611C461E032DA200EA9981 /* Figura.swift */; };
 		C063E36C1DFEF9160003A263 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063E36B1DFEF9160003A263 /* Video.swift */; };
+		C06E23831E7DBDEA0026AE3A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E23821E7DBDEA0026AE3A /* UIColor+Extension.swift */; };
+		C06E23851E7DC03C0026AE3A /* SetFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */; };
+		C06E23871E7DDFAD0026AE3A /* ConfiguracionAutores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E23861E7DDFAD0026AE3A /* ConfiguracionAutores.swift */; };
 		C070C9E01E3122270008C01A /* youcan.png in Resources */ = {isa = PBXBuildFile; fileRef = C070C9DF1E3122270008C01A /* youcan.png */; };
 		C070C9E21E3124750008C01A /* thanks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C070C9E11E3124750008C01A /* thanks.jpg */; };
 		C09D14451E520E5600E83FF0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09D14441E520E5600E83FF0 /* EmptyView.swift */; };
@@ -89,6 +92,9 @@
 		C0611C441E032C9300EA9981 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		C0611C461E032DA200EA9981 /* Figura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figura.swift; sourceTree = "<group>"; };
 		C063E36B1DFEF9160003A263 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		C06E23821E7DBDEA0026AE3A /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFilterViewController.swift; sourceTree = "<group>"; };
+		C06E23861E7DDFAD0026AE3A /* ConfiguracionAutores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracionAutores.swift; sourceTree = "<group>"; };
 		C070C9DF1E3122270008C01A /* youcan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youcan.png; sourceTree = "<group>"; };
 		C070C9E11E3124750008C01A /* thanks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thanks.jpg; sourceTree = "<group>"; };
 		C09D14441E520E5600E83FF0 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				C0C2A20E1E48CEC700AFD18B /* Firebase.swift */,
 				C0B0955E1E4D16F100324539 /* FiguraFirebase.swift */,
 				C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */,
+				C06E23861E7DDFAD0026AE3A /* ConfiguracionAutores.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 			children = (
 				C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */,
 				C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */,
+				C06E23821E7DBDEA0026AE3A /* UIColor+Extension.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 				C0AEB91C1E4B8669007F3F58 /* UploadViewController.swift */,
 				C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */,
 				C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */,
+				C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -450,6 +459,7 @@
 				C049CED01E37A1B1009BF57C /* SettingCell.swift in Sources */,
 				C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */,
 				C0611C451E032C9300EA9981 /* ParseData.swift in Sources */,
+				C06E23831E7DBDEA0026AE3A /* UIColor+Extension.swift in Sources */,
 				C0BE85EE1DF5D0AF00A96B11 /* FiguraCell.swift in Sources */,
 				C04B0D361E0077ED005D19C7 /* SwiftyJSON.swift in Sources */,
 				C0BE85EB1DF5D03D00A96B11 /* Extensions.swift in Sources */,
@@ -461,6 +471,7 @@
 				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
 				C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */,
 				C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */,
+				C06E23851E7DC03C0026AE3A /* SetFilterViewController.swift in Sources */,
 				C0CE51E61E392A3B0087FB93 /* Favoritos.swift in Sources */,
 				C0AEB9191E4B67CD007F3F58 /* MenuLateralViewController.swift in Sources */,
 				C049CECE1E37A113009BF57C /* SettingsLauncher.swift in Sources */,
@@ -470,6 +481,7 @@
 				C09D14451E520E5600E83FF0 /* EmptyView.swift in Sources */,
 				C0611C471E032DA200EA9981 /* Figura.swift in Sources */,
 				C0B0955F1E4D16F100324539 /* FiguraFirebase.swift in Sources */,
+				C06E23871E7DDFAD0026AE3A /* ConfiguracionAutores.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

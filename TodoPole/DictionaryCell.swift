@@ -19,7 +19,11 @@ class DictionaryCell: FeedCell {
             self.figuras = figuras
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
-
+            if figuras.count == 0 {
+                self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show to you with the actual settings.")
+            } else {
+                self.collectionView.backgroundView = nil
+            }
         }
         } else {
             cargarFigurasDeParse(tipo: tipo!, red: red)
@@ -33,15 +37,23 @@ class DictionaryCell: FeedCell {
             self.figuras = figuras
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
-            if !red {
-            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0),
-                                        at: .top,
-                                        animated: true)
+            if !red && figuras.count > 0 {
+                self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                                 at: .top,
+                                                 animated: true)
             }
 
+            if figuras.count == 0 {
+                self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show to you with the actual settings.")
+            } else {
+                self.collectionView.backgroundView = nil
+            }
         }
     }
     
-    
+    override func refreshCell() {
+        self.cargarFigurasDeParse(red: false)
+        print("refresh Cell de Dictionary cell")
+    }
     
 }
