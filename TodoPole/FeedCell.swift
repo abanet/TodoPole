@@ -61,9 +61,6 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
             }
     }
     
-    
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             print("Número de figuras encontradas: \(figuras?.count ?? 0)")
             return figuras?.count ?? 0

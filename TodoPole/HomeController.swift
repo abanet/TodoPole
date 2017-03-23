@@ -18,11 +18,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     /* -MENU- */
-    let titles = ["Pole Dictionary", "Favorites", "Help Us"]
+    let titles = ["Pole Dictionary", "Amateurs", "Favorites", "Help Us"]
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
     let colaboraCellId   = "colaboraCellId"
+    let amateursCellId   = "amateursCellId"
     
     var menuSideController: MenuLateralViewController?
     
@@ -76,6 +77,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
         collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
+        collectionView?.register(AmateursCell.self, forCellWithReuseIdentifier: amateursCellId)
 
         
         collectionView?.isPagingEnabled = true
@@ -243,22 +245,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return ConfiguracionMenu.numOpciones
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath)
-            return cell
-        }
-        
-        if indexPath.item == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
-            return cell
-        }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
-        
-        return cell
-    }
+  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
+    var cell: UICollectionViewCell
+    
+    switch indexPath.item {
+    case 0:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath)
+    case 1:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: amateursCellId, for: indexPath)
+    case 2:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
+    case 3:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
+    default:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
+    }
+    return cell
+  }
+  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //print("--> Tamaño para \(indexPath): \(view.frame.width), \(self.view.frame.height - (50 + 8))")
         return CGSize(width: view.frame.width, height: self.view.frame.height - (50 + 8))
@@ -266,7 +271,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     // se ejecuta cuando la celda va a aparecer
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == 1 {
+        if indexPath.item == 2 {
             let celda = cell as! FavoritosCell
             celda.setupViews() // ¡para que refresque los datos de favoritos!
         }

@@ -35,7 +35,23 @@ class ParseData: NSObject {
         query.order(byDescending: "updatedAt")
         cargarQueryParse(query, completion: completion)
     }
+  
+  // Cargar todas las figuras visibles desde la cache si hay
+  func cargarFigurasAmateurs(red: Bool, completion: @escaping ([Figura]) -> ()) {
     
+    let query = PFQuery(className:"Figura")
+    if red {
+      query.cachePolicy = .networkOnly
+    } else {
+      query.cachePolicy = .cacheElseNetwork
+    }
+    query.whereKey("pro", equalTo: false)
+    query.whereKey("visible", equalTo: true)
+    query.order(byDescending: "updatedAt")
+    cargarQueryParse(query, completion: completion)
+  }
+
+  
     // Cargar las figuras favoritas
     func cargarFigurasFavoritas(red: Bool, completion: @escaping ([Figura]) -> ()) {
          let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos 
@@ -163,7 +179,10 @@ class ParseData: NSObject {
             query.findObjectsInBackground {
                 (objects: [PFObject]?, error: Error?) -> Void in
                 var list = [String]()
-                for object in objects! {
+                guard let listObjects = objects else {
+                  return
+                }
+                for object in listObjects {
                     let profesor = object["name"] as! String
                     if !list.contains(profesor) {
                         list.append(profesor)
