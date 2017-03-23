@@ -14,7 +14,7 @@ import Parse
 class ParseData: NSObject {
     
     static let sharedInstance = ParseData()
-   
+    
     
     // Cargar todas las figuras visibles desde la cache si hay
     func cargarFigurasVisibles(red: Bool, completion: @escaping ([Figura]) -> ()) {
@@ -147,10 +147,19 @@ class ParseData: NSObject {
     }
     
     // MARK: Functions about authors
+    
+    // No usada actualmente
     func listOfAuthors(completion: @escaping ([String])->()) {
             let query = PFQuery(className:"Profesores")
             query.whereKey("visible", equalTo: true)
-            query.cachePolicy = .cacheElseNetwork  // cogerá la información de las figuras ya leídas.
+//            if self.firstTimeLoadAuthors {
+//                query.cachePolicy = .networkElseCache
+//                self.firstTimeLoadAuthors = false
+//            } else {
+//                query.cachePolicy = .cacheElseNetwork
+//            }
+        query.cachePolicy = .cacheElseNetwork
+              // cogerá la información de las figuras ya leídas.
             query.findObjectsInBackground {
                 (objects: [PFObject]?, error: Error?) -> Void in
                 var list = [String]()
@@ -168,7 +177,13 @@ class ParseData: NSObject {
         let query = PFQuery(className:"Profesores")
         query.whereKey("visible", equalTo: true)
         query.order(byAscending: "name")
-        query.cachePolicy = .cacheElseNetwork  
+//        if self.firstTimeLoadAuthors {
+//            query.cachePolicy = .networkElseCache
+//            self.firstTimeLoadAuthors = false
+//        } else {
+//            query.cachePolicy = .cacheElseNetwork
+//        }
+        query.cachePolicy = .cacheElseNetwork
         var list = [String]()
         do {
              let profesoresObjects = try query.findObjects()

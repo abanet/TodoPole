@@ -138,14 +138,14 @@ class FiguraCell: BaseCell {
         // tipoLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
         //addConstraint(NSLayoutConstraint(item: tipoLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier:1, constant: 0))
         
-        //  nivel de la figura
-        nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 0))
-        
         //  número de likes
         likesLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 2))
         
+        //  nivel de la figura
+        nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 2))
+  
     }
     
     // Establecemos un gradiente en la parte inferior de la fotografía para que se vea mejor la información que pondemos.

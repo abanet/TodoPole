@@ -44,7 +44,7 @@ class DictionaryCell: FeedCell {
             }
 
             if figuras.count == 0 {
-                self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show to you with the actual settings.")
+                self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show you with the actual settings.")
             } else {
                 self.collectionView.backgroundView = nil
             }

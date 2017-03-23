@@ -44,7 +44,7 @@ class SetFilterViewController: FormViewController {
         }
         section1.rows.append(row)
         
-        let section2 = FormSectionDescriptor(headerTitle: "Which authors are you interested in?", footerTitle: "")
+        let section2 = FormSectionDescriptor(headerTitle: "Which Pole Dancers are you interested in?", footerTitle: "")
         let autores = ParseData.sharedInstance.listOfAuthorsNow()
         let autoresBloqueados = ConfigurationAutores.getAutoresBloqueados()
         for autor in autores {
