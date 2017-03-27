@@ -13,9 +13,14 @@ import Parse
 
 class ParseData: NSObject {
     
-    static let sharedInstance = ParseData()
-    
-    
+  static let sharedInstance: ParseData = {
+    let instance = ParseData()
+    return instance
+  }()
+  
+    var primeraVezAutoresLeidos: Bool = true
+  
+  
     // Cargar todas las figuras visibles desde la cache si hay
     func cargarFigurasVisibles(red: Bool, completion: @escaping ([Figura]) -> ()) {
         let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
@@ -164,58 +169,57 @@ class ParseData: NSObject {
     
     // MARK: Functions about authors
     
-    // No usada actualmente
-    func listOfAuthors(completion: @escaping ([String])->()) {
-            let query = PFQuery(className:"Profesores")
-            query.whereKey("visible", equalTo: true)
-//            if self.firstTimeLoadAuthors {
-//                query.cachePolicy = .networkElseCache
-//                self.firstTimeLoadAuthors = false
-//            } else {
-//                query.cachePolicy = .cacheElseNetwork
-//            }
-        query.cachePolicy = .cacheElseNetwork
-              // cogerá la información de las figuras ya leídas.
-            query.findObjectsInBackground {
-                (objects: [PFObject]?, error: Error?) -> Void in
-                var list = [String]()
-                guard let listObjects = objects else {
-                  return
-                }
-                for object in listObjects {
-                    let profesor = object["name"] as! String
-                    if !list.contains(profesor) {
-                        list.append(profesor)
-                    }
-                }
-                completion(list)
-            }
+  func listOfAuthors(red: Bool, completion: @escaping ([String])->()) {
+   
+    let query = PFQuery(className:"Profesores")
+    query.whereKey("visible", equalTo: true)
+    if red {
+      query.cachePolicy = .networkOnly
+    } else {
+      query.cachePolicy = .cacheElseNetwork
     }
     
-    func listOfAuthorsNow() -> [String] {
-        let query = PFQuery(className:"Profesores")
-        query.whereKey("visible", equalTo: true)
-        query.order(byAscending: "name")
-//        if self.firstTimeLoadAuthors {
-//            query.cachePolicy = .networkElseCache
-//            self.firstTimeLoadAuthors = false
-//        } else {
-//            query.cachePolicy = .cacheElseNetwork
-//        }
-        query.cachePolicy = .cacheElseNetwork
-        var list = [String]()
-        do {
-             let profesoresObjects = try query.findObjects()
-             for object in profesoresObjects {
-                let profesor = object["name"] as! String
-                if !list.contains(profesor) {
-                    list.append(profesor)
-                }
-             }
-        } catch {
+    // cogerá la información de las figuras ya leídas.
+    query.findObjectsInBackground {
+      (objects: [PFObject]?, error: Error?) -> Void in
+      var list = [String]()
+      guard let listObjects = objects else {
+        return
+      }
+      for object in listObjects {
+        let profesor = object["name"] as! String
+        if !list.contains(profesor) {
+          list.append(profesor)
         }
-        return list
+      }
+      completion(list)
+      
     }
-    
-    
+  }
+  
+  func listOfAuthorsNow() -> [String] {
+    let query = PFQuery(className:"Profesores")
+    query.whereKey("visible", equalTo: true)
+    query.order(byAscending: "name")
+    if primeraVezAutoresLeidos {
+      query.cachePolicy = .networkElseCache
+      primeraVezAutoresLeidos = false
+    } else {
+      query.cachePolicy = .cacheElseNetwork
+    }
+    var list = [String]()
+    do {
+      let profesoresObjects = try query.findObjects()
+      for object in profesoresObjects {
+        let profesor = object["name"] as! String
+        if !list.contains(profesor) {
+          list.append(profesor)
+        }
+      }
+    } catch {
+    }
+    return list
+  }
+  
+  
 } // Fin de la clase

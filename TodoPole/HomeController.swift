@@ -252,11 +252,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     switch indexPath.item {
     case 0:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath)
+      /* -MENU- */
+//    case 1:
+//      cell = collectionView.dequeueReusableCell(withReuseIdentifier: amateursCellId, for: indexPath)
     case 1:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: amateursCellId, for: indexPath)
-    case 2:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
-    case 3:
+    case 2:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
     default:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
@@ -271,7 +272,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     // se ejecuta cuando la celda va a aparecer
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == 2 {
+        /* -MENU- */
+        if indexPath.item == 1 {
             let celda = cell as! FavoritosCell
             celda.setupViews() // ¡para que refresque los datos de favoritos!
         }

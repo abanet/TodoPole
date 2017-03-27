@@ -42,7 +42,10 @@ class DictionaryCell: FeedCell {
                                                  at: .top,
                                                  animated: true)
             }
-
+          // Para tenerlos leídos de antemano
+          if ParseData.sharedInstance.primeraVezAutoresLeidos {
+            ParseData.sharedInstance.listOfAuthorsNow()
+          }
             if figuras.count == 0 {
                 self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show you with the actual settings.")
             } else {

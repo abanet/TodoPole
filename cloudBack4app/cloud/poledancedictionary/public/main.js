@@ -1,3 +1,5 @@
+
+
 Parse.Cloud.define("test", function (request, response) {
  response.success("It’s moved over ");
 });
@@ -35,3 +37,6 @@ Parse.Cloud.define("numLikesPoleDancer", function(request, response) {
 		}
 	});
 });
+
+
+var getStatsPoleDancers = require('./getStatsPoleDancers.js');
