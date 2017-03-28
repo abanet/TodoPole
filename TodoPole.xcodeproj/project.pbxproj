@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B317E92EFBD32524A6073831 /* Pods_TodoPole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */; };
+		C004AC651E8A8F9300146651 /* Notificaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004AC641E8A8F9300146651 /* Notificaciones.swift */; };
 		C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F45691DFB0679008E5B49 /* MenuBar.swift */; };
 		C0203E291E00740400C72D99 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0203E281E00740400C72D99 /* YouTube.swift */; };
 		C028BFAE1E0D728600D11263 /* Escuela.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028BFAD1E0D728600D11263 /* Escuela.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.release.xcconfig"; sourceTree = "<group>"; };
+		C004AC641E8A8F9300146651 /* Notificaciones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notificaciones.swift; sourceTree = "<group>"; };
 		C01F45691DFB0679008E5B49 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		C0203E281E00740400C72D99 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
 		C028BFAD1E0D728600D11263 /* Escuela.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escuela.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				C04B0D351E0077ED005D19C7 /* SwiftyJSON.swift */,
 				C0BE85EA1DF5D03D00A96B11 /* Extensions.swift */,
 				C06E23821E7DBDEA0026AE3A /* UIColor+Extension.swift */,
+				C004AC641E8A8F9300146651 /* Notificaciones.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
 				C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */,
 				C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */,
+				C004AC651E8A8F9300146651 /* Notificaciones.swift in Sources */,
 				C06E23851E7DC03C0026AE3A /* SetFilterViewController.swift in Sources */,
 				C0CE51E61E392A3B0087FB93 /* Favoritos.swift in Sources */,
 				C0AEB9191E4B67CD007F3F58 /* MenuLateralViewController.swift in Sources */,

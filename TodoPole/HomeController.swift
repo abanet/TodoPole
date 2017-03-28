@@ -18,7 +18,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     /* -MENU- */
-    let titles = ["Pole Dictionary", "Amateurs", "Favorites", "Help Us"]
+    let titles = ["Pole Dictionary", "Favorites", "Help Us"] // "Amateurs",
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
@@ -30,11 +30,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var opcionMenuSeleccionada: Int = 0
     var opcionMenuOrigen: Int? 
         
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        configurarObservers()
         // menú lateral
         menuSideController = MenuLateralViewController()
         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
@@ -280,8 +280,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
- 
+  func configurarObservers() {
+    NotificationCenter.default.addObserver(self, selector: #selector(updateTitle), name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: titleNeedRefreshNotification) , object: nil)
+  }
+  
+  func updateTitle(_ notification: NSNotification) {
+    if let numero = notification.userInfo?["num"] as? Int {
+      if let titleLabel = navigationItem.titleView as? UILabel {
+        titleLabel.text = "  \(titles[opcionMenuSeleccionada]) \(numero)"
+      }
+    }
     
+  }
+  
 }
 
 

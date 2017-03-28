@@ -8,7 +8,7 @@
 
 import UIKit
 
-let dictionaryCellNeedRefreshNotification = "dictionaryCellNeedRefresh"
+
 
 class BaseCell: UICollectionViewCell {
     override init(frame: CGRect) {
