@@ -9,19 +9,21 @@
 import UIKit
 
 class FiguraFirebase: NSObject {
-    var nombre: String
-    var mail: String
-    var autor: String
-    var studio: String
-    
-    init(nombre: String, mail: String, autor: String, studio: String) {
+  var nombre: String
+  var mail:   String
+  var autor:  String
+  var studio: String
+  var pro:    Bool
+  
+  init(nombre: String, mail: String, autor: String, studio: String, pro: Bool) {
         self.nombre = nombre
-        self.mail = mail
-        self.autor = autor
+        self.mail   = mail
+        self.autor  = autor
         self.studio = studio
+        self.pro    = pro
     }
     
     func formatoArray() -> [String:String] {
-        return ["nombre": nombre, "mail": mail, "autor": autor, "studio": studio]
+        return ["nombre": nombre, "mail": mail, "autor": autor, "studio": studio, "pro": String(pro)]
     }
 }
