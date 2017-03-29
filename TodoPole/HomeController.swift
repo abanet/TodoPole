@@ -11,14 +11,18 @@ import Parse
 import SideMenu
 import FBSDKLoginKit
 
-
+enum MainMenu: Int {
+  case polemoves
+  case favorites
+  case helpus
+}
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var videos: [Video]?
     
     /* -MENU- */
-    let titles = ["Pole Dictionary", "Favorites", "Help Us"] // "Amateurs",
+    var titles = ["Pole Dictionary", "Favorites", "Help Us"] // "Amateurs",
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
@@ -288,10 +292,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: titleNeedRefreshNotification) , object: nil)
   }
   
+  /* -MENU- */
   func updateTitle(_ notification: NSNotification) {
-    if let numero = notification.userInfo?["num"] as? Int {
+    if let numero = notification.userInfo?["num"] as? Int,
+       let opcion = notification.userInfo?["menuOpcion"] as? MainMenu {
       if let titleLabel = navigationItem.titleView as? UILabel {
-        titleLabel.text = "  \(titles[opcionMenuSeleccionada]) \(numero)"
+        switch opcionMenuSeleccionada {
+        case 0:
+          titleLabel.text = "\(numero) Pole Moves"
+        case 1:
+          
+          titleLabel.text = (numero > 1) ? "\(numero) Favourites" : "\(numero) Favourite"
+        case 2:
+          titleLabel.text = "Help Us"
+        default:
+          titleLabel.text = "Help Us"
+        }
+        titles[opcion.rawValue] = titleLabel.text!
       }
     }
     

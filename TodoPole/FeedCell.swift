@@ -110,6 +110,8 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         // Cuando refresca siempre tiramos de red para hacer la query.
         self.cargarFigurasDeParse(red:true)
     }
+  
+    
 
 }
 

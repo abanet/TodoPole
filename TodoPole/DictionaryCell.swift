@@ -23,7 +23,7 @@ class DictionaryCell: FeedCell {
                 self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show to you with the actual settings.")
             } else {
                 self.collectionView.backgroundView = nil
-                self.notificarUpdateTitle(num: figuras.count)
+                self.notificarUpdateTitle(num: figuras.count, menuOpcion: .polemoves)
             }
         }
         } else {
@@ -51,7 +51,7 @@ class DictionaryCell: FeedCell {
                 self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show you with the actual settings.")
             } else {
                 self.collectionView.backgroundView = nil
-                self.notificarUpdateTitle(num: figuras.count)
+              self.notificarUpdateTitle(num: figuras.count, menuOpcion: .polemoves)
             }
         }
     }
@@ -61,7 +61,9 @@ class DictionaryCell: FeedCell {
         print("refresh Cell de Dictionary cell")
     }
   
-  func notificarUpdateTitle(num: Int) {
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num])
+  //  Notificación de refresco de título
+  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": MainMenu.polemoves])
   }
+  
 }

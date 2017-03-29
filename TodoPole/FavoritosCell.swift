@@ -24,6 +24,7 @@ class FavoritosCell: FeedCell {
             } else {
                 self.collectionView.backgroundView = nil
             }
+            self.notificarUpdateTitle(num: figuras.count, menuOpcion: .favorites)
         }
         
             }
@@ -41,5 +42,10 @@ class FavoritosCell: FeedCell {
         let sorted = figuras.sorted { arrayOrdenado.index(of: $0.objectId!)! > arrayOrdenado.index(of: $1.objectId!)! }
         return sorted
     }
+  
+  //  Notificación de refresco de título
+  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": MainMenu.favorites])
+  }
 }
 
