@@ -33,6 +33,7 @@ class ParseData: NSObject {
             query.cachePolicy = .cacheElseNetwork
         }
         query.whereKey("visible", equalTo: true)
+        query.whereKey("profesional", equalTo: true)
         query.whereKey("objectId", notContainedIn: arrayFavoritos) // ahora las figuras que estén en favoritos no se mostrarán en la lista de figuras completa.
         if let listaBloqueo = arrayAutoresBloqueados {
             query.whereKey("autor", notContainedIn: listaBloqueo)
@@ -41,17 +42,16 @@ class ParseData: NSObject {
         cargarQueryParse(query, completion: completion)
     }
   
-  // Cargar todas las figuras visibles desde la cache si hay
+  // Cargar todas las figuras amateurs desde la cache si hay
   func cargarFigurasAmateurs(red: Bool, completion: @escaping ([Figura]) -> ()) {
-    
     let query = PFQuery(className:"Figura")
     if red {
       query.cachePolicy = .networkOnly
     } else {
       query.cachePolicy = .cacheElseNetwork
     }
-    query.whereKey("pro", equalTo: false)
-    query.whereKey("visible", equalTo: true)
+    query.whereKey("visible", equalTo: false) // para que no le salgan a la gente
+    query.whereKey("profesional", equalTo: false)
     query.order(byDescending: "updatedAt")
     cargarQueryParse(query, completion: completion)
   }
@@ -81,6 +81,7 @@ class ParseData: NSObject {
     func cargarFigurasTipo (_ tipo: TipoFigura, completion: @escaping ([Figura]) -> ()) {
         let query = PFQuery(className:"Figura")
         query.whereKey("visible", equalTo: true)
+        query.whereKey("profesional", equalTo: true)
         query.whereKey("tipo", equalTo: tipo.rawValue)
         cargarQueryParse(query, completion: completion)
     }
@@ -96,6 +97,7 @@ class ParseData: NSObject {
             query.cachePolicy = .cacheElseNetwork
         }
         query.whereKey("visible", equalTo: true)
+        query.whereKey("profesional", equalTo: true)
         query.whereKey("tipo", equalTo: tipo.rawValue)
         query.whereKey("objectId", notContainedIn: arrayFavoritos) // ahora las figuras que estén en favoritos no se mostrarán en la lista de figuras completa.
         if let listaBloqueo = arrayAutoresBloqueados {

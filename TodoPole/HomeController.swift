@@ -13,6 +13,7 @@ import FBSDKLoginKit
 
 enum MainMenu: Int {
   case polemoves
+  case amateurs
   case favorites
   case helpus
 }
@@ -22,7 +23,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     /* -MENU- */
-    var titles = ["Pole Dictionary", "Favorites", "Help Us"] // "Amateurs",
+    var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Help Us"]  
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
@@ -253,18 +254,18 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var cell: UICollectionViewCell
     
+    /* -MENU- */
     switch indexPath.item {
     case 0:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath)
-      /* -MENU- */
-//    case 1:
-//      cell = collectionView.dequeueReusableCell(withReuseIdentifier: amateursCellId, for: indexPath)
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath) as! DictionaryCell
     case 1:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: amateursCellId, for: indexPath) as! AmateursCell
     case 2:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
+    case 3:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
     default:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
     }
     return cell
   }
@@ -277,7 +278,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     // se ejecuta cuando la celda va a aparecer
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         /* -MENU- */
-        if indexPath.item == 1 {
+        if indexPath.item == 2 {
             let celda = cell as! FavoritosCell
             celda.setupViews() // ¡para que refresque los datos de favoritos!
         }
@@ -297,15 +298,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     if let numero = notification.userInfo?["num"] as? Int,
        let opcion = notification.userInfo?["menuOpcion"] as? MainMenu {
       if let titleLabel = navigationItem.titleView as? UILabel {
-        switch opcionMenuSeleccionada {
-        case 0:
-          titleLabel.text = "\(numero) Pole Moves"
-        case 1:
-          
-          titleLabel.text = (numero > 1) ? "\(numero) Favourites" : "\(numero) Favourite"
-        case 2:
-          titleLabel.text = "Help Us"
-        default:
+        switch opcion {
+        case .polemoves:
+          titleLabel.text = (numero == 1) ? "\(numero) Pole Move" : "\(numero) Pole Moves"
+        case .amateurs:
+          titleLabel.text = (numero == 1) ? "\(numero) Amateur Move" : "\(numero) Amateur Moves"
+        case .favorites:
+          titleLabel.text = (numero == 1) ? "\(numero) Favourite" : "\(numero) Favourites"
+        case .helpus:
           titleLabel.text = "Help Us"
         }
         titles[opcion.rawValue] = titleLabel.text!

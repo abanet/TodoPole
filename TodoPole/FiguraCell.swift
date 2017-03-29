@@ -140,11 +140,11 @@ class FiguraCell: BaseCell {
         
         //  número de likes
         likesLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 2))
+        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 4))
         
         //  nivel de la figura
         nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 2))
+        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 4))
   
     }
     

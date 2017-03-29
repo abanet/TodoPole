@@ -12,25 +12,29 @@ class AmateursCell: FeedCell {
   
   
   override func cargarFigurasDeParse(red: Bool) {
-    print("En amateursCell")
     ParseData.sharedInstance.cargarFigurasAmateurs(red: red){
       (figuras:[Figura]) -> Void in
       self.figuras = figuras
       self.collectionView.reloadData()
       self.refresh.endRefreshing()
       if figuras.count == 0 {
-        self.collectionView.backgroundView = EmptyView(message: "No amateurs moves available right now.")
+        self.collectionView.backgroundView = EmptyView(message: "Sorry, no amateur moves available right now.")
       } else {
         self.collectionView.backgroundView = nil
       }
+      self.notificarUpdateTitle(num: figuras.count, menuOpcion: .amateurs)
     }
     
   }
   
-  // override de la respuesta al protocolo VideoPlayerViewProtocol
-  override func didCloseVideoPlayer() {
-    self.setupViews()
-    self.collectionView.allowsSelection = true // activamos de nuevo la selección.
+  override func refreshCell() {
+    self.cargarFigurasDeParse(red: false)
+    print("refresh Cell de Amateur cell")
+  }
+  
+  //  Notificación de refresco de título
+  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": MainMenu.amateurs])
   }
   
 
