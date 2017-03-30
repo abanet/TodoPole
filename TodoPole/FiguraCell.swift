@@ -172,12 +172,19 @@ class FiguraCell: BaseCell {
         autorLabel.text  =  figura?.autor ?? ""
         nombreLabel.text =  figura?.englishName ?? "" // De momento todo en inglés.
         tipoLabel.text   =  figura?.tipo ?? ""
+      
+      // Si es profesional mostramos el nivel. Si es amateur la fecha de subida.
+      let esProfesional = figura?.profesional
+      if esProfesional != nil, esProfesional!  {
         if let nivel = figura?.nivel {
             nivelLabel.text  =  "Level \(nivel)"
         } else {
             nivelLabel.text  = ""
         }
-        
+      } else {
+          let date = (figura?.createdAt)!
+          nivelLabel.text = dateToString(date: date)
+      }
         if let likes = figura?.likes {
             likesLabel.text = "\(likes) likes"
         } else {
@@ -210,5 +217,10 @@ class FiguraCell: BaseCell {
         }
     }
     
-    
+  func dateToString(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    formatter.timeStyle = .none
+    return formatter.string(from: date)
+  }
 }

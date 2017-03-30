@@ -196,7 +196,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             return
         }
         let indexPath = IndexPath(item: menuIndex, section: 0)
-        collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+        // animated: false. Con true la animación causa que pase por estados intermedios y coge títulos q no debe.
+        collectionView?.scrollToItem(at: indexPath, at: [], animated: false)
+        print("scrollMenuTo: \(menuIndex)")
         setTitleForIndex(index: menuIndex)
         if indexPath.item == 0 {
             //setAuthorButton()
@@ -241,8 +243,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     
     private func setTitleForIndex(index: Int) {
+      print("Setting title homecontroller to index: \(index)")
         if let titleLabel = navigationItem.titleView as? UILabel {
-            titleLabel.text = "  \(titles[index])"
+            titleLabel.text = " \(titles[index])"
         }
     }
     
@@ -300,13 +303,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
       if let titleLabel = navigationItem.titleView as? UILabel {
         switch opcion {
         case .polemoves:
-          titleLabel.text = (numero == 1) ? "\(numero) Pole Move" : "\(numero) Pole Moves"
+          titleLabel.text = (numero == 1) ? " \(numero) Pole Move" : " \(numero) Pole Moves"
         case .amateurs:
-          titleLabel.text = (numero == 1) ? "\(numero) Amateur Move" : "\(numero) Amateur Moves"
+          titleLabel.text = (numero == 1) ? " \(numero) Amateur Move" : " \(numero) Amateur Moves"
         case .favorites:
-          titleLabel.text = (numero == 1) ? "\(numero) Favourite" : "\(numero) Favourites"
+          titleLabel.text = (numero == 1) ? " \(numero) Favourite" : " \(numero) Favourites"
         case .helpus:
-          titleLabel.text = "Help Us"
+          titleLabel.text = " Help Us"
         }
         titles[opcion.rawValue] = titleLabel.text!
       }

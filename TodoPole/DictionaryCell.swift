@@ -51,8 +51,8 @@ class DictionaryCell: FeedCell {
                 self.collectionView.backgroundView = EmptyView(message: "Check your filters!. It seems there is nothing to show you with the actual settings.")
             } else {
                 self.collectionView.backgroundView = nil
-              self.notificarUpdateTitle(num: figuras.count, menuOpcion: .polemoves)
             }
+          self.notificarUpdateTitle(num: figuras.count, menuOpcion: .polemoves)
         }
     }
     

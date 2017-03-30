@@ -27,11 +27,6 @@ class ColaboraCell: BaseCell {
             web.load(request)
         }
         backgroundColor = .green
-        self.notificarUpdateTitle(num: 0, menuOpcion: .helpus)
     }
   
-  //  Notificación de refresco de título
-  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": MainMenu.favorites])
-  }
 }

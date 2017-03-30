@@ -44,14 +44,16 @@ class ParseData: NSObject {
   
   // Cargar todas las figuras amateurs desde la cache si hay
   func cargarFigurasAmateurs(red: Bool, completion: @escaping ([Figura]) -> ()) {
+    let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
     let query = PFQuery(className:"Figura")
     if red {
       query.cachePolicy = .networkOnly
     } else {
       query.cachePolicy = .cacheElseNetwork
     }
-    query.whereKey("visible", equalTo: false) // para que no le salgan a la gente
+    query.whereKey("visible", equalTo: true) // para que no le salgan a la gente
     query.whereKey("profesional", equalTo: false)
+    query.whereKey("objectId", notContainedIn: arrayFavoritos)
     query.order(byDescending: "updatedAt")
     cargarQueryParse(query, completion: completion)
   }
@@ -139,9 +141,9 @@ class ParseData: NSObject {
     // carga un vídeo de parse
     // No hace falta: usar url directamente
     func cargarVideo(figura: Figura, completion: @escaping (Data)-> Void) {
-        print("vamos a visionar \(figura.nombre)")
+        print("vamos a visionar \(String(describing: figura.nombre))")
         if let videoFile = figura.fileVideo {
-            print("url del video: \(figura.urlStringVideo)")
+            print("url del video: \(String(describing: figura.urlStringVideo))")
             videoFile.getDataInBackground(block: {
                 (videoData: Data?, error: Error?) in
                 guard error != nil else { return }
