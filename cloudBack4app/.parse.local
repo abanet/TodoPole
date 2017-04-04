@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "TodoPole": {
+      "applicationId": "ILah5fOqSJX6nMu7JwIYkwDO4A6YoKiqCXVllFho"
+    },
+    "_default": {
+      "link": "TodoPole"
+    }
+  }
+}

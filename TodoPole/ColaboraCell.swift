@@ -27,6 +27,6 @@ class ColaboraCell: BaseCell {
             web.load(request)
         }
         backgroundColor = .green
-        
     }
+  
 }

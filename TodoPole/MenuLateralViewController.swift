@@ -9,9 +9,9 @@
 import UIKit
 
 struct MenuLateral {
-    var opciones = ["Upload your move!"]
-    let imagenes = ["upload50"]
-    let info     = ["Upload your moves!"]
+    var opciones = ["Upload your move!", "Set filters"]
+    let imagenes = ["upload50", "filter50"]
+    let info     = ["Upload your moves!", "Set filters"]
 }
 
 class MenuLateralViewController: UITableViewController {
@@ -58,8 +58,21 @@ class MenuLateralViewController: UITableViewController {
 //  UITableViewDelegate
 extension MenuLateralViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let uploadViewController = UploadViewController()
-        present(uploadViewController, animated: true, completion: nil)
+        let item = indexPath.item
+        switch item {
+        case 0:
+            let uploadViewController = UploadViewController()
+            present(uploadViewController, animated: true, completion: nil)
+        case 1:
+            let setFilterViewController = SetFilterViewController()
+            //self.navigationController?.pushViewController(setFilterViewController, animated: true) // necesario si queremos utilizar tablas anidadas
+            present(setFilterViewController, animated: true, completion: nil)
+
+        default:
+            print("Never here!")
+        }
+        
+        
     }
     
 }

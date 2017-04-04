@@ -138,14 +138,14 @@ class FiguraCell: BaseCell {
         // tipoLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
         //addConstraint(NSLayoutConstraint(item: tipoLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier:1, constant: 0))
         
-        //  nivel de la figura
-        nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 0))
-        
         //  número de likes
         likesLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 4))
         
+        //  nivel de la figura
+        nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
+        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 4))
+  
     }
     
     // Establecemos un gradiente en la parte inferior de la fotografía para que se vea mejor la información que pondemos.
@@ -172,12 +172,19 @@ class FiguraCell: BaseCell {
         autorLabel.text  =  figura?.autor ?? ""
         nombreLabel.text =  figura?.englishName ?? "" // De momento todo en inglés.
         tipoLabel.text   =  figura?.tipo ?? ""
+      
+      // Si es profesional mostramos el nivel. Si es amateur la fecha de subida.
+      let esProfesional = figura?.profesional
+      if esProfesional != nil, esProfesional!  {
         if let nivel = figura?.nivel {
             nivelLabel.text  =  "Level \(nivel)"
         } else {
             nivelLabel.text  = ""
         }
-        
+      } else {
+          let date = (figura?.createdAt)!
+          nivelLabel.text = date.timeAgoDisplay() //dateToString(date: date)
+      }
         if let likes = figura?.likes {
             likesLabel.text = "\(likes) likes"
         } else {
@@ -210,5 +217,10 @@ class FiguraCell: BaseCell {
         }
     }
     
-    
+  func dateToString(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    formatter.timeStyle = .none
+    return formatter.string(from: date)
+  }
 }

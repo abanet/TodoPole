@@ -61,9 +61,6 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
             }
     }
     
-    
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             print("Número de figuras encontradas: \(figuras?.count ?? 0)")
             return figuras?.count ?? 0
@@ -98,9 +95,13 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
             let cellPulsada = collectionView.cellForItem(at: indexPath) as! FiguraCell
             if let figuraTratada = cellPulsada.figura {
                 self.collectionView.allowsSelection = false // evitar doble click
-                let videoLauncher = VideoLauncher()
-                videoLauncher.showVideoPlayer(figura: figuraTratada)
-                videoLauncher.videoPlayer.delegate = self
+                if let _ = figuraTratada.urlStringVideo {
+                    let videoLauncher = VideoLauncher()
+                    videoLauncher.showVideoPlayer(figura: figuraTratada)
+                    videoLauncher.videoPlayer.delegate = self
+                } else {
+                    // No hay url de Video. No hacemos nada.
+                }
             }
         }
     
@@ -109,6 +110,8 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         // Cuando refresca siempre tiramos de red para hacer la query.
         self.cargarFigurasDeParse(red:true)
     }
+  
+    
 
 }
 

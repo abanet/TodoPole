@@ -32,7 +32,7 @@ class UploadViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = ColoresApp.primary
+        view.backgroundColor = ColoresApp.primary.lighter(by: 15.0)
         picker.delegate = self
         self.loadForm()
     }
@@ -80,7 +80,18 @@ class UploadViewController: FormViewController {
         }
 
         section2.rows.append(row)
-        
+      
+        // Pro or amateur?
+      let section21 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
+      row = FormRowDescriptor(tag: "pro", type: .booleanSwitch, title: "Are you a professional(On)?")
+      row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+      if let defaultPro = defaultConfiguration.pro {
+        row.value = defaultPro as AnyObject?
+      } else {
+        row.value = true as AnyObject?
+      }
+      section21.rows.append(row)
+      
         // Define third section
         // Buttons to upload and cancel
         let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
@@ -104,7 +115,7 @@ class UploadViewController: FormViewController {
         section4.rows.append(row)
 
 
-        form.sections = [section1, section2, section3, section4]
+        form.sections = [section1, section2, section21, section3, section4]
 
         self.form = form
     
@@ -116,6 +127,7 @@ class UploadViewController: FormViewController {
         let mail     = (valores["email"] as? String) ?? ""
         let autor    = (valores["author"] as? String) ?? ""
         let studio   = (valores["studio"] as? String) ?? ""
+        let pro      = (valores["pro"] as? Bool) ?? true
         
         if moveName.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
             showAlert(title:"Move Name is empty", message: "Please tell us the name of the move you'are uploading!")
@@ -133,13 +145,14 @@ class UploadViewController: FormViewController {
         }
         
         // todos los datos están correctos. Cargamos los metadatos
-        metadataFigura = FiguraFirebase(nombre: moveName, mail: mail, autor: autor, studio: studio)
-        
+      metadataFigura = FiguraFirebase(nombre: moveName, mail: mail, autor: autor, studio: studio, pro: pro)
+      
         // mail, autor y studio los grabamos en default para mostrar 
         let defaultConfiguration = DefaultConfiguration()
         defaultConfiguration.setDefaultMail(mail: mail)
         defaultConfiguration.setDefaultAutor(autor: autor)
         defaultConfiguration.setDefaultStudio(studio: studio)
+      
     
         return true
     }
@@ -177,13 +190,13 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
 
 extension String {
   var isValidEmailAddress: Bool {
-  let types: NSTextCheckingResult.CheckingType = [.link]
-  let linkDetector = try? NSDataDetector(types: types.rawValue)
-  let range = NSRange(location: 0, length: self.characters.count)
-  let result = linkDetector?.firstMatch(in: self, options: .reportCompletion, range: range)
-  let scheme = result?.url?.scheme ?? ""
-  return scheme == "mailto" && result?.range.length == self.characters.count
-    }
+    let types: NSTextCheckingResult.CheckingType = [.link]
+    let linkDetector = try? NSDataDetector(types: types.rawValue)
+    let range = NSRange(location: 0, length: self.characters.count)
+    let result = linkDetector?.firstMatch(in: self, options: .reportCompletion, range: range)
+    let scheme = result?.url?.scheme ?? ""
+    return scheme == "mailto" && result?.range.length == self.characters.count
+  }
 }
 
 

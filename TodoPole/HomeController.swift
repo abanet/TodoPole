@@ -11,27 +11,35 @@ import Parse
 import SideMenu
 import FBSDKLoginKit
 
-
+enum MainMenu: Int {
+  case polemoves
+  case amateurs
+  case favorites
+  case helpus
+}
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var videos: [Video]?
     
     /* -MENU- */
-    let titles = ["Pole Dictionary", "Favorites", "Help Us"]
+    var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Help Us"]  
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
     let colaboraCellId   = "colaboraCellId"
+    let amateursCellId   = "amateursCellId"
     
     var menuSideController: MenuLateralViewController?
     
-    var opcionMenuSeleccionada: Int?
+    var opcionMenuSeleccionada: Int = 0
+    var opcionMenuOrigen: Int? 
         
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configurarObservers()
         // menú lateral
         menuSideController = MenuLateralViewController()
         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
@@ -74,6 +82,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
         collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
+        collectionView?.register(AmateursCell.self, forCellWithReuseIdentifier: amateursCellId)
 
         
         collectionView?.isPagingEnabled = true
@@ -113,8 +122,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func setupNavBarButtons(){
         setMoreButton()
+        // setAuthorButton() // De entrada aparece.
         setFilterButton() // De entrada aparece.
-       
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -127,6 +136,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
         
         setTitleForIndex(index: Int(index))
+        opcionMenuOrigen = opcionMenuSeleccionada
+        opcionMenuSeleccionada = Int(index) // actualizamos la opción de menú seleccionada
+        
     }
     
     func handleSearch(){
@@ -134,8 +146,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         settingsLauncher.showSettings()
     }
     
+    func handleAuthor(){
+        // Show author selection
+        print("Show author selection")
+    }
+    
     func handleMore() {
-        
         // sacar menú lateral
         present(SideMenuManager.menuRightNavigationController!, animated: true, completion: nil)
     }
@@ -175,33 +191,49 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     
     func scrollToMenuIndex(menuIndex: Int) {
+        //  Si el índice en el que se pulsa es en el que estamos no hay que hacer nada.
+        guard let opcionMenuActual = opcionMenuOrigen, opcionMenuActual != menuIndex else {
+            return
+        }
         let indexPath = IndexPath(item: menuIndex, section: 0)
-        collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+        // animated: false. Con true la animación causa que pase por estados intermedios y coge títulos q no debe.
+        collectionView?.scrollToItem(at: indexPath, at: [], animated: false)
+        print("scrollMenuTo: \(menuIndex)")
         setTitleForIndex(index: menuIndex)
         if indexPath.item == 0 {
+            //setAuthorButton()
             setFilterButton()
         } else {
             removeFilterButton()
-            existsFilterButtom = false
+            existsFilterButton = false
         }
     }
     
-    var existsFilterButtom = false
+    var existsFilterButton = false
+   // var existsAuthorButton = false
     
     private func setFilterButton() {
-        // TODO: sólo si no existe!! ahora mismo si se pulsa varias veces el botón de inicio salen muchas lupas!!
-        if !existsFilterButtom {
+        if !existsFilterButton {
             let searchImage = UIImage(named:"search_icon")?.withRenderingMode(.alwaysOriginal)
             let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
             navigationItem.rightBarButtonItems?.append(searchBarButtonItem)
-            existsFilterButtom = true
+            existsFilterButton = true
         }
     }
+    
+//    private func setAuthorButton(){
+//        if !existsAuthorButton {
+//            let authorImage = UIImage(named:"author")?.withRenderingMode(.alwaysOriginal)
+//            let authorBarButtonItem = UIBarButtonItem(image: authorImage, style: .plain, target: self, action: #selector(handleAuthor))
+//            navigationItem.rightBarButtonItems?.append(authorBarButtonItem)
+//        }
+//    }
     
     private func removeFilterButton() {
         navigationItem.rightBarButtonItems = nil
         setMoreButton()
     }
+    
     
     private func setMoreButton() {
         let moreButton = UIBarButtonItem(image: UIImage(named: "menu50")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMore))
@@ -211,8 +243,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     
     private func setTitleForIndex(index: Int) {
+      print("Setting title homecontroller to index: \(index)")
         if let titleLabel = navigationItem.titleView as? UILabel {
-            titleLabel.text = "  \(titles[index])"
+            titleLabel.text = " \(titles[index])"
         }
     }
     
@@ -220,22 +253,26 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return ConfiguracionMenu.numOpciones
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath)
-            return cell
-        }
-        
-        if indexPath.item == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
-            return cell
-        }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath)
-        
-        return cell
-    }
+  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
+    var cell: UICollectionViewCell
+    
+    /* -MENU- */
+    switch indexPath.item {
+    case 0:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath) as! DictionaryCell
+    case 1:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: amateursCellId, for: indexPath) as! AmateursCell
+    case 2:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
+    case 3:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
+    default:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
+    }
+    return cell
+  }
+  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //print("--> Tamaño para \(indexPath): \(view.frame.width), \(self.view.frame.height - (50 + 8))")
         return CGSize(width: view.frame.width, height: self.view.frame.height - (50 + 8))
@@ -243,15 +280,43 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     // se ejecuta cuando la celda va a aparecer
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == 1 {
+        /* -MENU- */
+        if indexPath.item == 2 {
             let celda = cell as! FavoritosCell
             celda.setupViews() // ¡para que refresque los datos de favoritos!
         }
         
     }
     
- 
+  func configurarObservers() {
+    NotificationCenter.default.addObserver(self, selector: #selector(updateTitle), name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: titleNeedRefreshNotification) , object: nil)
+  }
+  
+  /* -MENU- */
+  func updateTitle(_ notification: NSNotification) {
+    if let numero = notification.userInfo?["num"] as? Int,
+       let opcion = notification.userInfo?["menuOpcion"] as? MainMenu {
+      if let titleLabel = navigationItem.titleView as? UILabel {
+        switch opcion {
+        case .polemoves:
+          titleLabel.text = (numero == 1) ? " \(numero) Pole Move" : " \(numero) Pole Moves"
+        case .amateurs:
+          titleLabel.text = (numero == 1) ? " \(numero) Amateur Move" : " \(numero) Amateur Moves"
+        case .favorites:
+          titleLabel.text = (numero == 1) ? " \(numero) Favourite" : " \(numero) Favourites"
+        case .helpus:
+          titleLabel.text = " Help Us"
+        }
+        titles[opcion.rawValue] = titleLabel.text!
+      }
+    }
     
+  }
+  
 }
 
 

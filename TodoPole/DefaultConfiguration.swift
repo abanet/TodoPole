@@ -10,14 +10,16 @@ import Foundation
 
 class DefaultConfiguration {
     
-    var mail: String?
-    var autor: String?
+    var mail:   String?
+    var autor:  String?
     var studio: String?
-    
+    var pro:    Bool?
+  
     init() {
         self.mail   = getDefaultMail()
         self.autor  = getDefaultAutor()
         self.studio = getDefaultStudio()
+        self.pro    = getDefaultPro()
     }
     
     
@@ -31,6 +33,10 @@ class DefaultConfiguration {
     
     private func getDefaultStudio() -> String? {
         return UserDefaults.standard.string(forKey: "defaultStudio")
+    }
+  
+    private func getDefaultPro() -> Bool? {
+        return UserDefaults.standard.bool(forKey: "defaultPro")
     }
     
     func setDefaultMail(mail: String) {
@@ -46,5 +52,10 @@ class DefaultConfiguration {
     func setDefaultStudio(studio: String) {
         UserDefaults.standard.set(studio, forKey: "defaultStudio")
         self.studio = studio
+    }
+  
+    func setDefaultPro(pro: Bool) {
+      UserDefaults.standard.set(pro, forKey: "defaultPro")
+      self.pro = pro
     }
 }
