@@ -87,7 +87,7 @@ class ParseData: NSObject {
         query.whereKey("tipo", equalTo: tipo.rawValue)
         cargarQueryParse(query, completion: completion)
     }
-    
+
     func cargarFigurasTipo(_ tipo: TipoFigura, red: Bool, completion: @escaping ([Figura]) -> ()) {
         let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
         let arrayAutoresBloqueados = ConfigurationAutores.getAutoresBloqueados()
