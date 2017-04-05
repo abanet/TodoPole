@@ -195,9 +195,9 @@ class FiguraCell: BaseCell {
         
         // rellenamos la pronvincia y el país
         let provincia = figura?.escuela?.provincia
-        //let pais      = figura?.escuela?.pais
+        let pais      = figura?.escuela?.pais
         // De momento como sólo hay de España quitamos el pais. En un futuro [provincia, pais].flatMap...
-        provinciaPaisLabel.text = [provincia].flatMap{$0}.joined(separator: " - ")
+        provinciaPaisLabel.text = [provincia,pais].flatMap{$0}.joined(separator: " - ")
     }
     
     func resetearTextosCelda(){

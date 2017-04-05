@@ -34,7 +34,9 @@ class SetFilterViewController: FormViewController {
 //        row = FormRowDescriptor(tag: "amateur", type: .booleanSwitch, title: "Amateur")
 //        row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
 //        section1.rows.append(row)
-        
+      
+      
+        // Section 1: Back button
         let section1 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
         var row = FormRowDescriptor(tag: "back", type: .button, title: "Back")
         row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
@@ -43,7 +45,10 @@ class SetFilterViewController: FormViewController {
             self.back()
         }
         section1.rows.append(row)
-        
+      
+      
+      
+        // Section 2: Pole Dancer filter
         let section2 = FormSectionDescriptor(headerTitle: "Which Pole Dancers are you interested in?", footerTitle: "")
         let autores = ParseData.sharedInstance.listOfAuthorsNow()
         let autoresBloqueados = ConfigurationAutores.getAutoresBloqueados()

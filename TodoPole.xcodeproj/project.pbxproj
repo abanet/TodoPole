@@ -33,6 +33,8 @@
 		C0611C451E032C9300EA9981 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611C441E032C9300EA9981 /* ParseData.swift */; };
 		C0611C471E032DA200EA9981 /* Figura.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611C461E032DA200EA9981 /* Figura.swift */; };
 		C063E36C1DFEF9160003A263 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063E36B1DFEF9160003A263 /* Video.swift */; };
+		C0652C1E1E9578840083B21D /* SetFilterLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0652C1D1E9578840083B21D /* SetFilterLevelViewController.swift */; };
+		C0652C201E9579A90083B21D /* ConfiguracionNiveles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0652C1F1E9579A90083B21D /* ConfiguracionNiveles.swift */; };
 		C06E23831E7DBDEA0026AE3A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E23821E7DBDEA0026AE3A /* UIColor+Extension.swift */; };
 		C06E23851E7DC03C0026AE3A /* SetFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */; };
 		C06E23871E7DDFAD0026AE3A /* ConfiguracionAutores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06E23861E7DDFAD0026AE3A /* ConfiguracionAutores.swift */; };
@@ -96,6 +98,8 @@
 		C0611C441E032C9300EA9981 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		C0611C461E032DA200EA9981 /* Figura.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figura.swift; sourceTree = "<group>"; };
 		C063E36B1DFEF9160003A263 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		C0652C1D1E9578840083B21D /* SetFilterLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFilterLevelViewController.swift; sourceTree = "<group>"; };
+		C0652C1F1E9579A90083B21D /* ConfiguracionNiveles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracionNiveles.swift; sourceTree = "<group>"; };
 		C06E23821E7DBDEA0026AE3A /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFilterViewController.swift; sourceTree = "<group>"; };
 		C06E23861E7DDFAD0026AE3A /* ConfiguracionAutores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracionAutores.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				C0B0955E1E4D16F100324539 /* FiguraFirebase.swift */,
 				C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */,
 				C06E23861E7DDFAD0026AE3A /* ConfiguracionAutores.swift */,
+				C0652C1F1E9579A90083B21D /* ConfiguracionNiveles.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				C0B0955C1E4CDCD500324539 /* ProgressViewController.swift */,
 				C03B9B2B1E1AA81C00BE5EDD /* VideoLauncher.swift */,
 				C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */,
+				C0652C1D1E9578840083B21D /* SetFilterLevelViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				C0CB3C0F1DE8A2BB00D033DB /* AppDelegate.swift in Sources */,
 				C0203E291E00740400C72D99 /* YouTube.swift in Sources */,
 				C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */,
+				C0652C1E1E9578840083B21D /* SetFilterLevelViewController.swift in Sources */,
 				C03B9B2C1E1AA81C00BE5EDD /* VideoLauncher.swift in Sources */,
 				C0EC2C411E1EA2E500F8D291 /* ColaboraCell.swift in Sources */,
 				C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */,
@@ -490,6 +497,7 @@
 				C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */,
 				C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */,
 				C09D14451E520E5600E83FF0 /* EmptyView.swift in Sources */,
+				C0652C201E9579A90083B21D /* ConfiguracionNiveles.swift in Sources */,
 				C0611C471E032DA200EA9981 /* Figura.swift in Sources */,
 				C0C77D641E842EF70065EF90 /* AmateursCell.swift in Sources */,
 				C0B0955F1E4D16F100324539 /* FiguraFirebase.swift in Sources */,

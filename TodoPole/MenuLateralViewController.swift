@@ -9,9 +9,9 @@
 import UIKit
 
 struct MenuLateral {
-    var opciones = ["Upload your move!", "Set filters"]
-    let imagenes = ["upload50", "filter50"]
-    let info     = ["Upload your moves!", "Set filters"]
+    var opciones = ["Upload your move!", "Set author filter", "Set level filter"]
+    let imagenes = ["upload50", "filter50", "filter50"]
+    let info     = ["Upload your moves!", "Set author filter", "Set level filter"]
 }
 
 class MenuLateralViewController: UITableViewController {
@@ -68,6 +68,9 @@ extension MenuLateralViewController {
             //self.navigationController?.pushViewController(setFilterViewController, animated: true) // necesario si queremos utilizar tablas anidadas
             present(setFilterViewController, animated: true, completion: nil)
 
+        case 2:
+            let setFilterLevelViewController = SetFilterLevelViewController()
+            present(setFilterLevelViewController, animated: true, completion: nil)
         default:
             print("Never here!")
         }
@@ -93,14 +96,14 @@ extension MenuLateralViewController {
         cell.backgroundColor = .clear
         cell.textLabel?.text = menu.opciones[indexPath.item]
         cell.textLabel?.textColor = ColoresApp.darkPrimary
-        if indexPath.item == menu.opciones.count - 1 { // last option
-            cell.textLabel?.textAlignment = .center
-        } else {
-            cell.textLabel?.textAlignment = .right
-        }
+        cell.textLabel?.textAlignment = .left
         cell.detailTextLabel?.text = menu.info[indexPath.item]
         cell.imageView?.image = UIImage(named: menu.imagenes[indexPath.item])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = ColoresApp.darkPrimary
         return cell
     }
+  
+//  override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+//    return "Release 4.0"
+//  }
 }
