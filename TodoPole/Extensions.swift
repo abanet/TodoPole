@@ -71,8 +71,10 @@ class CustomImageView: UIImageView {
                     DispatchQueue.main.async {
                         if self.pffileFoto == ficheroOriginal {
                             if let imageData = imageData {
-                                self.image = self.imageWithGradient(img: UIImage(data:imageData))
+                              if let img = UIImage(data:imageData) {
+                                self.image = self.imageWithGradient(img: img)
                                 completion()
+                              }
                             }
                         }
                         
