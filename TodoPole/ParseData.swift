@@ -27,6 +27,8 @@ class ParseData: NSObject {
     let arrayAutoresBloqueados = ConfigurationAutores.getAutoresBloqueados()
     let arrayNivelesBloqueados = ConfigurationNiveles.getNivelesBloqueados()
     
+
+    let campoOrden = ConfigurationOrden.fieldOrderDatabase()
     let query = PFQuery(className:"Figura")
     if red {
       query.cachePolicy = .networkOnly
@@ -42,13 +44,14 @@ class ParseData: NSObject {
     if let listaBloqueoNiveles = arrayNivelesBloqueados {
       query.whereKey("nivel", notContainedIn: listaBloqueoNiveles)
     }
-    query.order(byDescending: "updatedAt")
+    query.order(byDescending: campoOrden)
     cargarQueryParse(query, completion: completion)
   }
   
   // Cargar todas las figuras amateurs desde la cache si hay
   func cargarFigurasAmateurs(red: Bool, completion: @escaping ([Figura]) -> ()) {
     let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
+    let campoOrden = ConfigurationOrden.fieldOrderDatabase()
     let query = PFQuery(className:"Figura")
     if red {
       query.cachePolicy = .networkOnly
@@ -58,7 +61,7 @@ class ParseData: NSObject {
     query.whereKey("visible", equalTo: true) // para que no le salgan a la gente
     query.whereKey("profesional", equalTo: false)
     query.whereKey("objectId", notContainedIn: arrayFavoritos)
-    query.order(byDescending: "updatedAt")
+    query.order(byDescending: campoOrden)
     cargarQueryParse(query, completion: completion)
   }
   
@@ -96,6 +99,7 @@ class ParseData: NSObject {
     let arrayFavoritos = Favoritos.sharedInstance.arrayFavoritos
     let arrayAutoresBloqueados = ConfigurationAutores.getAutoresBloqueados()
     let arrayNivelesBloqueados = ConfigurationNiveles.getNivelesBloqueados()
+    let campoOrden = ConfigurationOrden.fieldOrderDatabase()
     
     let query = PFQuery(className:"Figura")
     if red {
@@ -113,13 +117,14 @@ class ParseData: NSObject {
     if let listaBloqueoNiveles = arrayNivelesBloqueados {
       query.whereKey("nivel", notContainedIn: listaBloqueoNiveles)
     }
+    query.order(byDescending: campoOrden)
     cargarQueryParse(query, completion: completion)
   }
   
   
   
   private func cargarQueryParse(_ query: PFQuery<PFObject>, completion: @escaping ([Figura]) -> ()) {
-    query.limit = 200 // límite impuesto por Parse? Ahora es 1000.
+    query.limit = 300 // límite impuesto por Parse? Ahora es 1000.
     query.includeKey("escuelaId")
     query.findObjectsInBackground {
       (objects: [PFObject]?, error: Error?) -> Void in
@@ -233,5 +238,6 @@ class ParseData: NSObject {
     return list
   }
   
+ 
   
 } // Fin de la clase

@@ -85,7 +85,17 @@ class FiguraCell: BaseCell {
         label.textColor = .white
         return label
     }()
+  
+  let timeAgoLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont(name: "Avenir-Medium", size: 12)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "1 second ago"
+    label.textColor = .white
+    return label
     
+  }()
+  
     let tipoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Medium", size:12)
@@ -109,6 +119,7 @@ class FiguraCell: BaseCell {
         addSubview(likesLabel)
         addSubview(nombreEscuelaLabel)
         addSubview(provinciaPaisLabel)
+        addSubview(timeAgoLabel)
         
         //  Imagen de la figura. Ocupa todo el fondo de la celda
         
@@ -137,14 +148,20 @@ class FiguraCell: BaseCell {
         // tipo de figura
         // tipoLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
         //addConstraint(NSLayoutConstraint(item: tipoLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier:1, constant: 0))
-        
-        //  número de likes
-        likesLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 4))
-        
+      
+      //  Time en formato ago
+      timeAgoLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
+      addConstraint(NSLayoutConstraint(item: timeAgoLabel, attribute: .bottom, relatedBy: .equal, toItem: nombreLabel, attribute: .top, multiplier: 1, constant: 4))
+      
+      
         //  nivel de la figura
         nivelLabel.leadingAnchor.constraint(equalTo: nombreLabel.leadingAnchor).isActive = true
-        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: likesLabel, attribute: .top, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: nivelLabel, attribute: .bottom, relatedBy: .equal, toItem: timeAgoLabel, attribute: .top, multiplier: 1, constant: 4))
+      
+      //  número de likes
+      likesLabel.leftAnchor.constraint(equalTo: nivelLabel.rightAnchor, constant: 0).isActive = true
+      addConstraint(NSLayoutConstraint(item: likesLabel, attribute: .bottom, relatedBy: .equal, toItem: timeAgoLabel, attribute: .top, multiplier: 1, constant: 4))
+
   
     }
     
@@ -173,24 +190,25 @@ class FiguraCell: BaseCell {
         nombreLabel.text =  figura?.englishName ?? "" // De momento todo en inglés.
         tipoLabel.text   =  figura?.tipo ?? ""
       
-      // Si es profesional mostramos el nivel. Si es amateur la fecha de subida.
-      let esProfesional = figura?.profesional
-      if esProfesional != nil, esProfesional!  {
+      // Nivel de la figura
         if let nivel = figura?.nivel {
-            nivelLabel.text  =  "Level \(nivel)"
+            nivelLabel.text  =  "Level \(nivel) - "
         } else {
             nivelLabel.text  = ""
         }
-      } else {
-          let date = (figura?.createdAt)!
-          nivelLabel.text = date.timeAgoDisplay() //dateToString(date: date)
-      }
+      
+      // Likes
         if let likes = figura?.likes {
             likesLabel.text = "\(likes) likes"
         } else {
             likesLabel.text = "0 likes"
         }
-        
+      
+      //  Rellenamos fecha time ago
+      if let date = (figura?.createdAt) {
+        timeAgoLabel.text = date.timeAgoDisplay()
+      }
+      
         nombreEscuelaLabel.text = figura?.escuela?.nombre ?? ""
         
         // rellenamos la pronvincia y el país

@@ -20,7 +20,7 @@ class SetFilterViewController: FormViewController {
     }
     
     fileprivate func loadForm(){
-        let form = FormDescriptor(title: "Upload your video")
+        let form = FormDescriptor(title: "Autor filter")
         
         // TODO: Defaults settings let defaultConfiguration = DefaultConfiguration()
         
@@ -38,7 +38,7 @@ class SetFilterViewController: FormViewController {
       
         // Section 1: Back button
         let section1 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
-        var row = FormRowDescriptor(tag: "back", type: .button, title: "Back")
+        var row = FormRowDescriptor(tag: "back", type: .button, title: "Save & Back")
         row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
         
         row.configuration.button.didSelectClosure = { _ in
@@ -46,7 +46,23 @@ class SetFilterViewController: FormViewController {
         }
         section1.rows.append(row)
       
+      // Section 1.5: All pole dancers button
+      let section15 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
+      row = FormRowDescriptor(tag: "allPoleDancers", type: .button, title: "Check all Pole Dancers")
+      row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
+      row.configuration.button.didSelectClosure = { _ in
+        self.selectAllPoleDancers()
+      }
+      section15.rows.append(row)
       
+      // Section 1.7: unselect all pole dancers button
+      //let section17 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
+      row = FormRowDescriptor(tag: "nonePoleDancers", type: .button, title: "Uncheck all Pole Dancers")
+      row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
+      row.configuration.button.didSelectClosure = { _ in
+        self.unselectAllPoleDancers()
+      }
+      section15.rows.append(row)
       
         // Section 2: Pole Dancer filter
         let section2 = FormSectionDescriptor(headerTitle: "Which Pole Dancers are you interested in?", footerTitle: "")
@@ -67,7 +83,7 @@ class SetFilterViewController: FormViewController {
         }
         
         let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
-        row = FormRowDescriptor(tag: "back", type: .button, title: "Back")
+        row = FormRowDescriptor(tag: "back", type: .button, title: "Save & Back")
         row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
         row.configuration.button.didSelectClosure = { _ in
             self.back()
@@ -75,7 +91,7 @@ class SetFilterViewController: FormViewController {
         section3.rows.append(row)
 
         
-        form.sections = [section1, section2, section3]
+        form.sections = [section1, section15, section2, section3]
         
         self.form = form
         
@@ -95,5 +111,27 @@ class SetFilterViewController: FormViewController {
             NSNotification.Name(rawValue: dictionaryCellNeedRefreshNotification), object: nil)
 
     }
-    
+  
+  func selectAllPoleDancers() {
+    for section in self.form.sections {
+      for row in section.rows {
+        if row.type != .button {
+          row.value = true as AnyObject
+        }
+      }
+    }
+    self.tableView.reloadData()
+  }
+  
+  func unselectAllPoleDancers() {
+    for section in self.form.sections {
+      for row in section.rows {
+        if row.type != .button {
+          row.value = false as AnyObject
+        }
+      }
+    }
+    self.tableView.reloadData()
+  }
+  
 }
