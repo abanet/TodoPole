@@ -59,7 +59,7 @@ class YouTube: NSObject {
                         video.channelTitle     = item["snippet"]["channelTitle"].string
                        
                         thumbnail.url = item["snippet"]["thumbnails"]["high"]["url"].string
-                        print("Añadiendo thumbnail: \(thumbnail.url)")
+                        //print("Añadiendo thumbnail: \(thumbnail.url)")
                         thumbnail.width = item["snippet"]["thumbnails"]["high"]["width"].int
                         thumbnail.height = item["snippet"]["thumbnails"]["high"]["height"].int
                         video.thumbnailStandard = thumbnail

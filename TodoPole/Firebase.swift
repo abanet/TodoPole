@@ -62,10 +62,10 @@ class Firebase: NSObject {
         
         // Upload the file
         uploadTask = videoRef.putFile(url)
-        let observer = uploadTask?.observe(.progress) {
+        uploadTask?.observe(.progress) {
             snapshot in
             if let progress = snapshot.progress {
-                let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
+                //let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
                 //print(percentComplete)
                 self.delegate?.progressHappened(progress: progress)
             }
@@ -74,9 +74,7 @@ class Firebase: NSObject {
         uploadTask?.observe(.success) { snapshot in
             print("FIN")
             // La figura se ha subido, grabamos sus datos
-            let figuraRef = self.databaseRef.child(uuid).setValue(self.metadataFigura.formatoArray())
-            
-            
+            self.databaseRef.child(uuid).setValue(self.metadataFigura.formatoArray())
             self.uploadTask?.removeAllObservers()
             self.delegate?.uploadEndedWithSuccess()
         }

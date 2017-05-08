@@ -28,7 +28,7 @@ class VideoPlayerView: UIView {
     var permitirSumarAlPulsarCorazon = true // para controlar que no se puedan sumar al pulsar varias veces seguidas.
     
     var videoEnded: Bool = false
-    
+  
     let activityIndicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -407,6 +407,8 @@ class VideoPlayerView: UIView {
     }
     
     fileprivate func setupGradientLayer() {
+        controlContainerView.isHidden = true
+      
         let gradientLayerInferior = CAGradientLayer()
         gradientLayerInferior.frame = bounds
         gradientLayerInferior.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
@@ -417,6 +419,7 @@ class VideoPlayerView: UIView {
         gradientLayerSuperior.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradientLayerSuperior.locations = [-0.2, 0.2]
         controlContainerView.layer.addSublayer(gradientLayerSuperior)
+      
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -452,11 +455,13 @@ class VideoPlayerView: UIView {
     }
     
     func mostrarElementosInterfaz() {
+        controlContainerView.isHidden = false
         pausePlayButton.isHidden = false
         plusButton.isHidden = false
         minusButton.isHidden = false
         likeButton.isHidden = false
         videoSlider.isHidden = false
+      
         //facebookLikeButton.isHidden = false
     }
 }
