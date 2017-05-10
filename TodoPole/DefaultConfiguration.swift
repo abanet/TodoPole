@@ -13,6 +13,7 @@ class DefaultConfiguration {
     var mail:   String?
     var autor:  String?
     var studio: String?
+    var evolutionMail: String? // For YourEvolucion
     var pro:    Bool?
   
     init() {
@@ -20,11 +21,21 @@ class DefaultConfiguration {
         self.autor  = getDefaultAutor()
         self.studio = getDefaultStudio()
         self.pro    = getDefaultPro()
+        self.evolutionMail = getDefaultEvolutionMail()
     }
     
     
     private func getDefaultMail() -> String? {
         return UserDefaults.standard.string(forKey: "defaultMail")
+    }
+  
+    // Si no se ha grabado un mail para la evolución se cogerá el mail utilizado en el último upload.
+    private func getDefaultEvolutionMail() -> String? {
+      if let evolutionMail = UserDefaults.standard.string(forKey: "defaultEvolutionMail") {
+        return evolutionMail
+      } else {
+        return getDefaultMail()
+      }
     }
     
     private func getDefaultAutor() -> String? {
@@ -43,7 +54,12 @@ class DefaultConfiguration {
         UserDefaults.standard.set(mail, forKey: "defaultMail")
         self.mail = mail
     }
-    
+  
+  func setDefaultEvolutionMail(mail: String) {
+    UserDefaults.standard.set(mail, forKey: "defaultEvolutionMail")
+    self.evolutionMail = mail
+  }
+  
     func setDefaultAutor(autor: String) {
         UserDefaults.standard.set(autor, forKey: "defaultAutor")
         self.autor = autor

@@ -31,5 +31,10 @@ class BaseCell: UICollectionViewCell {
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: dictionaryCellNeedRefreshNotification), object: nil)
     }
+  
+  //  Notificación de refresco de título
+  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": menuOpcion])
+  }
     
 }

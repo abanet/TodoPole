@@ -65,6 +65,21 @@ class ParseData: NSObject {
     cargarQueryParse(query, completion: completion)
   }
   
+  // Cargar las figuras del mail que las ha subido
+  func cargarFigurasEvolution(red: Bool, completion: @escaping ([Figura]) -> ()) {
+    let conf = DefaultConfiguration()
+    let mail = conf.evolutionMail ?? "NotMail"
+    let query = PFQuery(className:"Figura")
+    if red {
+      query.cachePolicy = .networkOnly
+    } else {
+      query.cachePolicy = .cacheElseNetwork
+    }
+    query.whereKey("visible", equalTo: true) // para que no le salgan a la gente
+    query.whereKey("email", equalTo: mail)
+    query.order(byDescending: "createdAt")
+    cargarQueryParse(query, completion: completion)
+  }
   
   // Cargar las figuras favoritas
   func cargarFigurasFavoritas(red: Bool, completion: @escaping ([Figura]) -> ()) {

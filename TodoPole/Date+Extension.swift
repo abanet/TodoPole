@@ -11,6 +11,8 @@ import Foundation
 extension Date {
   func timeAgoDisplay() -> String {
     let secondsAgo = Int(Date().timeIntervalSince(self))
+    print("fecha para ver intervalo: \(self)")
+    print("date hoy: \(Date())")
     
     let minute  = 60
     let hour    = 60 * minute

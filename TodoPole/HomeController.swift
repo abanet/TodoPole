@@ -15,6 +15,7 @@ enum MainMenu: Int {
   case polemoves
   case amateurs
   case favorites
+  case yourEvolution
   case helpus
 }
 
@@ -23,12 +24,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     /* -MENU- */
-    var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Help Us"]  
+    var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Your Evolution", "Help Us"]
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
     let colaboraCellId   = "colaboraCellId"
     let amateursCellId   = "amateursCellId"
+    let yourEvolutionCellId = "yourEvolutionCellId"
+  
+  
     
     var menuSideController: MenuLateralViewController?
     
@@ -39,7 +43,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configurarObservers()
         // menú lateral
         menuSideController = MenuLateralViewController()
         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
@@ -66,6 +69,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
          setupNavBarButtons()
     }
 
+  override func viewWillAppear(_ animated: Bool) {
+    configurarObservers()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    removeObservers()
+  }
     func setupCollectionView(){
         //Configuración del collectionView
         
@@ -78,11 +88,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.contentInset = UIEdgeInsets(top: 50 + view.layoutMargins.top, left: 0 ,bottom: 0 ,right: 0)
         
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 50 + view.layoutMargins.top, left: 0, bottom: 0,right: 0)
+      
+        /* -MENU- */
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
         collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
         collectionView?.register(AmateursCell.self, forCellWithReuseIdentifier: amateursCellId)
+        collectionView?.register(YourEvolutionCell.self, forCellWithReuseIdentifier: yourEvolutionCellId)
 
         
         collectionView?.isPagingEnabled = true
@@ -266,6 +279,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     case 2:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
     case 3:
+      cell = collectionView.dequeueReusableCell(withReuseIdentifier: yourEvolutionCellId, for: indexPath) as! YourEvolutionCell
+    case 4:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
     default:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
@@ -280,21 +295,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     // se ejecuta cuando la celda va a aparecer
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      
         /* -MENU- */
         if indexPath.item == 2 {
             let celda = cell as! FavoritosCell
             celda.setupViews() // ¡para que refresque los datos de favoritos!
+            celda.setLongGesture()
         }
         
     }
     
   func configurarObservers() {
     NotificationCenter.default.addObserver(self, selector: #selector(updateTitle), name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil)
+    
   }
   
-  deinit {
+  func removeObservers() {
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: titleNeedRefreshNotification) , object: nil)
   }
+  
   
   /* -MENU- */
   func updateTitle(_ notification: NSNotification) {
@@ -308,6 +327,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
           titleLabel.text = (numero == 1) ? " \(numero) Amateur Move" : " \(numero) Amateur Moves"
         case .favorites:
           titleLabel.text = (numero == 1) ? " \(numero) Favourite" : " \(numero) Favourites"
+        case .yourEvolution:
+          titleLabel.text = (numero == 1) ? " \(numero) Evolution move" : " \(numero) Evolution moves"
         case .helpus:
           titleLabel.text = " Help Us"
         }

@@ -34,4 +34,11 @@ class Favoritos: NSObject {
     func isFavorito(id: String) -> Bool {
         return arrayFavoritos.contains(id)
     }
+  
+  func changeFavoritoAt(_ origen: Int, porPosicion posicionFinal: Int) {
+    let valorEnFinal = arrayFavoritos[posicionFinal]
+    arrayFavoritos[posicionFinal] = arrayFavoritos[origen]
+    arrayFavoritos[origen] = valorEnFinal
+    UserDefaults.standard.set(arrayFavoritos, forKey: "favoritos")
+  }
 }

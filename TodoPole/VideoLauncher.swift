@@ -215,7 +215,8 @@ class VideoPlayerView: UIView {
     func handleClose(){
         player?.pause()
         isPlaying = false
-        
+        removeAllObservers()
+      
         let frame = CGRect(x: self.frame.width - 10 , y: self.frame.height - 10, width: 10, height: 10)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
             self.superview?.frame = frame
@@ -379,6 +380,14 @@ class VideoPlayerView: UIView {
             self.layer.addSublayer(playerLayer)
             player?.play()
             player?.rate = 1.0
+          
+          
+          // Coger la fecha de creación del video
+          // De momento no lo utilizamos ya que la fecha de creación es la fecha en la que yo hago el vídeo
+          //let fechaCreacion = player?.currentItem?.asset.creationDate?.value
+          
+          
+
         
             // Añadimos observer para que nos avise cuando el vídeo ha empezado
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
@@ -441,8 +450,8 @@ class VideoPlayerView: UIView {
                 let minutosText = String(format: "%02d", Int(segundos) / 60)
                 videoLengthLabel.text = "\(minutosText):\(segundosText)"
             }
-            
-        }
+            print("Mostrando vídeo...")
+      }
     }
     
     func playerDidFinishPlaying(note: NSNotification){
@@ -464,11 +473,17 @@ class VideoPlayerView: UIView {
       
         //facebookLikeButton.isHidden = false
     }
+  
+  func removeAllObservers() {
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object:  player?.currentItem)
+    player?.removeObserver(self, forKeyPath: "currentItem.loadedTimeRanges")
+
+  }
 }
 
 
 class VideoLauncher: NSObject {
-    
+  
     // Video Player en el que se verá el vídeo.
     // Al llamar a VideoLauncher se establece el delegate del VideoPlayer
     var videoPlayer: VideoPlayerView = VideoPlayerView()

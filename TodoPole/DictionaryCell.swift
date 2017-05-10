@@ -13,6 +13,7 @@ class DictionaryCell: FeedCell {
     var tipo: TipoFigura?
     
     override func cargarFigurasDeParse(red: Bool) {
+      print("cargando datos en DictionaryCell")
         if tipo == nil {
         ParseData.sharedInstance.cargarFigurasVisibles(red: red){
             (figuras:[Figura]) -> Void in
@@ -57,13 +58,10 @@ class DictionaryCell: FeedCell {
     }
     
     override func refreshCell() {
-        self.cargarFigurasDeParse(red: false)
-        print("refresh Cell de Dictionary cell")
+        //self.cargarFigurasDeParse(red: false)
+        // Parece que no es necesario cargar de nuevo y provoca malfuncionamiento con el refresco del título.
     }
   
-  //  Notificación de refresco de título
-  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": MainMenu.polemoves])
-  }
+  
   
 }

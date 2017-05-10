@@ -70,6 +70,8 @@
 		C0EF0E2D1E0AEA9600B81F3C /* DictionaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */; };
 		C0EF0E2F1E0AF2DB00B81F3C /* FavoritosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */; };
 		C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */; };
+		C0FAB79A1EC0CA2A00E9ACFF /* YourEvolutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FAB7991EC0CA2A00E9ACFF /* YourEvolutionCell.swift */; };
+		C0FAB79C1EC0D9B400E9ACFF /* SetEvolutionUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FAB79B1EC0D9B400E9ACFF /* SetEvolutionUserViewController.swift */; };
 		C0FDDBE81E978D6A00D18A49 /* ConfiguracionOrden.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDDBE71E978D6A00D18A49 /* ConfiguracionOrden.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,8 @@
 		C0EF0E2C1E0AEA9600B81F3C /* DictionaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCell.swift; sourceTree = "<group>"; };
 		C0EF0E2E1E0AF2DB00B81F3C /* FavoritosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritosCell.swift; sourceTree = "<group>"; };
 		C0F8E6561E58E7D90056627F /* DefaultConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
+		C0FAB7991EC0CA2A00E9ACFF /* YourEvolutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourEvolutionCell.swift; sourceTree = "<group>"; };
+		C0FAB79B1EC0D9B400E9ACFF /* SetEvolutionUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetEvolutionUserViewController.swift; sourceTree = "<group>"; };
 		C0FDDBE71E978D6A00D18A49 /* ConfiguracionOrden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracionOrden.swift; sourceTree = "<group>"; };
 		F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoPole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.debug.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				C0EC2C401E1EA2E500F8D291 /* ColaboraCell.swift */,
 				C09D14441E520E5600E83FF0 /* EmptyView.swift */,
 				C0C77D631E842EF70065EF90 /* AmateursCell.swift */,
+				C0FAB7991EC0CA2A00E9ACFF /* YourEvolutionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				C06E23841E7DC03C0026AE3A /* SetFilterViewController.swift */,
 				C0652C1D1E9578840083B21D /* SetFilterLevelViewController.swift */,
 				C0A763921E96D3B20042A5E9 /* SetOrderViewController.swift */,
+				C0FAB79B1EC0D9B400E9ACFF /* SetEvolutionUserViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 				C04B0D361E0077ED005D19C7 /* SwiftyJSON.swift in Sources */,
 				C0BE85EB1DF5D03D00A96B11 /* Extensions.swift in Sources */,
 				C0EF0E2B1E0AC83800B81F3C /* FeedCell.swift in Sources */,
+				C0FAB79A1EC0CA2A00E9ACFF /* YourEvolutionCell.swift in Sources */,
 				C04B0D381E007805005D19C7 /* Thumbnail.swift in Sources */,
 				C0CB3C0F1DE8A2BB00D033DB /* AppDelegate.swift in Sources */,
 				C0203E291E00740400C72D99 /* YouTube.swift in Sources */,
@@ -495,6 +502,7 @@
 				C0F8E6571E58E7D90056627F /* DefaultConfiguration.swift in Sources */,
 				C004AC651E8A8F9300146651 /* Notificaciones.swift in Sources */,
 				C0FDDBE81E978D6A00D18A49 /* ConfiguracionOrden.swift in Sources */,
+				C0FAB79C1EC0D9B400E9ACFF /* SetEvolutionUserViewController.swift in Sources */,
 				C06E23851E7DC03C0026AE3A /* SetFilterViewController.swift in Sources */,
 				C0A763931E96D3B20042A5E9 /* SetOrderViewController.swift in Sources */,
 				C0CE51E61E392A3B0087FB93 /* Favoritos.swift in Sources */,

@@ -1,40 +1,37 @@
 //
-//  Amateurs.swift
+//  YourEvolutionCell.swift
 //  TodoPole
 //
-//  Created by Alberto Banet Masa on 23/3/17.
+//  Created by Alberto Banet Masa on 8/5/17.
 //  Copyright © 2017 Alberto Banet. All rights reserved.
 //
 
 import UIKit
 
-class AmateursCell: FeedCell {
+class YourEvolutionCell: FeedCell {
   
   
   override func cargarFigurasDeParse(red: Bool) {
-    print("cargando datos en AmateursCell")
-    ParseData.sharedInstance.cargarFigurasAmateurs(red: red){
+    ParseData.sharedInstance.cargarFigurasEvolution(red: red){
       (figuras:[Figura]) -> Void in
       self.figuras = figuras
       self.collectionView.reloadData()
       self.refresh.endRefreshing()
       if figuras.count == 0 {
-        self.collectionView.backgroundView = EmptyView(message: "Sorry, no amateur moves available right now.")
+        let config = DefaultConfiguration()
+        self.collectionView.backgroundView = EmptyView(message: "Sorry, You dont have uploaded any move with the email set as the Evolution user: \(config.evolutionMail ?? "not Evolution mail founded").")
       } else {
         self.collectionView.backgroundView = nil
       }
-      self.notificarUpdateTitle(num: figuras.count, menuOpcion: .amateurs)
+      self.notificarUpdateTitle(num: figuras.count, menuOpcion: .yourEvolution)
     }
     
   }
   
   override func refreshCell() {
-    //self.cargarFigurasDeParse(red: false)
+    self.cargarFigurasDeParse(red: false)
     // Parece que no es necesario cargar de nuevo y provoca malfuncionamiento con el refresco del título.
   }
   
-  
-  
-
+    
 }
-

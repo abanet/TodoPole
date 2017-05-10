@@ -53,6 +53,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     // Función que carga las figuras de Parse
     
     func cargarFigurasDeParse(red: Bool){
+        print("cargando datos en FeedCell")
         ParseData.sharedInstance.cargarFigurasVisibles(red: red){
                 (figuras:[Figura]) -> Void in
                 self.figuras = figuras

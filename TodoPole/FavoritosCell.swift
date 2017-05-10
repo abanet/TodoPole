@@ -17,7 +17,7 @@ class FavoritosCell: FeedCell {
             (figuras:[Figura]) -> Void in
 
           self.figuras = self.sortArrayFigurasByFavoritas(figuras: figuras)
-
+         
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
             print("al cargar vemos que en favoritos tenemos: \(figuras.count)")
@@ -45,13 +45,45 @@ class FavoritosCell: FeedCell {
     return sorted
   }
   
-
-
   
-  //  Notificación de refresco de título
-  func notificarUpdateTitle(num: Int, menuOpcion: MainMenu) {
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: titleNeedRefreshNotification), object: nil, userInfo: ["num": num, "menuOpcion": MainMenu.favorites])
+  override func refreshCell() {
+    //self.cargarFigurasDeParse(red: false)
+    // Parece que no es necesario cargar de nuevo y provoca malfuncionamiento con el refresco del título.
   }
 
+   func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    Favoritos.sharedInstance.changeFavoritoAt(sourceIndexPath.item, porPosicion: destinationIndexPath.item)
+    let tempFigura = self.figuras![destinationIndexPath.item]
+    self.figuras![destinationIndexPath.item] = self.figuras![sourceIndexPath.item]
+    self.figuras![sourceIndexPath.item] = tempFigura
+  }
+  
+  func setLongGesture() {
+    let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(_:)))
+    self.addGestureRecognizer(longPressGesture)
+  }
+  
+  func handleLongGesture(_ gesture: UILongPressGestureRecognizer) {
+    print("long Gesture")
+    
+      switch(gesture.state) {
+        
+      case UIGestureRecognizerState.began:
+        guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+          break
+        }
+        
+        collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+      case UIGestureRecognizerState.changed:
+        collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+      case UIGestureRecognizerState.ended:
+        collectionView.endInteractiveMovement()
+      default:
+        collectionView.cancelInteractiveMovement()
+      }
+    }
+  
+  
+  
 }
 

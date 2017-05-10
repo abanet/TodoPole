@@ -106,9 +106,10 @@ class SetFilterViewController: FormViewController {
             }
         }
         ConfigurationAutores.setAutoresBloqueados(autores: noSeleccionados)
-        self.dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name:
-            NSNotification.Name(rawValue: dictionaryCellNeedRefreshNotification), object: nil)
+        NSNotification.Name(rawValue: dictionaryCellNeedRefreshNotification), object: nil)
+        self.dismiss(animated: true, completion: nil)
+      
 
     }
   

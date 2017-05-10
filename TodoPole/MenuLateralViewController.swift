@@ -9,9 +9,9 @@
 import UIKit
 
 struct MenuLateral {
-    var opciones = ["Upload your move!", "Set author filter", "Set level filter", "Order by"]
-    let imagenes = ["upload50", "filter50", "filter50", "orden"]
-    let info     = ["Upload your moves!", "Set author filter", "Set level filter", "Order by"]
+    var opciones = ["Upload your move!", "Set author filter", "Set level filter", "Order by", "Evolution user"]
+    let imagenes = ["upload50", "filter50", "filter50", "orden", "youLateralMenu"]
+    let info     = ["Upload your moves!", "Set author filter", "Set level filter", "Order by", "Evolution user"]
 }
 
 class MenuLateralViewController: UITableViewController {
@@ -75,6 +75,10 @@ extension MenuLateralViewController {
         case 3:
             let setOrderViewController = SetOrderViewController()
             present(setOrderViewController, animated: true, completion: nil)
+          
+        case 4:
+            let setEvolutionUser = SetEvolutionUserViewController()
+            present(setEvolutionUser, animated: true, completion: nil)
         default:
             print("Never here!")
         }
