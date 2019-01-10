@@ -13,7 +13,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     var refresh: UIRefreshControl = {
         let r = UIRefreshControl()
         r.tintColor = .white
-        let atributosString = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir-medium", size: 17.0)]
+        let atributosString = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-medium", size: 17.0)]
         r.attributedTitle = NSAttributedString(string: "Getting the newest data!", attributes: atributosString)
         return r
     }()

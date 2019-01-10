@@ -68,15 +68,15 @@ class FavoritosCell: FeedCell {
     
       switch(gesture.state) {
         
-      case UIGestureRecognizerState.began:
+      case UIGestureRecognizer.State.began:
         guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
           break
         }
         
         collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-      case UIGestureRecognizerState.changed:
+      case UIGestureRecognizer.State.changed:
         collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-      case UIGestureRecognizerState.ended:
+      case UIGestureRecognizer.State.ended:
         collectionView.endInteractiveMovement()
       default:
         collectionView.cancelInteractiveMovement()

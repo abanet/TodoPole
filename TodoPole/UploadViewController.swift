@@ -175,8 +175,8 @@ class UploadViewController: FormViewController {
 }
 
 extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let urlVideo = info[UIImagePickerControllerMediaURL] as! URL
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let urlVideo = info[UIImagePickerController.InfoKey.mediaURL] as! URL
         let fire = Firebase()
         fire.delegate = progress
         fire.uploadData(url: urlVideo)

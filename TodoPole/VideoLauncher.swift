@@ -30,7 +30,7 @@ class VideoPlayerView: UIView {
     var videoEnded: Bool = false
   
     let activityIndicatorView: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.startAnimating()
         return indicator
@@ -252,7 +252,7 @@ class VideoPlayerView: UIView {
             pausePlayButton.setImage(UIImage(named: "play"), for: .normal)
         } else {
             if videoEnded {
-                player?.seek(to: kCMTimeZero)
+                player?.seek(to: CMTime.zero)
             }
             player?.play()
             pausePlayButton.setImage(UIImage(named: "pause"), for: .normal)
@@ -376,7 +376,7 @@ class VideoPlayerView: UIView {
             
             
             playerLayer.frame = self.bounds
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.layer.addSublayer(playerLayer)
             player?.play()
             player?.rate = 1.0
