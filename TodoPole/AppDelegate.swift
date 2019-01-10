@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundView)
         
         // Configuramos Firebase
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         // Reading author list from network just first time.
 //      ParseData.sharedInstance.listOfAuthors(red: true) { (result:[String]) in

@@ -46,7 +46,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // menú lateral
         menuSideController = MenuLateralViewController()
         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
-        SideMenuManager.menuRightNavigationController = menuRightNavigationController
+        
+        SideMenuManager.default.menuRightNavigationController = menuRightNavigationController
         
         // Configuración del navigation
         let titulo = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 2 * view.layoutMargins.left, height: view.frame.height))
@@ -166,7 +167,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func handleMore() {
         // sacar menú lateral
-        present(SideMenuManager.menuRightNavigationController!, animated: true, completion: nil)
+        present(SideMenuManager.default.menuRightNavigationController!, animated: true, completion: nil)
     }
     
     func showControllerForSetting(_ setting: Setting) {

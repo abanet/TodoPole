@@ -22,22 +22,22 @@ class Firebase: NSObject {
     var delegate: FirebaseProgress?
     
     let storage = {
-        return FIRStorage.storage()
+        return Storage.storage()
     }()
     
     
-    var storageRef: FIRStorageReference
+    var storageRef: StorageReference
     
-    var databaseRef: FIRDatabaseReference
+    var databaseRef: DatabaseReference
     
-    var uploadTask: FIRStorageUploadTask?
+    var uploadTask: StorageUploadTask?
     
     var metadataFigura: FiguraFirebase!
     
     //  Creamos referencia a Firebase
     override init() {
         storageRef = storage.reference(forURL: "gs://chromatic-being-87921.appspot.com")
-        databaseRef = FIRDatabase.database().reference(withPath: "figuras")
+        databaseRef = Database.database().reference(withPath: "figuras")
         super.init()
     }
     
@@ -61,7 +61,7 @@ class Firebase: NSObject {
         let videoRef = storageRef.child("figuras/\(uuid)")
         
         // Upload the file
-        uploadTask = videoRef.putFile(url)
+        uploadTask = videoRef.putFile(from: url)
         uploadTask?.observe(.progress) {
             snapshot in
             if let progress = snapshot.progress {

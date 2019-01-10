@@ -12,7 +12,7 @@ open class FormTitleCell: FormBaseCell {
     
     // MARK: Cell views
     
-    open let titleLabel = UILabel()
+    @objc public let titleLabel = UILabel()
     
     // MARK: FormBaseCell
     
@@ -20,7 +20,7 @@ open class FormTitleCell: FormBaseCell {
         super.configure()
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         
         // apply constant constraints
         contentView.addSubview(titleLabel)
