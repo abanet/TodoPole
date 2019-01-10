@@ -38,7 +38,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var opcionMenuSeleccionada: Int = 0
     var opcionMenuOrigen: Int? 
-        
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,9 +89,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
         collectionView?.backgroundColor = ColoresApp.lightPrimary
  
-        collectionView?.contentInset = UIEdgeInsets(top: 50 + view.layoutMargins.top, left: 0 ,bottom: 0 ,right: 0)
+        collectionView?.contentInset = UIEdgeInsets(top: 90 + view.layoutMargins.top, left: 0 ,bottom: 0 ,right: 0)
         
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 50 + view.layoutMargins.top, left: 0, bottom: 0,right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 90 + view.layoutMargins.top, left: 0, bottom: 0,right: 0)
       
         /* -MENU- */
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)

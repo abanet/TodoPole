@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configurar conexión con el backend back4app
         configurarConexionBackend()
-        UIApplication.shared.statusBarStyle = .lightContent
+        //UIApplication.shared.statusBarStyle = .lightContent
+        
         
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -37,10 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         let statusBarBackgroundView = UIView()
-        statusBarBackgroundView.backgroundColor = ColoresApp.darkPrimary
+        statusBarBackgroundView.backgroundColor = ColoresApp.primary
+        
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundView)
+        // De 40 a 50 para iPhone X
+        window?.addConstraintsWithFormat(format: "V:|[v0(50)]", views: statusBarBackgroundView)
         
         // Configuramos Firebase
         FirebaseApp.configure()
