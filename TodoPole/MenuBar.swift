@@ -10,7 +10,7 @@ import UIKit
 
 struct ConfiguracionMenu {
   /* -MENU- */
-    static let numOpciones = 5  // Opciones del menú principal de la app
+    static let numOpciones = 4  // Opciones del menú principal de la app
 }
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -27,7 +27,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     let cellId = "cellId"
     
     /* -MENU- */
-    let imageNames = ["school", "students", "like", "yourEvolution", "light"] // Imágenes del menú principal de la app
+    let imageNames = ["school", "students", "like", "yourEvolution"]
     
     var homeController: HomeController?
     

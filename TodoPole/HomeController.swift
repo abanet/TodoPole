@@ -24,11 +24,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var videos: [Video]?
     
     /* -MENU- */
-    var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Your Evolution", "Help Us"]
+    var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Your Evolution"]
     let cellId = "cellId"
     let dictionaryCellId = "dictionaryCellId"
     let favoritosCellId  = "favoritosCellId"
-    let colaboraCellId   = "colaboraCellId"
     let amateursCellId   = "amateursCellId"
     let yourEvolutionCellId = "yourEvolutionCellId"
   
@@ -97,7 +96,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(DictionaryCell.self, forCellWithReuseIdentifier: dictionaryCellId)
         collectionView?.register(FavoritosCell.self, forCellWithReuseIdentifier: favoritosCellId)
-        collectionView?.register(ColaboraCell.self, forCellWithReuseIdentifier: colaboraCellId)
         collectionView?.register(AmateursCell.self, forCellWithReuseIdentifier: amateursCellId)
         collectionView?.register(YourEvolutionCell.self, forCellWithReuseIdentifier: yourEvolutionCellId)
 
@@ -284,10 +282,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritosCellId, for: indexPath) as! FavoritosCell
     case 3:
       cell = collectionView.dequeueReusableCell(withReuseIdentifier: yourEvolutionCellId, for: indexPath) as! YourEvolutionCell
-    case 4:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
     default:
-      cell = collectionView.dequeueReusableCell(withReuseIdentifier: colaboraCellId, for: indexPath) as! ColaboraCell
+        cell = collectionView.dequeueReusableCell(withReuseIdentifier: dictionaryCellId, for: indexPath) as! DictionaryCell
     }
     return cell
   }
