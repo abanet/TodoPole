@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Bolts
 import Firebase
+import GoogleMobileAds
 
 
 @UIApplicationMain
@@ -47,6 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configuramos Firebase
         FirebaseApp.configure()
+        
+        // Configuramos AdMob
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-3455028088714350~1288595390")
         
         // Reading author list from network just first time.
 //      ParseData.sharedInstance.listOfAuthors(red: true) { (result:[String]) in

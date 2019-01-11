@@ -13,4 +13,5 @@ target 'TodoPole' do
   pod 'SideMenu'
   pod 'SwiftForms'
   pod 'KDCircularProgress'
+  pod 'Google-Mobile-Ads-SDK'
 end

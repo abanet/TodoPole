@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import SideMenu
 import FBSDKLoginKit
+import GoogleMobileAds
 
 enum MainMenu: Int {
   case polemoves
@@ -22,6 +23,8 @@ enum MainMenu: Int {
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var videos: [Video]?
+    
+    var bannerView: DFPBannerView!
     
     /* -MENU- */
     var titles = ["Pole Dictionary", "Amateurs", "Favorites", "Your Evolution"]
@@ -45,6 +48,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Google Ads
+        instantiateBanner()
+        
         // menú lateral
         menuSideController = MenuLateralViewController()
         let menuRightNavigationController = UISideMenuNavigationController(rootViewController: menuSideController!)
@@ -340,4 +346,73 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
   
 }
 
+// Extensión para anuncios
+extension HomeController {
+    func instantiateBanner() {
+        bannerView = DFPBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3455028088714350/5115503220"
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        bannerView.load(DFPRequest())
+    }
+    
+    func addBannerViewToView(_ bannerView: DFPBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints([NSLayoutConstraint(item: bannerView,
+                                               attribute: .bottom,
+                                               relatedBy: .equal,
+                                               toItem: bottomLayoutGuide,
+                                               attribute: .top,
+                                               multiplier: 1,
+                                               constant: 0),
+                            NSLayoutConstraint(item: bannerView,
+                                               attribute: .centerX,
+                                               relatedBy: .equal,
+                                               toItem: view,
+                                               attribute: .centerX,
+                                               multiplier: 1,
+                                               constant: 0)
+            ])
+    }
+}
+
+// Funciones delegadas de los anuncios
+extension HomeController: GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: DFPBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 1, animations: {
+            bannerView.alpha = 1
+        })
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: DFPBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: DFPBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: DFPBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: DFPBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: DFPBannerView) {
+        print("adViewWillLeaveApplication")
+    }
+}
 
