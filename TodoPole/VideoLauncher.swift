@@ -304,14 +304,14 @@ class VideoPlayerView: UIView {
         //  longitud del video
         controlContainerView.addSubview(videoLengthLabel)
         videoLengthLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
-        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
+        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -18).isActive = true
         videoLengthLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         videoLengthLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         // tiempo actual del video
         controlContainerView.addSubview(currentTimeLabel)
         currentTimeLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
-        currentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
+        currentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -18).isActive = true
         currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         currentTimeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
@@ -320,7 +320,7 @@ class VideoPlayerView: UIView {
         videoSlider.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
         videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         videoSlider.leftAnchor.constraint(equalTo: currentTimeLabel.rightAnchor).isActive = true
-        videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        videoSlider.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         //  Botón de cerrar
         controlContainerView.addSubview(closeButton)
