@@ -38,6 +38,7 @@ class ParseData: NSObject {
     query.whereKey("visible", equalTo: true)
     query.whereKey("profesional", equalTo: true)
     query.whereKey("objectId", notContainedIn: arrayFavoritos) // ahora las figuras que estén en favoritos no se mostrarán en la lista de figuras completa.
+    // Búsqueda negativa: notContainedIn. Esto obliga a que la lista de profesores en la base de datos esté correcta.
     if let listaBloqueo = arrayAutoresBloqueados {
       query.whereKey("autor", notContainedIn: listaBloqueo)
     }
