@@ -351,7 +351,7 @@ extension HomeController {
     func instantiateBanner() {
         bannerView = DFPBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3455028088714350/5115503220" // prueba Google: ca-app-pub-3940256099942544/2934735716
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" //abanet: "ca-app-pub-3455028088714350/5115503220" // prueba Google: "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.delegate = self
         bannerView.load(DFPRequest())
