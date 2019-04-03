@@ -37,6 +37,7 @@ class Figura: NSObject {
   var likes       : Int?
   var profesional : Bool?
   var email       : String?
+  var instagram   : Bool?
   
   
   // var escuelaId: Escuela?
@@ -60,6 +61,14 @@ class Figura: NSObject {
     likes       = object["likes"] as? Int
     profesional = object["profesional"] as? Bool
     email       = object["email"] as? String
+    instagram   = object["instagram"] as? Bool
   }
   
+    func tieneFormatoInstagram() -> Bool {
+        if let formatoInstagram = self.instagram, formatoInstagram {
+            return true
+        } else {
+            return false
+        }
+    }
 }

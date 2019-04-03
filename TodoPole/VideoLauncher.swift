@@ -271,7 +271,11 @@ class VideoPlayerView: UIView {
         
         setupPlayerView(figura: figura)
         
-        setupGradientLayer()
+        if !figura.tieneFormatoInstagram() {
+            setupGradientLayer()
+        } else {
+            self.backgroundColor = .black
+        }
         
         controlContainerView.frame = frame
         addSubview(controlContainerView)
@@ -375,7 +379,13 @@ class VideoPlayerView: UIView {
             let playerLayer = AVPlayerLayer(player: player)
             
             
-            playerLayer.frame = self.bounds
+        
+            if figura.tieneFormatoInstagram() {
+                // En mitad de pantalla formato cuadrado
+                playerLayer.frame = CGRect(x:0 , y: self.frame.maxY / 4, width: self.frame.width, height: 400)
+            } else { // tamaño de vídeo normal
+                playerLayer.frame = self.bounds
+            }
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.layer.addSublayer(playerLayer)
             player?.play()
