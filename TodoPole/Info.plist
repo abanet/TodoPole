@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Pole Dictionary gets your location for statistical purposes only</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -28,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>FacebookAppID</key>
 	<string>1300526166660188</string>
 	<key>FacebookDisplayName</key>
@@ -37,6 +39,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to use your camera</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Pole Dictionary gets your location for statistical purposes only</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Pole Dictionary gets your location for statistical purposes only</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to use your photo library</string>
 	<key>UILaunchStoryboardName</key>
