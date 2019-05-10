@@ -28,17 +28,17 @@ class SetEvolutionUserViewController: FormViewController {
     
     var row = FormRowDescriptor(tag: "email", type: .email , title: "Email")
     if let defaultMail = defaultConfiguration.evolutionMail, !defaultMail.isEmpty {
-      row.configuration.cell.appearance = ["textField.text" : defaultMail as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+      row.configuration.cell.appearance = ["textField.text" : defaultMail as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
       row.value = defaultMail as AnyObject
     } else {
-      row.configuration.cell.appearance = ["textField.placeholder" : "Write your email here" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+      row.configuration.cell.appearance = ["textField.placeholder" : "Write your email here" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
     }
     section1.rows.append(row)
     
 
     let section2 = FormSectionDescriptor(headerTitle: "", footerTitle: "")
     row = FormRowDescriptor(tag: "back", type: .button, title: "Save & Back")
-    row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
+    //row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
     row.configuration.button.didSelectClosure = { _ in
       self.back()
     }

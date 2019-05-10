@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B317E92EFBD32524A6073831 /* Pods_TodoPole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */; };
+		898CD61AD50187B03072ABB6 /* Pods_TodoPole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025C70C02667636EC3671C4F /* Pods_TodoPole.framework */; };
 		C004AC651E8A8F9300146651 /* Notificaciones.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004AC641E8A8F9300146651 /* Notificaciones.swift */; };
 		C01F456A1DFB0679008E5B49 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F45691DFB0679008E5B49 /* MenuBar.swift */; };
 		C0203E291E00740400C72D99 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0203E281E00740400C72D99 /* YouTube.swift */; };
@@ -76,7 +76,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.release.xcconfig"; sourceTree = "<group>"; };
+		025C70C02667636EC3671C4F /* Pods_TodoPole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoPole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78C5975C2B5C9C4B7261E8C5 /* Pods-TodoPole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.debug.xcconfig"; path = "Target Support Files/Pods-TodoPole/Pods-TodoPole.debug.xcconfig"; sourceTree = "<group>"; };
 		C004AC641E8A8F9300146651 /* Notificaciones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notificaciones.swift; sourceTree = "<group>"; };
 		C01F45691DFB0679008E5B49 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		C0203E281E00740400C72D99 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
@@ -144,8 +145,7 @@
 		C0FAB7991EC0CA2A00E9ACFF /* YourEvolutionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourEvolutionCell.swift; sourceTree = "<group>"; };
 		C0FAB79B1EC0D9B400E9ACFF /* SetEvolutionUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetEvolutionUserViewController.swift; sourceTree = "<group>"; };
 		C0FDDBE71E978D6A00D18A49 /* ConfiguracionOrden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguracionOrden.swift; sourceTree = "<group>"; };
-		F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoPole.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole.debug.xcconfig"; sourceTree = "<group>"; };
+		DCC838165F11B89443572891 /* Pods-TodoPole.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoPole.release.xcconfig"; path = "Target Support Files/Pods-TodoPole/Pods-TodoPole.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,24 +167,15 @@
 				C0C40C9C1E5B6BA0004C9474 /* FBSDKCoreKit.framework in Frameworks */,
 				C0611C2D1E0325D700EA9981 /* Parse.framework in Frameworks */,
 				C0611C2C1E0325D700EA9981 /* Bolts.framework in Frameworks */,
-				B317E92EFBD32524A6073831 /* Pods_TodoPole.framework in Frameworks */,
 				C0C40C9D1E5B6BA0004C9474 /* FBSDKLoginKit.framework in Frameworks */,
 				C0C40C9B1E5B6BA0004C9474 /* Bolts.framework in Frameworks */,
+				898CD61AD50187B03072ABB6 /* Pods_TodoPole.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		24B9994F098A4A932FE41AFF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */,
-				96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		C0203E2A1E00740C00C72D99 /* APIYoutubeService */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,7 +210,7 @@
 				C0611C331E03263700EA9981 /* CoreGraphics.framework */,
 				C0611C311E03262C00EA9981 /* CFNetwork.framework */,
 				C0611C2F1E03262000EA9981 /* AudioToolbox.framework */,
-				F0FCC2653AF2573B20CCAF0B /* Pods_TodoPole.framework */,
+				025C70C02667636EC3671C4F /* Pods_TodoPole.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -304,7 +295,7 @@
 				C0CB3C0D1DE8A2BB00D033DB /* TodoPole */,
 				C0CB3C0C1DE8A2BB00D033DB /* Products */,
 				C0611C2E1E03262000EA9981 /* Frameworks */,
-				24B9994F098A4A932FE41AFF /* Pods */,
+				D893BCB1AF235717D44B6B6B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -348,6 +339,16 @@
 			name = WebColabora;
 			sourceTree = "<group>";
 		};
+		D893BCB1AF235717D44B6B6B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78C5975C2B5C9C4B7261E8C5 /* Pods-TodoPole.debug.xcconfig */,
+				DCC838165F11B89443572891 /* Pods-TodoPole.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,11 +356,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0CB3C1D1DE8A2BB00D033DB /* Build configuration list for PBXNativeTarget "TodoPole" */;
 			buildPhases = (
-				D15EFF4B7A687151FE991015 /* [CP] Check Pods Manifest.lock */,
+				08D3AD5B4A5FA62E55C29BFE /* [CP] Check Pods Manifest.lock */,
 				C0CB3C071DE8A2BB00D033DB /* Sources */,
 				C0CB3C081DE8A2BB00D033DB /* Frameworks */,
 				C0CB3C091DE8A2BB00D033DB /* Resources */,
-				D4A4CF731A99E5C412A5189F /* [CP] Embed Pods Frameworks */,
+				2C547D870C7B1B4A4FFF772D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -425,16 +426,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D15EFF4B7A687151FE991015 /* [CP] Check Pods Manifest.lock */ = {
+		08D3AD5B4A5FA62E55C29BFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-TodoPole-checkManifestLockResult.txt",
 			);
@@ -443,13 +448,15 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D4A4CF731A99E5C412A5189F /* [CP] Embed Pods Frameworks */ = {
+		2C547D870C7B1B4A4FFF772D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TodoPole/Pods-TodoPole-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KDCircularProgress/KDCircularProgress.framework",
@@ -459,6 +466,8 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -470,7 +479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodoPole/Pods-TodoPole-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TodoPole/Pods-TodoPole-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -657,7 +666,7 @@
 		};
 		C0CB3C1E1DE8A2BB00D033DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1A148D71C74E5AC4A0A8EFF /* Pods-TodoPole.debug.xcconfig */;
+			baseConfigurationReference = 78C5975C2B5C9C4B7261E8C5 /* Pods-TodoPole.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FLU98JG66T;
@@ -678,7 +687,7 @@
 		};
 		C0CB3C1F1DE8A2BB00D033DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96A9E396550946AC438A0C87 /* Pods-TodoPole.release.xcconfig */;
+			baseConfigurationReference = DCC838165F11B89443572891 /* Pods-TodoPole.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FLU98JG66T;
