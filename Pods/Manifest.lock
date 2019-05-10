@@ -80,7 +80,7 @@ DEPENDENCIES:
   - SwiftForms
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -118,4 +118,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 08093da884f6a4e32c41988827a72efb05ecdd02
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.1

@@ -47,15 +47,15 @@ class UploadViewController: FormViewController {
         
         let section1 = FormSectionDescriptor(headerTitle: "   ", footerTitle: nil)
         var row = FormRowDescriptor(tag: "moveName", type: .asciiCapable, title: "Move Name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+        row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
         section1.rows.append(row)
         
         row = FormRowDescriptor(tag: "email", type: .email , title: "Email")
         if let defaultMail = defaultConfiguration.mail, !defaultMail.isEmpty {
-            row.configuration.cell.appearance = ["textField.text" : defaultMail as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.configuration.cell.appearance = ["textField.text" : defaultMail as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
             row.value = defaultMail as AnyObject
         } else {
-            row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.configuration.cell.appearance = ["textField.placeholder" : "Mandatory" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
         }
         section1.rows.append(row)
         
@@ -64,19 +64,19 @@ class UploadViewController: FormViewController {
         let section2 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
         row = FormRowDescriptor(tag: "author", type: .name, title: "Your name")
         if let defaultAutor = defaultConfiguration.autor, !defaultAutor.isEmpty {
-            row.configuration.cell.appearance = ["textField.text" : defaultAutor as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.configuration.cell.appearance = ["textField.text" : defaultAutor as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
             row.value = defaultAutor as AnyObject
         } else {
-            row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
         }
         
         section2.rows.append(row)
         row = FormRowDescriptor(tag: "studio", type: .name, title: "Studio name")
         if let defaultStudio = defaultConfiguration.studio, !defaultStudio.isEmpty {
-            row.configuration.cell.appearance = ["textField.text" : defaultStudio as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.configuration.cell.appearance = ["textField.text" : defaultStudio as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
             row.value = defaultStudio as AnyObject
         } else {
-            row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+            row.configuration.cell.appearance = ["textField.placeholder" : "Optional" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]//, "titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
         }
 
         section2.rows.append(row)
@@ -84,7 +84,7 @@ class UploadViewController: FormViewController {
         // Pro or amateur?
       let section21 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
       row = FormRowDescriptor(tag: "pro", type: .booleanSwitch, title: "Are you a professional(On)?")
-      row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
+      //row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:15)!]
       if let defaultPro = defaultConfiguration.pro {
         row.value = defaultPro as AnyObject?
       } else {
@@ -96,7 +96,7 @@ class UploadViewController: FormViewController {
         // Buttons to upload and cancel
         let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
         row = FormRowDescriptor(tag: "elegir", type: .button, title: "Tap to choose the video")
-        row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
+        //row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
         row.configuration.button.didSelectClosure = { _ in
             if self.checkMandatoryFieldsNotEmpty() {
                 self.present(self.picker, animated: true, completion: nil)
@@ -107,7 +107,7 @@ class UploadViewController: FormViewController {
         let section4 = FormSectionDescriptor(headerTitle: "", footerTitle: "Once your video is upload, it can takes a few days before you can see in the app.")
         
         row = FormRowDescriptor(tag: "back", type: .button, title: "Back")
-        row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
+       // row.configuration.cell.appearance = ["titleLabel.font": UIFont(name: "Avenir-Medium", size:18)!]
 
         row.configuration.button.didSelectClosure = { _ in
             self.dismiss(animated: true, completion: nil)
